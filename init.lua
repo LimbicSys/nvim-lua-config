@@ -85,6 +85,11 @@ vim.api.nvim_set_keymap("n", "<M-h>", "<CMD>nohlsearch<CR>", map_opts)
 
 vim.api.nvim_set_keymap("i", "jj", "<Esc>", map_opts)
 
+vim.api.nvim_set_keymap("n", "d", '"_d', map_opts)
+vim.api.nvim_set_keymap("n", "dd", '"_dd', map_opts)
+vim.api.nvim_set_keymap("n", "D", '"_D', map_opts)
+vim.api.nvim_set_keymap("x", "d", '"_d', map_opts)
+
 vim.cmd(
   [[
   augroup SetDiffColor
@@ -98,20 +103,4 @@ vim.cmd(
 )
 
 require("plugins")
-require("zephyr")
 
--- local lsf = require("lfs")
--- local loadpath = "./lua"
--- for file in lfs.dir(loadpath) do
---   if file ~= "." and file ~= ".." and file ~= "init.lua" and file ~= "loadend.lua" then
---     local f = loadpath .. "/" .. file
---     local attr = lfs.attributes(f)
---     local filename = string.gsub(file, ".lua$", "")
---     if attr.mode == "file" and file ~= filename then
---       -- print("require("..path..'/'..file..")")
---       local loadf = path .. "/" .. filename
---       print("require " .. loadf)
---     -- require(loadf)
---     end
---   end
--- end

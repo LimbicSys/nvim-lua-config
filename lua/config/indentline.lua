@@ -13,7 +13,8 @@ vim.g.indent_blankline_filetype_exclude = {
   "DiffviewFiles",
   "NvimTree",
   "vim",
-  "lua"
+  "lua",
+  "packer"
 }
 vim.g.indent_blankline_char = "│"
 vim.g.indent_blankline_show_trailing_blankline_indent = false

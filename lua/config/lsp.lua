@@ -26,7 +26,7 @@ local on_attach = function(client, bufnr)
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   -- buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   buf_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
-  -- buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  buf_set_keymap("n", "gh", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
   buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
   -- buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   -- buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
@@ -62,6 +62,7 @@ local function setup_servers()
   local servers = require "lspinstall".installed_servers()
   -- ... and add manually installed servers
   table.insert(servers, "clangd")
+  table.insert(servers, "efm")
   -- table.insert(servers, "sourcekit")
 
   for _, server in pairs(servers) do
@@ -82,6 +83,36 @@ local function setup_servers()
     elseif server == "clangd" then
       config = tmp_config
       config["cmd"] = {"clangd", "--background-index", "--fallback-style=Microsoft"}
+      local default_capabilities =
+        vim.tbl_deep_extend(
+        "force",
+        capabilities,
+        {
+          textDocument = {
+            completion = {
+              editsNearCursor = true
+            },
+            switchSourceHeader = true
+          },
+          offsetEncoding = {"utf-8", "utf-16"}
+        }
+      )
+      config["capabilities"] = default_capabilities
+    elseif server == "efm" then
+      config = tmp_config
+      config["init_options"] = {documentFormatting = true}
+      config['filetypes'] = {"lua"}
+      config["settings"] = {
+        rootMarkers = {".git/", ".root"},
+        languages = {
+          lua = {
+            {
+              formatCommand = "luafmt --indent-count=2 --stdin",
+              formatStdin = true
+            }
+          }
+        }
+      }
     else
       config = tmp_config
     end

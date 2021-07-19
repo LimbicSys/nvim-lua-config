@@ -47,26 +47,40 @@ table.insert(
   gls.left,
   {
     ViMode = {
+      -- icon = function()
+      --   local icons = {
+      --     n = " ",
+      --     i = "פֿ ",
+      --     c = "ﲵ ",
+      --     V = " ",
+      --     [""] = " ",
+      --     v = " ",
+      --     C = "ﲵ ",
+      --     R = "﯒",
+      --     t = " "
+      --   }
+      --   return icons[vim.fn.mode()]
+      -- end,
       provider = function()
         -- auto change color according the vim mode
         local alias = {
-          n = "NORMAL",
-          i = "INSERT",
-          c = "COMMAND",
-          V = "VISUAL",
-          [""] = "VISUAL",
-          [""] = "VISUAL",
-          v = "VISUAL",
+          n = "N",
+          i = "I",
+          c = "C",
+          V = "VL",
+          [""] = "V",
+          v = "V",
+          C = "C",
           ["r?"] = ":CONFIRM",
           rm = "--MORE",
-          R = "REPLACE",
-          Rv = "VIRTUAL",
-          s = "SELECT",
-          S = "SELECT",
+          R = "R",
+          Rv = "R&V",
+          s = "S",
+          S = "S",
           ["r"] = "HIT-ENTER",
-          [""] = "SELECT",
-          t = "TERMINAL",
-          ["!"] = "SHELL"
+          [""] = "SELECT",
+          t = "T",
+          ["!"] = "SH"
         }
 
         local vim_mode = vim.fn.mode()
@@ -93,9 +107,10 @@ table.insert(
           t = colors.red
         }
         vim.api.nvim_command("hi galaxyvimode guifg=" .. mode_color[vim_mode])
-        return alias[vim_mode] .. "   "
+        return alias[vim_mode]
       end,
-      highlight = {colors.red, colors.bg, "bold"}
+      highlight = {colors.red, colors.bg, "bold"},
+      separator = " "
     }
   }
 )

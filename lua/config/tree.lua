@@ -28,6 +28,38 @@ vim.g.nvim_tree_special_files["readme"] = 1
 vim.g.nvim_tree_special_files["Makefile"] = 1
 vim.g.nvim_tree_special_files["MAKEFILE"] = 1
 
+-- default will show icon by default if no icon is provided
+-- default shows no icon by default
+vim.g.nvim_tree_icons = {
+  default = "",
+  symlink = "",
+  git = {
+    unstaged = "✗",
+    staged = "✓",
+    unmerged = "",
+    renamed = "➜",
+    untracked = "★",
+    deleted = "",
+    ignored= ""
+  },
+  folder = {
+    arrow_open = "",
+    arrow_closed = "",
+    default = "",
+    open = "",
+    empty = "",
+    empty_open = "",
+    symlink = "",
+    symlink_open = ""
+  },
+  lsp = {
+    hint = "",
+    info = "",
+    warning = "",
+    error = ""
+  }
+}
+
 vim.g.nvim_tree_disable_default_keybindings = 1
 
 local tree_cb = require "nvim-tree.config".nvim_tree_callback

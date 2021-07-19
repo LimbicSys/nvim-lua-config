@@ -1,3 +1,14 @@
+-- auto install packer
+local execute = vim.api.nvim_command
+local fn = vim.fn
+
+local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+
+if fn.empty(fn.glob(install_path)) > 0 then
+  fn.system({"git", "clone", "https://github.com/wbthomason/packer.nvim", install_path})
+  execute "packadd packer.nvim"
+end
+
 return require("packer").startup(
   {
     function(use)
@@ -14,12 +25,16 @@ return require("packer").startup(
       -- icons
       use "kyazdani42/nvim-web-devicons"
 
+      -- easy map
+      use "Iron-E/nvim-cartographer"
+
       -- session
       use {
         "rmagatti/auto-session",
         config = function()
           require("config.session")
-        end
+        end,
+        opt = true
       }
 
       -- comments
@@ -66,9 +81,19 @@ return require("packer").startup(
       }
 
       -- git
-      use "lewis6991/gitsigns.nvim"
+      use {
+        "lewis6991/gitsigns.nvim",
+        config = function()
+          require("config.git")
+        end
+      }
       use "tpope/vim-fugitive"
-      use "sindrets/diffview.nvim"
+      use {
+        "sindrets/diffview.nvim",
+        config = function()
+          require("config.diffview")
+        end
+      }
       -- use 'airblade/vim-gitgutter'
 
       -- project
@@ -232,6 +257,15 @@ return require("packer").startup(
       }
       -- use 'romgrk/nvim-treesitter-context'
 
+      use {
+        "nvim-treesitter/playground",
+        requires = "nvim-treesitter/nvim-treesitter",
+        cmd = "TSPlaygroundToggle",
+        config = function()
+          require("config.treesitter-playground")
+        end
+      }
+
       -- tree
       use {
         "kyazdani42/nvim-tree.lua",
@@ -306,7 +340,14 @@ return require("packer").startup(
         end
       }
 
-      use "lukas-reineke/format.nvim"
+      use {
+        -- "lukas-reineke/format.nvim",
+        "mhartington/formatter.nvim",
+        requires = "lewis6991/gitsigns.nvim",
+        config = function()
+          require("config.format")
+        end
+      }
     end,
     config = {
       display = {
