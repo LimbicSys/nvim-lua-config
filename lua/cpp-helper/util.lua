@@ -1,6 +1,7 @@
 M = {}
 
 local ts_utils = require("nvim-treesitter.ts_utils")
+local fn = vim.fn
 local padding = " "
 
 local function get_nmaed_node_text(node, name)
@@ -13,6 +14,14 @@ local function get_nmaed_node_text(node, name)
     end
   end
   return node_text
+end
+
+local function get_nmaed_node_all_text(node, name)
+  local named_nodes = node:field(name)
+  if #named_nodes >= 1 then
+    return ts_utils.get_node_text(named_nodes[1])
+  end
+  return {}
 end
 
 local function get_function_declaration(node)
@@ -34,7 +43,9 @@ local function get_function_declaration(node)
       function_declarator_node = function_declarator_node:child(1)
     end
     func_name_text = get_nmaed_node_text(function_declarator_node, "declarator")
-    param_text = get_nmaed_node_text(function_declarator_node, "parameters")
+
+    -- parameters may have multi lines
+    param_text = get_nmaed_node_all_text(function_declarator_node, "parameters")
   end
   return return_type_text, return_kind, func_name_text, param_text
 end
@@ -63,21 +74,38 @@ function M.get_function_at_cursor()
     end
     cur_node = cur_node:parent()
   end
+
   if #return_type_text ~= 0 and #func_name_text ~= 0 and #param_text ~= 0 then
-    return return_type_text .. padding .. return_kind .. class_text .. "::" .. func_name_text .. param_text
+    local func_text = return_type_text .. padding .. return_kind .. class_text .. "::" .. func_name_text
+    for i, param in ipairs(param_text) do
+      -- remove write spaces at the beginning and put them in one line
+      local idx = 1
+      while idx < #param do
+        local tmp = string.sub(param, idx, idx)
+        if tmp ~= " " and tmp ~= "\t" then
+          break
+        end
+        idx = idx + 1
+      end
+      func_text = func_text .. padding .. string.sub(param, idx)
+    end
+    return func_text
   end
+
   return ""
 end
 
 function M.add_indent(content)
   local indent = ""
-  if vim.bo.expandtab  then
+  if vim.bo.expandtab then
     indent = string.rep(padding, vim.bo.tabstop)
   else
-    indent = '\t'
+    indent = "\t"
   end
   return indent .. content
 end
 
-
+function M.get_target_file()
+  -- local file_extension = fn.expand("%:e")
+end
 return M
