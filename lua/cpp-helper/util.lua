@@ -2,6 +2,7 @@ M = {}
 
 local ts_utils = require("nvim-treesitter.ts_utils")
 local fn = vim.fn
+local lsp_util = require("lspconfig.util")
 local padding = " "
 
 local function get_nmaed_node_text(node, name)
@@ -50,6 +51,18 @@ local function get_function_declaration(node)
   return return_type_text, return_kind, func_name_text, param_text
 end
 
+local function cpp_switch_source_header(bufnr)
+  bufnr = lsp_util.validate_bufnr(bufnr)
+  local params = {uri = vim.uri_from_bufnr(bufnr)}
+  local results = vim.lsp.buf_request_sync(bufnr, "textDocument/switchSourceHeader", params)
+  for _, res in ipairs(results) do
+    if res["result"] ~= nil then
+      return vim.uri_to_bufnr(res["result"])
+    end
+  end
+  return bufnr
+end
+
 function M.get_function_at_cursor()
   local cur_node = ts_utils.get_node_at_cursor()
   local return_type_text = "" -- e.g., void, int
@@ -87,7 +100,10 @@ function M.get_function_at_cursor()
         end
         idx = idx + 1
       end
-      func_text = func_text .. padding .. string.sub(param, idx)
+      if i ~= 1 then
+        func_text = func_text .. padding
+      end
+      func_text = func_text .. string.sub(param, idx)
     end
     return func_text
   end
@@ -105,7 +121,17 @@ function M.add_indent(content)
   return indent .. content
 end
 
-function M.get_target_file()
-  -- local file_extension = fn.expand("%:e")
+function M.get_target_buf()
+  local file_extension = fn.expand("%:e")
+
+  if file_extension == "c" or file_extension == "cpp" then
+    return vim.fn.bufnr() -- return current file
+  end
+
+  if file_extension == "h" or "hpp" then
+    return cpp_switch_source_header(0)
+  end
+
+  return nil
 end
 return M

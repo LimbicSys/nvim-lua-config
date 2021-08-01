@@ -1,5 +1,6 @@
-local cpp_util = require('cpp-helper.util')
+local cpp_util = require("cpp-helper.util")
 local api = vim.api
+local empty_line = ""
 
 M = {}
 
@@ -9,7 +10,30 @@ function M.generate_defination()
     return
   end
 
-  api.nvim_buf_set_lines(0, vim.fn.line("$"), vim.fn.line("$"), true, {function_text})
+  local target_buf = cpp_util.get_target_buf()
+
+  if target_buf == nil then
+    return
+  end
+
+  -- if not api.nvim_buf_is_loaded(target_buf) then
+  --   vim.cmd(string.format("buffer %d", target_buf))
+  -- end
+  vim.cmd(string.format("edit %s", api.nvim_buf_get_name(target_buf)))
+  local line_count = api.nvim_buf_line_count(target_buf)
+  print(line_count)
+  api.nvim_buf_set_lines(
+    target_buf,
+    line_count,
+    line_count, -- insert at the end of lines
+    true,
+    {
+      empty_line,
+      function_text .. " {",
+      empty_line,
+      "}"
+    }
+  )
 end
 
 return M
