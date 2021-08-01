@@ -110,7 +110,8 @@ table.insert(
         return alias[vim_mode]
       end,
       highlight = {colors.red, colors.bg, "bold"},
-      separator = " "
+      separator = " ",
+      separator_highlight = {"NONE", colors.bg},
     }
   }
 )
