@@ -89,6 +89,7 @@ vim.api.nvim_set_keymap("n", "d", '"_d', map_opts)
 vim.api.nvim_set_keymap("n", "dd", '"_dd', map_opts)
 vim.api.nvim_set_keymap("n", "D", '"_D', map_opts)
 vim.api.nvim_set_keymap("x", "d", '"_d', map_opts)
+vim.api.nvim_set_keymap("n", "c", '"_c', map_opts)
 
 vim.cmd(
   [[
