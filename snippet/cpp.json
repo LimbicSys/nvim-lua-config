@@ -1,0 +1,14 @@
+{
+    "headerGuard": {
+        "prefix" : ["guard"],
+        "body": [
+            "#ifndef __${1:$TM_FILENAME_BASE}_H__",
+            "#define __${1:$TM_FILENAME_BASE}_H__",
+            "#endif // !__${1:$TM_FILENAME_BASE}_H__"
+        ]
+    },
+    "filename": {
+        "prefix": ["fname"],
+        "body": "$TM_FILENAME_BASE"
+    }
+}
