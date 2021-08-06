@@ -128,10 +128,15 @@ function M.get_target_buf()
     return vim.fn.bufnr() -- return current file
   end
 
-  if file_extension == "h" or "hpp" then
+  if file_extension == "h" or file_extension == "hpp" then
     return cpp_switch_source_header(0)
   end
 
   return nil
 end
+
+function M.get_guard_text(base_filename)
+  return "__" .. string.upper(base_filename) .. "_H__"
+end
+
 return M
