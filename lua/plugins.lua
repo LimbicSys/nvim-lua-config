@@ -302,11 +302,19 @@ return require("packer").startup(
 
       -- lsp
       use {
+        "ray-x/lsp_signature.nvim",
+        config = function()
+          require("config.lsp_signature")
+        end
+      }
+
+      use {
         "neovim/nvim-lspconfig",
         requires = {
           "kabouzeid/nvim-lspinstall",
           "folke/lua-dev.nvim",
-          "RRethy/vim-illuminate"
+          "RRethy/vim-illuminate",
+          "ray-x/lsp_signature.nvim"
         },
         config = function()
           require("config.lsp")
