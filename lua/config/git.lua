@@ -5,7 +5,8 @@ augroup gitsigns_augroup
     autocmd VimEnter * highlight GitSignsChangeCus guifg=#ffaa00
     autocmd VimEnter * highlight GitSignsDeleteCus guifg=#ec5f67
 augroup END
-]])
+]]
+)
 
 require("gitsigns").setup {
   signs = {
@@ -42,6 +43,5 @@ require("gitsigns").setup {
   sign_priority = 6,
   update_debounce = 100,
   status_formatter = nil, -- Use default
-  use_decoration_api = true,
   use_internal_diff = true -- If luajit is present
 }
