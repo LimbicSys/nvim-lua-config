@@ -1,3 +1,4 @@
+-- TODO: refector to a class
 M = {}
 
 local ts_utils = require("nvim-treesitter.ts_utils")
@@ -78,13 +79,18 @@ function M.get_function_at_cursor()
     -- get fuction declaration
     if not visited_function and cur_node:type() == "field_declaration" then
       return_type_text, return_kind, func_name_text, param_text = get_function_declaration(cur_node)
-    -- print(function_text)
     end
 
     -- get class name
     if not visited_class and cur_node:type() == "class_specifier" then
       class_text = get_nmaed_node_text(cur_node, "name")
     end
+
+    -- get namespace
+    -- TODO:
+    -- 1. find namespace(s)
+    -- 2. store in a stack
+
     cur_node = cur_node:parent()
   end
 
@@ -105,6 +111,7 @@ function M.get_function_at_cursor()
       end
       func_text = func_text .. string.sub(param, idx)
     end
+    -- TODO: return namespaces
     return func_text
   end
 

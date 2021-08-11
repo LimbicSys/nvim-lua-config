@@ -17,6 +17,9 @@ function M.generate_defination()
     return
   end
 
+  -- TODO: if namespace exsits, insert at the end of namespace. If not, insert at the end of buffer
+  -- with namespace prefix
+
   -- if not api.nvim_buf_is_loaded(target_buf) then
   --   vim.cmd(string.format("buffer %d", target_buf))
   -- end
