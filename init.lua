@@ -20,7 +20,10 @@ opt.termguicolors = true
 
 vim.g.mapleader = ","
 opt.pastetoggle = "<leader>q"
-opt.foldmethod = "manual"
+opt.foldmethod = "indent"
+-- opt.foldenable = false
+-- opt.foldcolumn = "auto"
+opt.foldlevel = 99
 opt.mouse = "a"
 opt.splitright = true
 opt.splitbelow = true
