@@ -28,7 +28,7 @@ vim.api.nvim_set_keymap('x', '<Leader>a', "<cmd><C-u>lua require('lspsaga.codeac
 vim.api.nvim_set_keymap('n', 'gs', "<cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>", opts)
 
 -- rename
-vim.api.nvim_set_keymap('n', '<F2>', "<cmd>lua require('lspsaga.rename').rename()<CR>", opts)
+-- vim.api.nvim_set_keymap('n', '<F2>', "<cmd>lua require('lspsaga.rename').rename()<CR>", opts)
 
 -- preview definition
 vim.api.nvim_set_keymap('n', '<Leader>dp', "<cmd>lua require'lspsaga.provider'.preview_definition()<CR>", opts)
