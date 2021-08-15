@@ -6,7 +6,7 @@ local empty_line = ""
 M = {}
 
 function M.generate_defination()
-  local function_text = cpp_util.get_function_at_cursor()
+  local namespaces, function_text = cpp_util.get_function_at_cursor()
   if #function_text == 0 then
     return
   end
@@ -20,15 +20,19 @@ function M.generate_defination()
   -- TODO: if namespace exsits, insert at the end of namespace. If not, insert at the end of buffer
   -- with namespace prefix
 
-  -- if not api.nvim_buf_is_loaded(target_buf) then
-  --   vim.cmd(string.format("buffer %d", target_buf))
-  -- end
-  vim.cmd(string.format("edit %s", api.nvim_buf_get_name(target_buf)))
   local line_count = api.nvim_buf_line_count(target_buf)
+  local position = line_count -- insert at the end of buffer by default
+
+  if #namespaces > 0 then
+    -- TODO: find the end of namespaces
+    print(vim.inspect(namespaces))
+  end
+
+  vim.cmd(string.format("edit %s", api.nvim_buf_get_name(target_buf)))
   api.nvim_buf_set_lines(
     target_buf,
-    line_count,
-    line_count, -- insert at the end of lines
+    position,
+    position,
     true,
     {
       empty_line,
