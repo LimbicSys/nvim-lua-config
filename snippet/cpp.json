@@ -7,8 +7,8 @@
             "#endif // !__${1:$TM_FILENAME_BASE}_H__"
         ]
     },
-    "filename": {
-        "prefix": ["fname"],
-        "body": "$TM_FILENAME_BASE"
+    "vector in vector": {
+        "prefix": ["v2"],
+        "body": "vector<vector<$1>>"
     }
 }

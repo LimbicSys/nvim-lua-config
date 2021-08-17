@@ -356,6 +356,15 @@ return require("packer").startup(
           require("config.format")
         end
       }
+
+      use {
+        "abecodes/tabout.nvim",
+        requires = "nvim-treesitter/nvim-treesitter",
+        opt = true,
+        config = function()
+          require("config.tabout")
+        end
+      }
     end,
     config = {
       display = {
