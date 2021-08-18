@@ -111,7 +111,7 @@ table.insert(
       end,
       highlight = {colors.red, colors.bg, "bold"},
       separator = " ",
-      separator_highlight = {"NONE", colors.bg},
+      separator_highlight = {"NONE", colors.bg}
     }
   }
 )
@@ -259,7 +259,7 @@ table.insert(
   {
     TabWidth = {
       provider = function()
-        return "TabWidth: " .. vim.bo.tabstop
+        return "TabSize: " .. vim.bo.tabstop
       end,
       separator = " ",
       separator_highlight = {"NONE", colors.bg},
