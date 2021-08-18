@@ -95,7 +95,7 @@ vim.api.nvim_set_keymap("x", "d", '"_d', map_opts)
 vim.api.nvim_set_keymap("n", "c", '"_c', map_opts)
 
 -- auto indent when type a at the beginning of a line
-vim.api.nvim_set_keymap("n", "a", string.format("col('.') == 1 ? 'a<C-f>' : 'a'"), {noremap = true, expr = true})
+vim.api.nvim_set_keymap("n", "a", "col('.') == 1 ? 'a<C-f>' : 'a'", {noremap = true, expr = true})
 
 vim.cmd(
   [[
