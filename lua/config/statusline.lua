@@ -149,23 +149,27 @@ table.insert(
   }
 )
 
--- table.insert(
---   gls.left,
---   {
---     LineInfo = {
---       provider = "LineColumn",
---       separator = " ",
---       separator_highlight = {"NONE", colors.bg},
---       highlight = {colors.fg, colors.bg}
---     }
---   }
--- )
+table.insert(
+  gls.left,
+  {
+    LineInfo = {
+      provider = function()
+        return "%l:%c"
+      end,
+      separator = " ",
+      separator_highlight = {"NONE", colors.bg},
+      highlight = {colors.fg, colors.bg}
+    }
+  }
+)
 
 table.insert(
   gls.left,
   {
     PerCent = {
-      provider = "LinePercent",
+      provider = function()
+        return "%p%%"
+      end,
       separator = " ",
       separator_highlight = {"NONE", colors.bg},
       highlight = {colors.fg, colors.bg, "bold"}

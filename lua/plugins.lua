@@ -66,7 +66,7 @@ return require("packer").startup(
 
       -- status line
       use {
-        "glepnir/galaxyline.nvim",
+        "Limbicsys/galaxyline.nvim",
         branch = "main",
         requires = "liuchengxu/vista.vim",
         config = function()
