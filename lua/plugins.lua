@@ -163,7 +163,7 @@ return require("packer").startup(
           require("config.fzf")
         end
       }
-      -- use 'jiangmiao/auto-pairs'
+
       use {
         "glepnir/dashboard-nvim",
         config = function()
@@ -343,6 +343,7 @@ return require("packer").startup(
 
       use {
         "norcalli/nvim-colorizer.lua",
+        ft = {"lua", "vim"},
         config = function()
           require("colorizer").setup()
         end

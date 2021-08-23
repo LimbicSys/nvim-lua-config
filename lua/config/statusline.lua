@@ -149,17 +149,17 @@ table.insert(
   }
 )
 
-table.insert(
-  gls.left,
-  {
-    LineInfo = {
-      provider = "LineColumn",
-      separator = " ",
-      separator_highlight = {"NONE", colors.bg},
-      highlight = {colors.fg, colors.bg}
-    }
-  }
-)
+-- table.insert(
+--   gls.left,
+--   {
+--     LineInfo = {
+--       provider = "LineColumn",
+--       separator = " ",
+--       separator_highlight = {"NONE", colors.bg},
+--       highlight = {colors.fg, colors.bg}
+--     }
+--   }
+-- )
 
 table.insert(
   gls.left,
