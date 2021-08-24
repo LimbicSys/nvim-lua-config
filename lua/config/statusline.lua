@@ -116,16 +116,16 @@ table.insert(
   }
 )
 
-table.insert(
-  gls.left,
-  {
-    FileSize = {
-      provider = "FileSize",
-      condition = buffer_not_empty,
-      highlight = {colors.fg, colors.bg}
-    }
-  }
-)
+-- table.insert(
+--   gls.left,
+--   {
+--     FileSize = {
+--       provider = "FileSize",
+--       condition = buffer_not_empty,
+--       highlight = {colors.fg, colors.bg}
+--     }
+--   }
+-- )
 
 table.insert(
   gls.left,
@@ -142,7 +142,9 @@ table.insert(
   gls.left,
   {
     FileName = {
-      provider = {"FileName"},
+      provider = function()
+        return "%t "
+      end,
       condition = buffer_not_empty,
       highlight = {colors.green, colors.bg, "bold"}
     }
@@ -177,57 +179,57 @@ table.insert(
   }
 )
 
-table.insert(
-  gls.left,
-  {
-    DiagnosticError = {
-      provider = "DiagnosticError",
-      icon = " ",
-      separator = " ",
-      separator_highlight = {"NONE", colors.bg},
-      highlight = {colors.red, colors.bg}
-    }
-  }
-)
+-- table.insert(
+--   gls.left,
+--   {
+--     DiagnosticError = {
+--       provider = "DiagnosticError",
+--       icon = " ",
+--       separator = " ",
+--       separator_highlight = {"NONE", colors.bg},
+--       highlight = {colors.red, colors.bg}
+--     }
+--   }
+-- )
 
-table.insert(
-  gls.left,
-  {
-    DiagnosticWarn = {
-      provider = "DiagnosticWarn",
-      icon = " ",
-      separator = " ",
-      separator_highlight = {"NONE", colors.bg},
-      highlight = {colors.yellow, colors.bg}
-    }
-  }
-)
+-- table.insert(
+--   gls.left,
+--   {
+--     DiagnosticWarn = {
+--       provider = "DiagnosticWarn",
+--       icon = " ",
+--       separator = " ",
+--       separator_highlight = {"NONE", colors.bg},
+--       highlight = {colors.yellow, colors.bg}
+--     }
+--   }
+-- )
 
-table.insert(
-  gls.left,
-  {
-    DiagnosticHint = {
-      provider = "DiagnosticHint",
-      icon = " ",
-      separator = " ",
-      separator_highlight = {"NONE", colors.bg},
-      highlight = {colors.cyan, colors.bg}
-    }
-  }
-)
+-- table.insert(
+--   gls.left,
+--   {
+--     DiagnosticHint = {
+--       provider = "DiagnosticHint",
+--       icon = " ",
+--       separator = " ",
+--       separator_highlight = {"NONE", colors.bg},
+--       highlight = {colors.cyan, colors.bg}
+--     }
+--   }
+-- )
 
-table.insert(
-  gls.left,
-  {
-    DiagnosticInfo = {
-      provider = "DiagnosticInfo",
-      icon = " ",
-      separator = " ",
-      separator_highlight = {"NONE", colors.bg},
-      highlight = {colors.blue, colors.bg}
-    }
-  }
-)
+-- table.insert(
+--   gls.left,
+--   {
+--     DiagnosticInfo = {
+--       provider = "DiagnosticInfo",
+--       icon = " ",
+--       separator = " ",
+--       separator_highlight = {"NONE", colors.bg},
+--       highlight = {colors.blue, colors.bg}
+--     }
+--   }
+-- )
 
 table.insert(
   gls.left,
@@ -330,43 +332,43 @@ local checkwidth = function()
   return false
 end
 
-table.insert(
-  gls.right,
-  {
-    DiffAdd = {
-      provider = "DiffAdd",
-      condition = checkwidth,
-      icon = " ",
-      highlight = {colors.green, colors.bg},
-      separator = " ",
-      separator_highlight = {"NONE", colors.bg}
-    }
-  }
-)
+-- table.insert(
+--   gls.right,
+--   {
+--     DiffAdd = {
+--       provider = "DiffAdd",
+--       condition = checkwidth,
+--       icon = " ",
+--       highlight = {colors.green, colors.bg},
+--       separator = " ",
+--       separator_highlight = {"NONE", colors.bg}
+--     }
+--   }
+-- )
 
-table.insert(
-  gls.right,
-  {
-    DiffModified = {
-      provider = "DiffModified",
-      condition = checkwidth,
-      icon = "  ",
-      highlight = {colors.orange, colors.bg}
-    }
-  }
-)
+-- table.insert(
+--   gls.right,
+--   {
+--     DiffModified = {
+--       provider = "DiffModified",
+--       condition = checkwidth,
+--       icon = "  ",
+--       highlight = {colors.orange, colors.bg}
+--     }
+--   }
+-- )
 
-table.insert(
-  gls.right,
-  {
-    DiffRemove = {
-      provider = "DiffRemove",
-      condition = checkwidth,
-      icon = "  ",
-      highlight = {colors.red, colors.bg}
-    }
-  }
-)
+-- table.insert(
+--   gls.right,
+--   {
+--     DiffRemove = {
+--       provider = "DiffRemove",
+--       condition = checkwidth,
+--       icon = "  ",
+--       highlight = {colors.red, colors.bg}
+--     }
+--   }
+-- )
 
 table.insert(
   gls.right,
