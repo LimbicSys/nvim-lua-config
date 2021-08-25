@@ -298,28 +298,34 @@ table.insert(
   }
 )
 
-table.insert(
-  gls.right,
-  {
-    GitIcon = {
-      provider = function()
-        return "  "
-      end,
-      condition = require("galaxyline.provider_vcs").check_git_workspace,
-      separator = " ",
-      separator_highlight = {"NONE", colors.bg},
-      highlight = {colors.violet, colors.bg, "bold"}
-    }
-  }
-)
+-- table.insert(
+--   gls.right,
+--   {
+--     GitIcon = {
+--       provider = function()
+--         return "  "
+--       end,
+--       condition = require("galaxyline.provider_vcs").check_git_workspace,
+--       separator = " ",
+--       separator_highlight = {"NONE", colors.bg},
+--       highlight = {colors.violet, colors.bg, "bold"}
+--     }
+--   }
+-- )
 
 table.insert(
   gls.right,
   {
     GitBranch = {
-      provider = "GitBranch",
-      condition = require("galaxyline.provider_vcs").check_git_workspace,
-      highlight = {colors.violet, colors.bg, "bold"}
+      provider = function()
+        local branch = require("galaxyline.provider_vcs").get_git_branch()
+        if branch ~= nil then
+          return " " .. branch
+        end
+        return
+      end,
+      highlight = {colors.violet, colors.bg, "bold"},
+      separator = " "
     }
   }
 )

@@ -74,7 +74,7 @@ return require("packer").startup(
         end
       }
       use {
-        "akinsho/nvim-bufferline.lua",
+        "akinsho/bufferline.nvim",
         config = function()
           require("config.bufferline")
         end
