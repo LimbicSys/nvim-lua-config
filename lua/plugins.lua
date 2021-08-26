@@ -230,12 +230,12 @@ return require("packer").startup(
       -- snippets
       -- use 'honza/vim-snippets'
       use "rafamadriz/friendly-snippets"
-      use "hrsh7th/vim-vsnip-integ"
+      -- use "hrsh7th/vim-vsnip-integ"
       use {
         "hrsh7th/vim-vsnip",
         requires = {
-          "rafamadriz/friendly-snippets",
-          "hrsh7th/vim-vsnip-integ"
+          "rafamadriz/friendly-snippets"
+          -- "hrsh7th/vim-vsnip-integ"
         },
         config = function()
           require("config.vsnip")
@@ -314,7 +314,8 @@ return require("packer").startup(
           "kabouzeid/nvim-lspinstall",
           "folke/lua-dev.nvim",
           "RRethy/vim-illuminate",
-          "ray-x/lsp_signature.nvim"
+          "ray-x/lsp_signature.nvim",
+          "hrsh7th/cmp-nvim-lsp"
         },
         config = function()
           require("config.lsp")
@@ -334,8 +335,28 @@ return require("packer").startup(
       -- use 'nvim-lua/lsp-status.nvim'
       -- use 'RishabhRD/popfix'
       -- use 'RishabhRD/nvim-lsputils'
+      -- use {
+      --   "hrsh7th/nvim-compe",
+      --   config = function()
+      --     require("config.complete")
+      --   end
+      -- }
+
+      use "hrsh7th/cmp-buffer"
+      use "hrsh7th/cmp-nvim-lsp"
+      use "hrsh7th/cmp-path"
       use {
-        "hrsh7th/nvim-compe",
+        "hrsh7th/cmp-vsnip",
+        requires = "hrsh7th/vim-vsnip"
+      }
+      use {
+        "hrsh7th/nvim-cmp",
+        requires = {
+          "hrsh7th/cmp-buffer",
+          "hrsh7th/cmp-nvim-lsp",
+          "hrsh7th/cmp-path",
+          "hrsh7th/cmp-vsnip"
+        },
         config = function()
           require("config.complete")
         end

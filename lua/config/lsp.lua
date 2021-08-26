@@ -55,6 +55,8 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
   }
 }
 
+capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+
 -- lsp-install
 local function setup_servers()
   require "lspinstall".setup()

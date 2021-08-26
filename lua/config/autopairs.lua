@@ -28,12 +28,17 @@ rule:with_pair(
 _G.MUtils = {}
 
 vim.g.completion_confirm_key = ""
+local cmp = require("cmp")
 MUtils.completion_confirm = function()
   if vim.fn.pumvisible() ~= 0 then
     if vim.fn.complete_info()["selected"] ~= -1 then
       -- require'completion'.confirmCompletion()
       -- return npairs.esc("<c-y>")
-      return vim.fn["compe#confirm"](npairs.esc("<cr>"))
+      -- return vim.fn["compe#confirm"](npairs.esc("<cr>"))
+      return cmp.confirm({
+        behavior = cmp.ConfirmBehavior.Insert,
+        select = true
+      })
     else
       -- vim.api.nvim_select_popupmenu_item(0 , false , false ,{})
       -- require'completion'.confirmCompletion()

@@ -111,3 +111,5 @@ vim.cmd(
 
 require("plugins")
 require("cpp-helper")
+
+-- opt.completeopt = "menuone,noselect"
