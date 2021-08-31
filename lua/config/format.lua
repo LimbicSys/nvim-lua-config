@@ -154,6 +154,6 @@ end
 vim.cmd([[
 augroup formatOnSave
   autocmd!
-  autocmd BufWritePre * lua Formatting()
+  autocmd BufWritePre * silent! lua Formatting()
 augroup end
 ]])

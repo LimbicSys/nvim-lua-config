@@ -74,7 +74,6 @@ vim.api.nvim_set_keymap("n", "<Leader>eq", "<CMD>q<CR>", map_opts)
 -- delete buffer
 vim.api.nvim_set_keymap("n", "<Leader>c", "<CMD>bdelete<CR>", map_opts)
 
--- TODO: make a toggle function
 vim.api.nvim_set_keymap("n", "<Leader><Leader>r", "<CMD>set relativenumber<CR>", map_opts)
 vim.api.nvim_set_keymap("n", "<Leader><Leader>n", "<CMD>set norelativenumber<CR>", map_opts)
 
@@ -111,5 +110,3 @@ vim.cmd(
 
 require("plugins")
 require("cpp-helper")
-
--- opt.completeopt = "menuone,noselect"

@@ -87,7 +87,12 @@ return require("packer").startup(
           require("config.git")
         end
       }
-      use "tpope/vim-fugitive"
+      use {
+        "tpope/vim-fugitive",
+        config = function()
+          require("config.fugitive")
+        end
+      }
       use {
         "sindrets/diffview.nvim",
         config = function()
@@ -294,7 +299,7 @@ return require("packer").startup(
 
       use {
         "windwp/nvim-autopairs",
-        requires = "hrsh7th/nvim-compe",
+        requires = "hrsh7th/nvim-cmp",
         config = function()
           require("config.autopairs")
         end

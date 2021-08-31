@@ -143,10 +143,12 @@ table.insert(
   {
     FileName = {
       provider = function()
-        return "%t "
+        return "%t%r"
       end,
       condition = buffer_not_empty,
-      highlight = {colors.green, colors.bg, "bold"}
+      highlight = {colors.green, colors.bg, "bold"},
+      separator = " ",
+      separator_highlight = {"NONE", colors.bg}
     }
   }
 )
@@ -174,7 +176,7 @@ table.insert(
       end,
       separator = " ",
       separator_highlight = {"NONE", colors.bg},
-      highlight = {colors.fg, colors.bg, "bold"}
+      highlight = {colors.fg, colors.bg}
     }
   }
 )
@@ -231,34 +233,34 @@ table.insert(
 --   }
 -- )
 
-table.insert(
-  gls.left,
-  {
-    NearestInfo = {
-      -- provider = function()
-      --     require('lsp-status').update_current_function()
-      --     return vim.b.lsp_current_function
-      -- end,
-      provider = function()
-        -- return vim.fn.get("b:", "vista_nearest_method_or_function")
-        if vim.b.vista_nearest_method_or_function ~= nil then
-          return vim.b.vista_nearest_method_or_function
-        else
-          return ""
-        end
-      end,
-      condition = function()
-        local tbl = {["dashboard"] = true, [""] = true}
-        if tbl[vim.bo.filetype] then
-          return false
-        end
-        return true
-      end,
-      icon = ": ",
-      highlight = {colors.blue, colors.bg}
-    }
-  }
-)
+-- table.insert(
+--   gls.left,
+--   {
+--     NearestInfo = {
+--       -- provider = function()
+--       --     require('lsp-status').update_current_function()
+--       --     return vim.b.lsp_current_function
+--       -- end,
+--       provider = function()
+--         -- return vim.fn.get("b:", "vista_nearest_method_or_function")
+--         if vim.b.vista_nearest_method_or_function ~= nil then
+--           return vim.b.vista_nearest_method_or_function
+--         else
+--           return ""
+--         end
+--       end,
+--       condition = function()
+--         local tbl = {["dashboard"] = true, [""] = true}
+--         if tbl[vim.bo.filetype] then
+--           return false
+--         end
+--         return true
+--       end,
+--       icon = ": ",
+--       highlight = {colors.blue, colors.bg, "bold"}
+--     }
+--   }
+-- )
 
 table.insert(
   gls.right,
@@ -313,22 +315,22 @@ table.insert(
 --   }
 -- )
 
-table.insert(
-  gls.right,
-  {
-    GitBranch = {
-      provider = function()
-        local branch = require("galaxyline.provider_vcs").get_git_branch()
-        if branch ~= nil then
-          return " " .. branch
-        end
-        return
-      end,
-      highlight = {colors.violet, colors.bg, "bold"},
-      separator = " "
-    }
-  }
-)
+-- table.insert(
+--   gls.right,
+--   {
+--     GitBranch = {
+--       provider = function()
+--         local branch = require("galaxyline.provider_vcs").get_git_branch()
+--         if branch ~= nil then
+--           return " " .. branch
+--         end
+--         return
+--       end,
+--       highlight = {colors.violet, colors.bg, "bold"},
+--       separator = " "
+--     }
+--   }
+-- )
 
 local checkwidth = function()
   local squeeze_width = vim.fn.winwidth(0) / 2
