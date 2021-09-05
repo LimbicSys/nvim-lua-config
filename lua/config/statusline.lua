@@ -1,6 +1,17 @@
 require("zephyr")
 vim.api.nvim_command("colorscheme zephyr")
 
+if require("galaxyline.condition").check_git_workspace() then
+  vim.cmd(
+    [[
+    augroup GetStatus
+    autocmd!
+    autocmd BufReadPost, * lua vim.g.my_git_branch = require("galaxyline.provider_vcs").get_git_branch()
+    augroup END
+    ]]
+  )
+end
+
 local gl = require("galaxyline")
 local gls = gl.section
 gl.short_line_list = {"NvimTree", "vista", "dbui", "coc-explorer", "VimspectorPrompt", "DiffviewFiles", "vim-plug"}
@@ -300,37 +311,22 @@ table.insert(
   }
 )
 
--- table.insert(
---   gls.right,
---   {
---     GitIcon = {
---       provider = function()
---         return "  "
---       end,
---       condition = require("galaxyline.provider_vcs").check_git_workspace,
---       separator = " ",
---       separator_highlight = {"NONE", colors.bg},
---       highlight = {colors.violet, colors.bg, "bold"}
---     }
---   }
--- )
-
--- table.insert(
---   gls.right,
---   {
---     GitBranch = {
---       provider = function()
---         local branch = require("galaxyline.provider_vcs").get_git_branch()
---         if branch ~= nil then
---           return " " .. branch
---         end
---         return
---       end,
---       highlight = {colors.violet, colors.bg, "bold"},
---       separator = " "
---     }
---   }
--- )
+table.insert(
+  gls.right,
+  {
+    GitIcon = {
+      provider = function()
+        if vim.g.my_git_branch ~= nil then
+          return "  " .. vim.g.my_git_branch
+        end
+        return
+      end,
+      separator = " ",
+      separator_highlight = {"NONE", colors.bg},
+      highlight = {colors.violet, colors.bg, "bold"}
+    }
+  }
+)
 
 local checkwidth = function()
   local squeeze_width = vim.fn.winwidth(0) / 2
@@ -340,43 +336,43 @@ local checkwidth = function()
   return false
 end
 
--- table.insert(
---   gls.right,
---   {
---     DiffAdd = {
---       provider = "DiffAdd",
---       condition = checkwidth,
---       icon = " ",
---       highlight = {colors.green, colors.bg},
---       separator = " ",
---       separator_highlight = {"NONE", colors.bg}
---     }
---   }
--- )
+table.insert(
+  gls.right,
+  {
+    DiffAdd = {
+      provider = "DiffAdd",
+      -- condition = checkwidth,
+      icon = " ",
+      highlight = {colors.green, colors.bg},
+      separator = " ",
+      separator_highlight = {"NONE", colors.bg}
+    }
+  }
+)
 
--- table.insert(
---   gls.right,
---   {
---     DiffModified = {
---       provider = "DiffModified",
---       condition = checkwidth,
---       icon = "  ",
---       highlight = {colors.orange, colors.bg}
---     }
---   }
--- )
+table.insert(
+  gls.right,
+  {
+    DiffModified = {
+      provider = "DiffModified",
+      -- condition = checkwidth,
+      icon = "  ",
+      highlight = {colors.orange, colors.bg}
+    }
+  }
+)
 
--- table.insert(
---   gls.right,
---   {
---     DiffRemove = {
---       provider = "DiffRemove",
---       condition = checkwidth,
---       icon = "  ",
---       highlight = {colors.red, colors.bg}
---     }
---   }
--- )
+table.insert(
+  gls.right,
+  {
+    DiffRemove = {
+      provider = "DiffRemove",
+      -- condition = checkwidth,
+      icon = "  ",
+      highlight = {colors.red, colors.bg}
+    }
+  }
+)
 
 table.insert(
   gls.right,
