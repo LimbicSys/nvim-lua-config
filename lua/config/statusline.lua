@@ -4,13 +4,22 @@ vim.api.nvim_command("colorscheme zephyr")
 if require("galaxyline.condition").check_git_workspace() then
   vim.cmd(
     [[
-    augroup GetStatus
+    augroup GetGitBranch
     autocmd!
     autocmd BufReadPost, * lua vim.g.my_git_branch = require("galaxyline.provider_vcs").get_git_branch()
     augroup END
     ]]
   )
 end
+
+vim.cmd(
+  [[
+  augroup GetFileSize
+  autocmd!
+  autocmd BufReadPost, * lua vim.g.my_file_size = require("galaxyline.provider_fileinfo").get_file_size()
+  augroup END
+  ]]
+)
 
 local gl = require("galaxyline")
 local gls = gl.section
@@ -167,6 +176,23 @@ table.insert(
 table.insert(
   gls.left,
   {
+    FileSize = {
+      provider = function()
+        return vim.g.my_file_size
+      end,
+      condition = function()
+        return vim.g.my_file_size ~= nil
+      end,
+      separator = " ",
+      separator_highlight = {"NONE", colors.bg},
+      highlight = {colors.fg, colors.bg}
+    }
+  }
+)
+
+table.insert(
+  gls.left,
+  {
     LineInfo = {
       provider = function()
         return "%l:%c"
@@ -316,10 +342,10 @@ table.insert(
   {
     GitIcon = {
       provider = function()
-        if vim.g.my_git_branch ~= nil then
-          return "  " .. vim.g.my_git_branch
-        end
-        return
+        return "  " .. vim.g.my_git_branch
+      end,
+      condition = function()
+        return vim.g.my_git_branch ~= nil
       end,
       separator = " ",
       separator_highlight = {"NONE", colors.bg},
