@@ -110,3 +110,20 @@ vim.cmd(
 
 require("plugins")
 require("cpp-helper")
+
+function Test()
+  local job = require("plenary.job")
+
+  local j =
+    job:new(
+    {
+      command = "im-select.exe"
+    }
+  )
+  j:add_on_exit_callback(
+    function(j1, code, signal)
+      print(j1:result()[1])
+    end
+  )
+  j:start()
+end
