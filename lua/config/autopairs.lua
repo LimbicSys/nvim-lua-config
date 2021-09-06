@@ -14,15 +14,15 @@ rule:with_pair(
   end
 )
 
-rule = npairs.get_rule("(")
-rule:with_pair(
-  function()
-    if vim.fn.pumvisible() ~= 0 then
-      return false
-    end
-    return true
-  end
-)
+-- rule = npairs.get_rule("(")
+-- rule:with_pair(
+--   function()
+--     if vim.fn.pumvisible() ~= 0 then
+--       return false
+--     end
+--     return true
+--   end
+-- )
 
 -- skip it, if you use another global object
 _G.MUtils = {}
@@ -35,10 +35,12 @@ MUtils.completion_confirm = function()
       -- require'completion'.confirmCompletion()
       -- return npairs.esc("<c-y>")
       -- return vim.fn["compe#confirm"](npairs.esc("<cr>"))
-      return cmp.confirm({
-        behavior = cmp.ConfirmBehavior.Insert,
-        select = true
-      })
+      return cmp.confirm(
+        {
+          behavior = cmp.ConfirmBehavior.Insert,
+          select = true
+        }
+      )
     else
       -- vim.api.nvim_select_popupmenu_item(0 , false , false ,{})
       -- require'completion'.confirmCompletion()
