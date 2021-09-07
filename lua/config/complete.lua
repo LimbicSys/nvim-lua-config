@@ -9,7 +9,8 @@ cmp.setup {
     end
   },
   completion = {
-    completeopt = "menuone,noselect"
+    completeopt = "menuone,noselect",
+    keyword_length = 2
   },
   -- You can set mapping if you want.
   mapping = {

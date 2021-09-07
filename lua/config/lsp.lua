@@ -88,7 +88,7 @@ local function setup_servers()
       )
     elseif server == "clangd" then
       config = tmp_config
-      config["cmd"] = {"clangd", "--background-index", "--fallback-style=Microsoft"}
+      config["cmd"] = {"clangd", "--background-index", "--fallback-style=Microsoft", "--header-insertion=never"}
       local default_capabilities =
         vim.tbl_deep_extend(
         "force",

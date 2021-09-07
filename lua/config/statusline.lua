@@ -147,16 +147,16 @@ table.insert(
 --   }
 -- )
 
-table.insert(
-  gls.left,
-  {
-    FileIcon = {
-      provider = "FileIcon",
-      condition = buffer_not_empty,
-      highlight = {require("galaxyline.provider_fileinfo").get_file_icon_color, colors.bg}
-    }
-  }
-)
+-- table.insert(
+--   gls.left,
+--   {
+--     FileIcon = {
+--       provider = "FileIcon",
+--       condition = buffer_not_empty,
+--       highlight = {require("galaxyline.provider_fileinfo").get_file_icon_color, colors.bg}
+--     }
+--   }
+-- )
 
 table.insert(
   gls.left,
@@ -431,14 +431,12 @@ table.insert(
   {
     SFileName = {
       provider = function()
-        local fileinfo = require("galaxyline.provider_fileinfo")
-        local fname = fileinfo.get_current_file_name()
         for _, v in ipairs(gl.short_line_list) do
           if v == vim.bo.filetype then
             return ""
           end
         end
-        return fname
+        return "%t%r"
       end,
       condition = buffer_not_empty,
       highlight = {colors.white, colors.bg, "bold"}
@@ -446,12 +444,12 @@ table.insert(
   }
 )
 
-table.insert(
-  gls.short_line_right,
-  {
-    BufferIcon = {
-      provider = "BufferIcon",
-      highlight = {colors.fg, colors.bg}
-    }
-  }
-)
+-- table.insert(
+--   gls.short_line_right,
+--   {
+--     BufferIcon = {
+--       provider = "BufferIcon",
+--       highlight = {colors.fg, colors.bg}
+--     }
+--   }
+-- )
