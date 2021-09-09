@@ -6,7 +6,8 @@ vim.g.Illuminate_ftblacklist = {
   "NvimTree",
   "lsputil_locations_list",
   "qf",
-  "DiffviewFiles"
+  "DiffviewFiles",
+  ""
 }
 
 vim.g.Illuminate_delay = 500

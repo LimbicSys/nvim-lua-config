@@ -35,12 +35,7 @@ MUtils.completion_confirm = function()
       -- require'completion'.confirmCompletion()
       -- return npairs.esc("<c-y>")
       -- return vim.fn["compe#confirm"](npairs.esc("<cr>"))
-      return cmp.confirm(
-        {
-          behavior = cmp.ConfirmBehavior.Insert,
-          select = true
-        }
-      )
+      return cmp.confirm()
     else
       -- vim.api.nvim_select_popupmenu_item(0 , false , false ,{})
       -- require'completion'.confirmCompletion()
@@ -51,7 +46,7 @@ MUtils.completion_confirm = function()
   end
 end
 
-remap("i", "<CR>", "v:lua.MUtils.completion_confirm()", {expr = true, noremap = true})
+-- remap("i", "<CR>", "v:lua.MUtils.completion_confirm()", {expr = true, noremap = true})
 -- require("nvim-autopairs.completion.compe").setup({
 --   map_cr = true, --  map <CR> on insert mode
 --   map_complete = true -- it will auto insert `(` after select function or method item

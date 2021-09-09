@@ -299,7 +299,7 @@ return require("packer").startup(
 
       use {
         "windwp/nvim-autopairs",
-        requires = "hrsh7th/nvim-cmp",
+        -- requires = "hrsh7th/nvim-cmp",
         config = function()
           require("config.autopairs")
         end
@@ -360,7 +360,8 @@ return require("packer").startup(
           "hrsh7th/cmp-buffer",
           "hrsh7th/cmp-nvim-lsp",
           "hrsh7th/cmp-path",
-          "hrsh7th/cmp-vsnip"
+          "hrsh7th/cmp-vsnip",
+          "windwp/nvim-autopairs"
         },
         config = function()
           require("config.complete")
