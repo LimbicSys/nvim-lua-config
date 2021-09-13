@@ -45,7 +45,7 @@ require("gitsigns").setup {
     delay = 1000
   },
   sign_priority = 6,
-  update_debounce = 100,
+  update_debounce = 500,
   status_formatter = nil, -- Use default
-  use_internal_diff = true -- If luajit is present
+  attach_to_untracked = true
 }
