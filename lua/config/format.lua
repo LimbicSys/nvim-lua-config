@@ -4,31 +4,31 @@ require("formatter").setup(
   {
     logging = false,
     filetype = {
-      ["*"] = {
-        function()
-          return {cmd = {"sed -i 's/[ \t]*$//'"}} -- remove trailing whitespace
-        end
-      },
-      javascript = {
-        -- prettier
-        function()
-          return {
-            exe = "prettier",
-            args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0), "--single-quote"},
-            stdin = true
-          }
-        end
-      },
-      rust = {
-        -- Rustfmt
-        function()
-          return {
-            exe = "rustfmt",
-            args = {"--emit=stdout"},
-            stdin = true
-          }
-        end
-      },
+      -- ["*"] = {
+      --   function()
+      --     return {cmd = {"sed -i 's/[ \t]*$//'"}} -- remove trailing whitespace
+      --   end
+      -- },
+      -- javascript = {
+      --   -- prettier
+      --   function()
+      --     return {
+      --       exe = "prettier",
+      --       args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0), "--single-quote"},
+      --       stdin = true
+      --     }
+      --   end
+      -- },
+      -- rust = {
+      --   -- Rustfmt
+      --   function()
+      --     return {
+      --       exe = "rustfmt",
+      --       args = {"--emit=stdout"},
+      --       stdin = true
+      --     }
+      --   end
+      -- },
       lua = {
         -- luafmt
         function()
@@ -124,36 +124,33 @@ function Formatting()
   end
 end
 
--- local gs_cache = require("gitsigns.cache")
--- local cache = gs_cache.cache
--- local current_buf = vim.api.nvim_get_current_buf
+DoFormatOnSave = true
 
--- function Format_on_change()
---   local bcache = cache[current_buf()]
---   local no_change_info = false
---   if not bcache then
---     no_change_info = true
---   else
---     local hunks = bcache.hunks
---     if not hunks or vim.tbl_isempty(hunks) then
---       no_change_info = true
---     else
---       for i = 1, #hunks do
---         local hunk = hunks[i]
---         -- FIXME: lines may change after formatting
---         require("formatter.format").format("", "", hunk.start, hunk.vend, true)
---       end
---     end
---   end
+local function convert_bool(var)
+  if var then
+    return "on"
+  end
+  return "off"
+end
 
---   if no_change_info then
---     require("formatter.format").format("", true, 1, vim.fn.line("$"))
---   end
--- end
+function ToggleFormatOnSave()
+  DoFormatOnSave = not DoFormatOnSave
+  print(string.format("Format on save: %s", convert_bool(DoFormatOnSave)))
+end
+
+function FormatOnSave()
+  if DoFormatOnSave then
+    Formatting()
+  end
+end
 
 vim.cmd([[
 augroup formatOnSave
   autocmd!
-  autocmd BufWritePre * silent! lua Formatting()
+  autocmd BufWritePre * silent! lua FormatOnSave()
 augroup end
+]])
+
+vim.cmd([[
+command! ToggleFormat lua ToggleFormatOnSave()
 ]])
