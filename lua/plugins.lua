@@ -330,7 +330,7 @@ return require("packer").startup(
       use "kabouzeid/nvim-lspinstall"
       -- use 'nvim-lua/completion-nvim'
       use {
-        "glepnir/lspsaga.nvim",
+        "tami5/lspsaga.nvim",
         config = function()
           require("config.lspsaga")
         end
