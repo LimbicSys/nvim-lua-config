@@ -6,7 +6,7 @@ if require("galaxyline.condition").check_git_workspace() then
     [[
     augroup GetGitBranch
     autocmd!
-    autocmd BufReadPost, * lua vim.g.my_git_branch = require("galaxyline.provider_vcs").get_git_branch()
+    autocmd BufReadPost, * lua vim.g.my_git_branch = require("galaxyline.providers.vcs").get_git_branch()
     augroup END
     ]]
   )
@@ -16,7 +16,7 @@ vim.cmd(
   [[
   augroup GetFileSize
   autocmd!
-  autocmd BufReadPost, * lua vim.g.my_file_size = require("galaxyline.provider_fileinfo").get_file_size()
+  autocmd BufReadPost, * lua vim.g.my_file_size = require("galaxyline.providers.fileinfo").get_file_size()
   augroup END
   ]]
 )
@@ -163,12 +163,11 @@ table.insert(
   {
     FileName = {
       provider = function()
-        return "%t%r"
       end,
       condition = buffer_not_empty,
       highlight = {colors.green, colors.bg, "bold"},
-      separator = " ",
-      separator_highlight = {"NONE", colors.bg}
+      separator = "%t%r ",
+      separator_highlight = {colors.green, colors.bg, "bold"}
     }
   }
 )
@@ -195,10 +194,9 @@ table.insert(
   {
     LineInfo = {
       provider = function()
-        return "%l:%c"
       end,
-      separator = " ",
-      separator_highlight = {"NONE", colors.bg},
+      separator = "%l:%c ",
+      separator_highlight = {colors.fg, colors.bg},
       highlight = {colors.fg, colors.bg}
     }
   }
@@ -209,10 +207,9 @@ table.insert(
   {
     PerCent = {
       provider = function()
-        return "%p%%"
       end,
-      separator = " ",
-      separator_highlight = {"NONE", colors.bg},
+      separator = "%p%% ",
+      separator_highlight = {colors.fg, colors.bg},
       highlight = {colors.fg, colors.bg}
     }
   }
