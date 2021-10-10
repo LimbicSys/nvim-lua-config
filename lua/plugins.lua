@@ -379,10 +379,17 @@ return require("packer").startup(
       use {
         -- "lukas-reineke/format.nvim",
         "mhartington/formatter.nvim",
-        requires = "lewis6991/gitsigns.nvim",
         config = function()
           require("config.format")
         end
+      }
+
+      use {
+        "danymat/neogen",
+        config = function()
+          require("config.annotation")
+        end,
+        requires = "nvim-treesitter/nvim-treesitter"
       }
     end,
     config = {
