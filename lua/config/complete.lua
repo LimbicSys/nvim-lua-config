@@ -42,3 +42,11 @@ require("nvim-autopairs.completion.cmp").setup(
     auto_select = false -- automatically select the first item
   }
 )
+
+vim.cmd [[highlight! link CmpItemAbbrMatch Pmenu]]
+
+vim.cmd [[highlight! link CmpItemAbbrMatchFuzzy Pmenu]]
+
+vim.cmd [[highlight! link CmpItemMenu Pmenu]]
+
+vim.cmd [[highlight! CmpItemAbbrDeprecated gui=strikethrough]]

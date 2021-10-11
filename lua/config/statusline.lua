@@ -428,15 +428,23 @@ table.insert(
   {
     SFileName = {
       provider = function()
-        for _, v in ipairs(gl.short_line_list) do
-          if v == vim.bo.filetype then
-            return ""
-          end
-        end
-        return "%t%r"
+        return
       end,
-      condition = buffer_not_empty,
-      highlight = {colors.white, colors.bg, "bold"}
+      condition = function()
+        if buffer_not_empty() then
+          for _, v in ipairs(gl.short_line_list) do
+            if v == vim.bo.filetype then
+              return false
+            end
+          end
+
+          return true
+        end
+        return false
+      end,
+      highlight = {colors.white, colors.bg, "bold"},
+      separator = "%t%r ",
+      separator_highlight = {colors.green, colors.bg, "bold"}
     }
   }
 )

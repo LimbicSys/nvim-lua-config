@@ -218,8 +218,10 @@ return require("packer").startup(
         end
       }
       use {
-        "fszymanski/fzf-gitignore",
-        run = ":UpdateRemotePlugins"
+        "theniceboy/fzf-gitignore",
+        run = ":UpdateRemotePlugins",
+        cmd = "FzfGitignore",
+        keys = " <Plug>(fzf-gitignore)"
       }
       use {
         "voldikss/vim-floaterm",
