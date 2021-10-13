@@ -393,6 +393,13 @@ return require("packer").startup(
         end,
         requires = "nvim-treesitter/nvim-treesitter"
       }
+
+      use {
+        "windwp/nvim-spectre",
+        config = function()
+          require("config.spectre")
+        end
+      }
     end,
     config = {
       display = {

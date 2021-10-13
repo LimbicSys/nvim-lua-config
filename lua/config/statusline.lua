@@ -23,7 +23,16 @@ vim.cmd(
 
 local gl = require("galaxyline")
 local gls = gl.section
-gl.short_line_list = {"NvimTree", "vista", "dbui", "coc-explorer", "VimspectorPrompt", "DiffviewFiles", "vim-plug"}
+gl.short_line_list = {
+  "NvimTree",
+  "vista",
+  "dbui",
+  "coc-explorer",
+  "VimspectorPrompt",
+  "DiffviewFiles",
+  "vim-plug",
+  "spectre_panel"
+}
 gls.left = {}
 gls.right = {}
 gls.short_line_left = {}
