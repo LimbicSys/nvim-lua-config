@@ -34,7 +34,7 @@ return require("packer").startup(
         config = function()
           require("config.session")
         end,
-        opt = true
+        opt = false
       }
 
       -- comments
