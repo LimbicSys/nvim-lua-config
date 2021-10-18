@@ -333,6 +333,7 @@ return require("packer").startup(
       -- use 'nvim-lua/completion-nvim'
       use {
         "tami5/lspsaga.nvim",
+        branch = "nvim51",
         config = function()
           require("config.lspsaga")
         end

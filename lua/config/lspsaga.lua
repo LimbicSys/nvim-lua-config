@@ -22,7 +22,7 @@ vim.api.nvim_set_keymap('n', '<C-b>', "<cmd>lua require('lspsaga.action').smart_
 
 -- code action
 vim.api.nvim_set_keymap('n', '<Leader>a', "<cmd>lua require('lspsaga.codeaction').code_action()<CR>", opts)
-vim.api.nvim_set_keymap('x', '<Leader>a', "<cmd><C-u>lua require('lspsaga.codeaction').range_code_action()<CR>", opts)
+vim.api.nvim_set_keymap('x', '<Leader>a', ":<C-u>lua require('lspsaga.codeaction').range_code_action()<CR>", opts)
 
 -- show signature help
 vim.api.nvim_set_keymap('n', 'gs', "<cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>", opts)
