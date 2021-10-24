@@ -7,6 +7,7 @@ vim.g.Illuminate_ftblacklist = {
   "lsputil_locations_list",
   "qf",
   "DiffviewFiles",
+  "help",
   ""
 }
 

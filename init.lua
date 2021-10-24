@@ -87,6 +87,10 @@ vim.api.nvim_set_keymap("n", "<M-h>", "<CMD>nohlsearch<CR>", map_opts)
 
 vim.api.nvim_set_keymap("i", "jj", "<Esc>", map_opts)
 
+-- better indent in visual mode
+vim.api.nvim_set_keymap("x", ">", ">gv", map_opts)
+vim.api.nvim_set_keymap("x", "<", "<gv", map_opts)
+
 vim.api.nvim_set_keymap("n", "d", '"_d', map_opts)
 vim.api.nvim_set_keymap("n", "dd", '"_dd', map_opts)
 vim.api.nvim_set_keymap("n", "D", '"_D', map_opts)
