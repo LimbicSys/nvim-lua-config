@@ -19,7 +19,7 @@ local on_attach = function(client, bufnr)
   -- buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   require "illuminate".on_attach(client)
-  require "lsp_signature".on_attach(client)
+  -- require "lsp_signature".on_attach(client)
 
   -- Mappings.
   local opts = {noremap = true, silent = true}

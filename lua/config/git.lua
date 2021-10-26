@@ -45,7 +45,7 @@ require("gitsigns").setup {
     delay = 1000
   },
   sign_priority = 6,
-  update_debounce = 500,
+  update_debounce = 750,
   status_formatter = nil, -- Use default
   attach_to_untracked = true
 }
