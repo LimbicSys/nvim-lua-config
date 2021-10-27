@@ -3,7 +3,7 @@ local api = vim.api
 local fn = vim.fn
 local empty_line = ""
 
-M = {}
+local M = {}
 
 function M.generate_defination()
   local cpp_func = cpp_util.get_function_at_cursor()

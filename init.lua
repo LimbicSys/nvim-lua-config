@@ -40,9 +40,7 @@ opt.writebackup = false
 
 opt.cmdheight = 2
 
--- Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
--- delays and poor user experience.
-opt.updatetime = 300
+opt.updatetime = 1000
 
 -- Don't pass messages to |ins-completion-menu|.
 opt.shortmess:append("c")
@@ -111,4 +109,4 @@ vim.cmd(
 
 require("plugins")
 require("cpp-helper")
-require("im-switcher")
+require("config.im-switcher")
