@@ -29,13 +29,13 @@ return require("packer").startup(
       use "Iron-E/nvim-cartographer"
 
       -- session
-      use {
-        "rmagatti/auto-session",
-        config = function()
-          require("config.session")
-        end,
-        opt = true
-      }
+      -- use {
+      --   "rmagatti/auto-session",
+      --   config = function()
+      --     require("config.session")
+      --   end,
+      --   opt = true
+      -- }
 
       -- comments
       use {
@@ -169,12 +169,12 @@ return require("packer").startup(
         end
       }
 
-      use {
-        "glepnir/dashboard-nvim",
-        config = function()
-          require("config.dashboard")
-        end
-      }
+      -- use {
+      --   "glepnir/dashboard-nvim",
+      --   config = function()
+      --     require("config.dashboard")
+      --   end
+      -- }
       use "MattesGroeger/vim-bookmarks"
       -- use 'bkad/CamelCaseMotion' ", {'on': ['<Plug>CamelCaseMotion_iw', '<Plug>CamelCaseMotion_b', '<Plug>CamelCaseMotion_f']}
       use {
