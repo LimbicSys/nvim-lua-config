@@ -45,6 +45,9 @@ opt.updatetime = 1000
 -- Don't pass messages to |ins-completion-menu|.
 opt.shortmess:append("c")
 
+-- don't give the intro message when starting Vim
+opt.shortmess:append("I")
+
 opt.laststatus = 2
 
 local map_opts = {noremap = true}

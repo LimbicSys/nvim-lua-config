@@ -1,5 +1,5 @@
 local actions = require("telescope.actions")
--- local action_state = require("telescope.actions.state")
+local action_state = require("telescope.actions.state")
 local finders = require("telescope.finders")
 local pickers = require("telescope.pickers")
 -- local sorters = require("telescope.sorters")
@@ -40,11 +40,10 @@ local function loadTemplate(opts)
       return finders.new_table {
         results = data,
         entry_maker = (function()
-          local tele_path = require "telescope.path"
           local gen = make_entry.gen_from_file(opts)
           return function(entry)
             local tmp = gen(entry)
-            tmp.ordinal = tele_path.make_relative(entry, opts.cwd)
+            tmp.ordinal = Path:new(entry):make_relative(opts.cwd)
             return tmp
           end
         end)()
@@ -60,7 +59,7 @@ local function loadTemplate(opts)
       sorter = conf.file_sorter(opts),
       attach_mappings = function(prompt_bufnr, map)
         local readToBuffer = function()
-          local selection = actions.get_selected_entry(prompt_bufnr)
+          local selection = action_state.get_selected_entry()
           actions.close(prompt_bufnr)
           if vim.fn.buflisted(opts.new_filename) == 1 then
             return

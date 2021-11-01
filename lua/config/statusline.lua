@@ -31,7 +31,8 @@ gl.short_line_list = {
   "VimspectorPrompt",
   "DiffviewFiles",
   "vim-plug",
-  "spectre_panel"
+  "spectre_panel",
+  "qf"
 }
 gls.left = {}
 gls.right = {}
