@@ -349,13 +349,13 @@ table.insert(
   {
     GitIcon = {
       provider = function()
-        return "  " .. vim.g.my_git_branch
+        return vim.g.my_git_branch
       end,
       condition = function()
         return vim.g.my_git_branch ~= nil
       end,
-      separator = " ",
-      separator_highlight = {"NONE", colors.bg},
+      separator = "  ",
+      separator_highlight = {colors.violet, colors.bg},
       highlight = {colors.violet, colors.bg, "bold"}
     }
   }
