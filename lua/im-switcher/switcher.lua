@@ -8,8 +8,8 @@ end
 local InputMethodSwitcher = {
   obtain_im_cmd = "",
   switch_im_cmd = "",
-  default_im_key = "",
-  saved_im_key = ""
+  default_im_key = ""
+  -- saved_im_key = ""
 }
 
 InputMethodSwitcher.__index = InputMethodSwitcher
@@ -20,7 +20,7 @@ function InputMethodSwitcher:new(obtain_im_cmd, switch_im_cmd, default_im_key)
   self.obtain_im_cmd = obtain_im_cmd
   self.switch_im_cmd = switch_im_cmd
   self.default_im_key = default_im_key
-  self.saved_im_key = ""
+  -- self.saved_im_key = ""
   return self
 end
 
@@ -40,9 +40,9 @@ function InputMethodSwitcher:switch_to_default_im()
     function(j, code, singnal)
       insert_im_key = j:result()[1]
       if insert_im_key ~= nil or #insert_im_key > 0 then
-        self.saved_im_key = trim(insert_im_key)
+        vim.b.saved_im_key = trim(insert_im_key)
       end
-      if self.default_im_key ~= self.saved_im_key then
+      if self.default_im_key ~= vim.b.saved_im_key then
         self:switch_to_im(self.default_im_key)
       end
     end
@@ -52,8 +52,8 @@ end
 
 -- resume origin input method
 function InputMethodSwitcher:resume_im()
-  if self.saved_im_key ~= self.default_im_key then
-    self:switch_to_im(self.saved_im_key)
+  if vim.b.saved_im_key ~= self.default_im_key then
+    self:switch_to_im(vim.b.saved_im_key)
   end
 end
 

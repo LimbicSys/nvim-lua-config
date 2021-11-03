@@ -402,6 +402,13 @@ return require("packer").startup(
           require("config.spectre")
         end
       }
+
+      use {
+        "max397574/better-escape.nvim",
+        config = function()
+          require("config.better-escape")
+        end
+      }
     end,
     config = {
       display = {
