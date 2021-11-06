@@ -192,7 +192,7 @@ table.insert(
       condition = function()
         return vim.g.my_file_size ~= nil
       end,
-      separator = " ",
+      -- separator = " ",
       separator_highlight = {"NONE", colors.bg},
       highlight = {colors.fg, colors.bg}
     }
