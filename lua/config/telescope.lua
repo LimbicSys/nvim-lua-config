@@ -96,6 +96,9 @@ function Load_vimspector_template()
 end
 
 local opts = {noremap = true, silent = true}
-vim.api.nvim_set_keymap("n", "<leader>fs", "<cmd>lua Load_clang_format_template()<cr>", opts)
-vim.api.nvim_set_keymap("n", "<leader>vs", "<cmd>lua Load_vimspector_template()<cr>", opts)
+-- vim.api.nvim_set_keymap("n", "<leader>fs", "<cmd>lua Load_clang_format_template()<cr>", opts)
+-- vim.api.nvim_set_keymap("n", "<leader>vs", "<cmd>lua Load_vimspector_template()<cr>", opts)
 vim.api.nvim_set_keymap("n", ";f", "<Cmd>lua require('telescope.builtin').grep_string()<CR>", opts)
+
+vim.cmd("command! LoadClangFormatTemplate lua Load_clang_format_template()")
+vim.cmd("command! LoadClangFormatTemplate lua Load_vimspector_template()")

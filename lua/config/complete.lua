@@ -27,11 +27,9 @@ cmp.setup {
   sources = {
     {name = "nvim_lsp"},
     {name = "vsnip"},
+    -- {name = "luasnip"},
     -- {name = "buffer"},
     {name = "path"}
-  },
-  formatting = {
-    deprecated = false
   }
 }
 

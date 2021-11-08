@@ -110,12 +110,21 @@ return require("packer").startup(
         end
       }
 
+      -- use {
+      --   "easymotion/vim-easymotion",
+      --   config = function()
+      --     require("config.easymotion")
+      --   end
+      -- }
+
       use {
-        "easymotion/vim-easymotion",
+        "phaazon/hop.nvim",
+        branch = "v1", -- optional but strongly recommended
         config = function()
-          require("config.easymotion")
+          require("config.hop")
         end
       }
+
       use "tpope/vim-surround"
 
       -- use 'glepnir/indent-guides.nvim'
@@ -248,6 +257,9 @@ return require("packer").startup(
           require("config.vsnip")
         end
       }
+
+      -- use {"L3MON4D3/LuaSnip"}
+      -- use {"saadparwaiz1/cmp_luasnip"}
 
       -- text objects
       use "michaeljsmith/vim-indent-object"
