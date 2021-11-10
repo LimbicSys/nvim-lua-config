@@ -246,7 +246,6 @@ return require("packer").startup(
       -- snippets
       -- use 'honza/vim-snippets'
       use "rafamadriz/friendly-snippets"
-      -- use "hrsh7th/vim-vsnip-integ"
       use {
         "hrsh7th/vim-vsnip",
         requires = {
@@ -258,11 +257,16 @@ return require("packer").startup(
         end
       }
 
-      -- use {"L3MON4D3/LuaSnip"}
+      -- use {
+      --   "L3MON4D3/LuaSnip",
+      --   config = function()
+      --     require("config.luasnip")
+      --   end
+      -- }
       -- use {"saadparwaiz1/cmp_luasnip"}
 
       -- text objects
-      use "michaeljsmith/vim-indent-object"
+      use "Limbicsys/vim-indent-object"
       use "kana/vim-textobj-user"
       use "kana/vim-textobj-entire"
 
@@ -270,6 +274,7 @@ return require("packer").startup(
         "nvim-treesitter/nvim-treesitter",
         -- We recommend updating the parsers on update
         run = ":TSUpdate",
+        branch = "0.5-compat",
         config = function()
           require("config.treesitter")
         end
@@ -398,14 +403,6 @@ return require("packer").startup(
         config = function()
           require("config.format")
         end
-      }
-
-      use {
-        "danymat/neogen",
-        config = function()
-          require("config.annotation")
-        end,
-        requires = "nvim-treesitter/nvim-treesitter"
       }
 
       use {
