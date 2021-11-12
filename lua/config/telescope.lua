@@ -80,7 +80,7 @@ end
 function Load_clang_format_template()
   loadTemplate(
     {
-      cwd = "~/.myConfig/clang_format_template",
+      cwd = "~/.config/nvim/clang_format_template",
       new_filename = ".clang-format"
     }
   )
@@ -89,7 +89,7 @@ end
 function Load_vimspector_template()
   loadTemplate(
     {
-      cwd = "~/.myConfig/vimspector_json",
+      cwd = "~/.config/nvim/vimspector_json",
       new_filename = ".vimspector.json"
     }
   )

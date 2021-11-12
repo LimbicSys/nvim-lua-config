@@ -3,7 +3,7 @@
 # XDG_CONFIG_HOME="${HOME}/.config/nvim-lua"
 currentPath=`pwd`
 
-files=("init.lua" "lua/" "ftplugin/" "snippet/")
+files=("init.lua" "lua/" "ftplugin/" "snippet/" "clang_format_template/" "vimspector_json/")
 # link_targets_prefix=("${XDG_CONFIG_HOME}" "${XDG_CONFIG_HOME}" "${XDG_CONFIG_HOME}")
 
 # echo ${#files[@]}
@@ -14,7 +14,8 @@ do
     file=$currentPath/${files[$i]}
     prefix=$HOME/.config/nvim
     link_target=$prefix/${files[$i]}
-    if [[ ${files[$i]} == 'ftplugin/' || ${files[$i]} == 'lua/' || ${files[$[i]]} == 'snippet/' ]]; then
+    # if [[ ${files[$i]} == 'ftplugin/' || ${files[$i]} == 'lua/' || ${files[$[i]]} == 'snippet/' ]]; then
+    if [[ ${files[$i]: -1} == '/' ]]; then
         link_target=$prefix
     fi
     if [ ! -d $prefix ]; then

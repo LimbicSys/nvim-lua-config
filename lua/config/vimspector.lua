@@ -9,5 +9,3 @@ vim.api.nvim_set_keymap("n", "<F10>", "<Plug>VimspectorStepOver", {})
 vim.api.nvim_set_keymap("n", "<F11>", "<Plug>VimspectorStepInto", {})
 vim.api.nvim_set_keymap("n", "<F12>", "<Plug>VimspectorStepOut", {})
 vim.api.nvim_set_keymap("n", "<leader><F8>", "<Plug>VimspectorRunToCursor", {})
-
-vim.cmd("autocmd BufNewFile,BufRead .vimspector.json setlocal filetype=jsonc")
