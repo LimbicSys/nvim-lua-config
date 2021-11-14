@@ -443,6 +443,7 @@ table.insert(
       condition = function()
         if buffer_not_empty() then
           for _, v in ipairs(gl.short_line_list) do
+            -- FIXME: bug with VISTA
             if v == vim.bo.filetype then
               return false
             end
