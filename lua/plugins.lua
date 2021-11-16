@@ -419,13 +419,6 @@ return require("packer").startup(
           require("config.better-escape")
         end
       }
-
-      use {
-        "milkypostman/vim-togglelist",
-        config = function()
-          require("config.togglelist")
-        end
-      }
     end,
     config = {
       display = {

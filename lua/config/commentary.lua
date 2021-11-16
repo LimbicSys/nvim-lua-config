@@ -1,7 +1,7 @@
 vim.cmd([[
   augroup Commentary
     autocmd!
-    autocmd FileType cpp,c setlocal  commentstring=//\ %s
+    autocmd FileType cpp,c,jsonc setlocal  commentstring=//\ %s
   augroup END
 ]])
 

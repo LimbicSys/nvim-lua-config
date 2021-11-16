@@ -176,7 +176,7 @@ table.insert(
       end,
       condition = buffer_not_empty,
       highlight = {colors.green, colors.bg, "bold"},
-      separator = "%t%r ",
+      separator = "%t%r%m ",
       separator_highlight = {colors.green, colors.bg, "bold"}
     }
   }

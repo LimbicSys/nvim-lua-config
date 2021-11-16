@@ -12,3 +12,5 @@ vim.cmd(
     augroup END
   ]]
 )
+
+-- TODO: consider existing using namespace statement

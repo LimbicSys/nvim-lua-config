@@ -154,3 +154,7 @@ augroup end
 vim.cmd([[
 command! ToggleFormat lua ToggleFormatOnSave()
 ]])
+
+vim.cmd([[
+command! FormatBuffer lua Formatting()
+]])
