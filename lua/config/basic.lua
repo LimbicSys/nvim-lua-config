@@ -52,7 +52,7 @@ opt.laststatus = 2
 
 vim.cmd("autocmd BufNewFile,BufRead *.json setlocal filetype=jsonc")
 
-local map_opts = {noremap = true}
+local map_opts = {noremap = true, silent = true}
 
 -- use Ctrl+h/j/k/l to switch window
 vim.api.nvim_set_keymap("n", "<C-h>", "<C-w>h", map_opts)
@@ -61,8 +61,8 @@ vim.api.nvim_set_keymap("n", "<C-k>", "<C-w>k", map_opts)
 vim.api.nvim_set_keymap("n", "<C-l>", "<C-w>l", map_opts)
 
 -- buffer switch
-vim.api.nvim_set_keymap("n", "[b", "<CMD>bprevious<CR>", map_opts)
-vim.api.nvim_set_keymap("n", "]b", "<CMD>bnext<CR>", map_opts)
+-- vim.api.nvim_set_keymap("n", "[b", "<CMD>bprevious<CR>", map_opts)
+-- vim.api.nvim_set_keymap("n", "]b", "<CMD>bnext<CR>", map_opts)
 
 -- buffer switch
 vim.api.nvim_set_keymap("n", "[t", "<CMD>tabpre<CR>", map_opts)

@@ -1,4 +1,4 @@
-require("config.vim")
+require("config.basic")
 require("plugins")
 
 -- load after plugins
