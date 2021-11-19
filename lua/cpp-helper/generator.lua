@@ -5,7 +5,7 @@ local empty_line = ""
 
 local M = {}
 
-function M.generate_defination()
+function M.generate_definition()
   local cpp_func = cpp_util.get_function_at_cursor()
   if #(cpp_func.func_name) == 0 then
     return
@@ -17,7 +17,9 @@ function M.generate_defination()
     return
   end
 
-  vim.cmd(string.format("edit %s", api.nvim_buf_get_name(target_buf)))
+  if target_buf ~= vim.fn.bufnr() then
+    vim.cmd(string.format("edit %s", api.nvim_buf_get_name(target_buf)))
+  end
 
   local line_count = api.nvim_buf_line_count(target_buf)
   local target_pos = line_count -- insert at the end of buffer by default
@@ -59,6 +61,9 @@ function M.generate_defination()
       end_bracket
     }
   )
+
+  -- move cursor to the function body
+  api.nvim_win_set_cursor(0, {target_pos + 3, 1})
 end
 
 function M.guard_header()
