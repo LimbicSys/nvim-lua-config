@@ -5,14 +5,14 @@ local npairs = require("nvim-autopairs")
 
 npairs.setup()
 local rule = npairs.get_rule('"')
-rule:with_pair(
-  function()
-    if vim.api.nvim_buf_get_option(0, "filetype") == "vim" then
-      return false
-    end
-    return true
-  end
-)
+-- rule:with_pair(
+--   function()
+--     if vim.api.nvim_buf_get_option(0, "filetype") == "vim" then
+--       return false
+--     end
+--     return true
+--   end
+-- )
 
 -- rule = npairs.get_rule("(")
 -- rule:with_pair(

@@ -419,6 +419,8 @@ return require("packer").startup(
           require("config.better-escape")
         end
       }
+
+      use "fladson/vim-kitty"
     end,
     config = {
       display = {
