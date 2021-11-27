@@ -57,55 +57,30 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
 
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
--- lsp-install
-local function setup_servers()
-  require "lspinstall".setup()
+local common_config = {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  flags = {
+    debounce_text_changes = 150
+  }
+}
 
-  -- get all installed servers
-  local servers = require "lspinstall".installed_servers()
-  -- ... and add manually installed servers
-  table.insert(servers, "clangd")
-  table.insert(servers, "efm")
-  -- table.insert(servers, "sourcekit")
+local lsp_installer = require("nvim-lsp-installer")
+-- Register a handler that will be called for all installed servers.
+-- Alternatively, you may also register handlers on specific server instances instead (see example below).
+lsp_installer.on_server_ready(
+  function(server)
+    local config = {}
 
-  for _, server in pairs(servers) do
-    local tmp_config = {
-      on_attach = on_attach,
-      capabilities = capabilities,
-      flags = {
-        debounce_text_changes = 500
-      }
-    }
-
-    local config
-    -- language specific config
-    if server == "lua" then
+    if server.name == "sumneko_lua" then
       config =
         require("lua-dev").setup(
         {
-          lspconfig = tmp_config
+          lspconfig = common_config
         }
       )
-    elseif server == "clangd" then
-      config = tmp_config
-      config["cmd"] = {"clangd", "--background-index", "--fallback-style=Microsoft", "--header-insertion=never"}
-      local default_capabilities =
-        vim.tbl_deep_extend(
-        "force",
-        capabilities,
-        {
-          textDocument = {
-            completion = {
-              editsNearCursor = true
-            },
-            switchSourceHeader = true
-          },
-          offsetEncoding = {"utf-8", "utf-16"}
-        }
-      )
-      config["capabilities"] = default_capabilities
-    elseif server == "efm" then
-      config = tmp_config
+    elseif server.name == "efm" then
+      vim.tbl_deep_extend("force", config, common_config)
       config["init_options"] = {documentFormatting = true}
       config["filetypes"] = {"lua"}
       config["settings"] = {
@@ -120,25 +95,32 @@ local function setup_servers()
         }
       }
     else
-      config = tmp_config
+      vim.tbl_deep_extend("force", config, common_config)
     end
-    -- if server == "sourcekit" then
-    --   config.filetypes = {"swift", "objective-c", "objective-cpp"}; -- we don't want c and cpp!
-    -- end
-    -- if server == "clangd" then
-    --   config.filetypes = {"c", "cpp"}; -- we don't want objective-c and objective-cpp!
-    -- end
 
-    require "lspconfig"[server].setup(config)
+    server:setup(config)
   end
-end
+)
 
-setup_servers()
-
+-- local installed language server
+-- clangd
+local clangd_config = {}
+vim.tbl_deep_extend("force", clangd_config, common_config)
+clangd_config["cmd"] = {"clangd", "--background-index", "--fallback-style=Microsoft", "--header-insertion=never"}
+local default_capabilities =
+  vim.tbl_deep_extend(
+  "force",
+  capabilities,
+  {
+    textDocument = {
+      completion = {
+        editsNearCursor = true
+      },
+      switchSourceHeader = true
+    },
+    offsetEncoding = {"utf-8", "utf-16"}
+  }
+)
+clangd_config["capabilities"] = default_capabilities
+require "lspconfig".clangd.setup(clangd_config)
 vim.api.nvim_set_keymap("n", "<M-o>", "<Cmd>ClangdSwitchSourceHeader<CR>", {silent = true})
-
--- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
-require "lspinstall".post_install_hook = function()
-  setup_servers() -- reload installed servers
-  vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
-end

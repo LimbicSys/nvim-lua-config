@@ -115,7 +115,7 @@ function Formatting()
 
   local lsp_format_list = {}
   lsp_format_list["cpp"] = 1
-  lsp_format_list["lua"] = 1
+  -- lsp_format_list["lua"] = 1
 
   if lsp_format_list[ft] ~= nil then
     formatting_sync()
@@ -124,7 +124,7 @@ function Formatting()
   end
 end
 
-DoFormatOnSave = true
+local do_format_on_save = true
 
 local function convert_bool(var)
   if var then
@@ -133,26 +133,40 @@ local function convert_bool(var)
   return "off"
 end
 
-function ToggleFormatOnSave()
-  DoFormatOnSave = not DoFormatOnSave
-  print(string.format("Format on save: %s", convert_bool(DoFormatOnSave)))
+function Toggle_format_on_save()
+  do_format_on_save = not do_format_on_save
+  print(string.format("Format on save: %s", convert_bool(do_format_on_save)))
 end
 
-function FormatOnSave()
-  if DoFormatOnSave then
+function Format_on_save()
+  if do_format_on_save then
     Formatting()
   end
+end
+
+function Disable_format_on_save()
+  do_format_on_save = false
+  print(string.format("Format on save: %s", convert_bool(do_format_on_save)))
+end
+
+function Enable_format_on_save()
+  do_format_on_save = true
+  print(string.format("Format on save: %s", convert_bool(do_format_on_save)))
+end
+
+function Format_on_save_status()
+  print(string.format("Format on save: %s", convert_bool(do_format_on_save)))
 end
 
 vim.cmd([[
 augroup formatOnSave
   autocmd!
-  autocmd BufWritePre * silent! lua FormatOnSave()
+  autocmd BufWritePre * silent! lua Format_on_save()
 augroup end
 ]])
 
 vim.cmd([[
-command! ToggleFormat lua ToggleFormatOnSave()
+command! ToggleFormat lua Toggle_format_on_save()
 ]])
 
 vim.cmd([[

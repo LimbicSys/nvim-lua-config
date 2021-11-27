@@ -336,7 +336,7 @@ return require("packer").startup(
       use {
         "neovim/nvim-lspconfig",
         requires = {
-          "kabouzeid/nvim-lspinstall",
+          "williamboman/nvim-lsp-installer",
           "folke/lua-dev.nvim",
           "RRethy/vim-illuminate",
           "ray-x/lsp_signature.nvim",
@@ -348,8 +348,6 @@ return require("packer").startup(
         end
       }
 
-      use "kabouzeid/nvim-lspinstall"
-      -- use 'nvim-lua/completion-nvim'
       use {
         "tami5/lspsaga.nvim",
         branch = "nvim51",
@@ -383,7 +381,8 @@ return require("packer").startup(
           "hrsh7th/cmp-nvim-lsp",
           "hrsh7th/cmp-path",
           "hrsh7th/cmp-vsnip",
-          "windwp/nvim-autopairs"
+          "windwp/nvim-autopairs",
+          "quangnguyen30192/cmp-nvim-tags"
         },
         config = function()
           require("config.complete")
