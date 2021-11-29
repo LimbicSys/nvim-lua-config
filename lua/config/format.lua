@@ -54,6 +54,8 @@ require("formatter").setup(
   }
 )
 
+-- TODO: move to a module, used via `require'xxx'.foo`
+
 -- format by efm
 local function select_client(method)
   local efm_blacklist = {}
@@ -161,7 +163,7 @@ end
 vim.cmd([[
 augroup formatOnSave
   autocmd!
-  autocmd BufWritePre * silent! lua Format_on_save()
+  autocmd BufWritePost * silent! lua Format_on_save()
 augroup end
 ]])
 

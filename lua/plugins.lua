@@ -101,15 +101,6 @@ return require("packer").startup(
       }
       -- use 'airblade/vim-gitgutter'
 
-      -- project
-      use "tpope/vim-projectionist"
-      use {
-        "windwp/nvim-projectconfig",
-        config = function()
-          require("nvim-projectconfig").load_project_config()
-        end
-      }
-
       -- use {
       --   "easymotion/vim-easymotion",
       --   config = function()
@@ -157,6 +148,7 @@ return require("packer").startup(
 
       -- fuzzing finder
       use "nvim-lua/popup.nvim"
+      use {"nvim-telescope/telescope-fzf-native.nvim", run = "make"}
       use {
         "nvim-telescope/telescope.nvim",
         config = function()
@@ -420,6 +412,16 @@ return require("packer").startup(
       }
 
       use "fladson/vim-kitty"
+
+      -- project
+      -- NOTE: last load
+      use "tpope/vim-projectionist"
+      use {
+        "windwp/nvim-projectconfig",
+        config = function()
+          require("nvim-projectconfig").load_project_config()
+        end
+      }
     end,
     config = {
       display = {
