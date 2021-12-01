@@ -36,7 +36,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
   buf_set_keymap("n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
   -- buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts) -- TODO: use custom handler
+  buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
   -- buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
   -- buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   -- buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
@@ -80,7 +80,7 @@ lsp_installer.on_server_ready(
         }
       )
     elseif server.name == "efm" then
-      vim.tbl_deep_extend("force", config, common_config)
+      config = vim.tbl_deep_extend("force", config, common_config)
       config["init_options"] = {documentFormatting = true}
       config["filetypes"] = {"lua"}
       config["settings"] = {
@@ -105,7 +105,7 @@ lsp_installer.on_server_ready(
 -- local installed language server
 -- clangd
 local clangd_config = {}
-vim.tbl_deep_extend("force", clangd_config, common_config)
+clangd_config = vim.tbl_deep_extend("force", clangd_config, common_config)
 clangd_config["cmd"] = {"clangd", "--background-index", "--fallback-style=Microsoft", "--header-insertion=never"}
 local default_capabilities =
   vim.tbl_deep_extend(

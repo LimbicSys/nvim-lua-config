@@ -119,3 +119,31 @@ vim.cmd [[
     autocmd TextYankPost * silent! lua vim.highlight.on_yank()
   augroup end
 ]]
+
+-- auto indent when type a at the beginning of a line
+function _G.handleNormalA()
+  if vim.fn.col(".") == 1 then
+    return
+  end
+  local ft = vim.bo.filetype
+  -- does not work on some filetype, e.g. markdown
+  local white_list = {
+    "c",
+    "cpp",
+    "go",
+    "python",
+    "lua",
+    "sh",
+    "java",
+    "rust",
+    "json"
+  }
+  local keys = "a"
+  if vim.tbl_contains(white_list, ft) then
+    keys = vim.api.nvim_replace_termcodes("a<C-f>", true, true, true)
+  end
+
+  return keys
+end
+
+vim.api.nvim_buf_set_keymap(0, "n", "a", "v:lua.handleNormalA()", {noremap = true, expr = true})

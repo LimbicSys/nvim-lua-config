@@ -58,8 +58,7 @@ require("formatter").setup(
 
 -- format by efm
 local function select_client(method)
-  local efm_blacklist = {}
-  efm_blacklist["cpp"] = 1
+  local efm_blacklist = {"cpp"}
 
   local clients = vim.tbl_values(vim.lsp.buf_get_clients())
   clients =
@@ -72,7 +71,7 @@ local function select_client(method)
 
   local ft = vim.bo.filetype
 
-  if efm_blacklist[ft] == nil then
+  if not vim.tbl_contains(efm_blacklist, ft) then
     for i = 1, #clients do
       if clients[i].name == "efm" then
         return clients[i]
@@ -148,7 +147,6 @@ end
 
 function Disable_format_on_save()
   do_format_on_save = false
-  print(string.format("Format on save: %s", convert_bool(do_format_on_save)))
 end
 
 function Enable_format_on_save()

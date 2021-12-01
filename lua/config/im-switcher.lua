@@ -7,4 +7,9 @@ if vim.fn.has("wsl") == 1 then
   require("im-switcher").setup(opt)
 end
 
--- TODO: mac config
+if vim.fn.has("mac") == 1 then
+  opt.obtain_im_cmd = "macism"
+  opt.switch_im_cmd = "macism"
+  opt.default_im_key = "com.apple.keylayout.ABC"
+  require("im-switcher").setup(opt)
+end
