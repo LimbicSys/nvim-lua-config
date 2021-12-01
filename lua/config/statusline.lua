@@ -311,7 +311,7 @@ table.insert(
   {
     TabWidth = {
       provider = function()
-        return "TabSize: " .. vim.bo.tabstop
+        return "TabSize: " .. vim.bo.shiftwidth
       end,
       separator = " ",
       separator_highlight = {"NONE", colors.bg},

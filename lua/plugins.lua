@@ -412,6 +412,13 @@ return require("packer").startup(
 
       use "fladson/vim-kitty"
 
+      use {
+        "timakro/vim-yadi",
+        config = function()
+          require("config.indent")
+        end
+      }
+
       -- project
       -- NOTE: last load
       use "tpope/vim-projectionist"
