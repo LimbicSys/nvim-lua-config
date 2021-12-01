@@ -116,6 +116,9 @@ require "nvim-tree".setup {
       -- list of mappings to set on the tree manually
       list = {}
     }
+  },
+  git = {
+    ignore = false
   }
 }
 

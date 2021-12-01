@@ -122,8 +122,9 @@ vim.cmd [[
 
 -- auto indent when type a at the beginning of a line
 function _G.handleNormalA()
-  if vim.fn.col(".") == 1 then
-    return
+  local keys = "a"
+  if vim.fn.col(".") ~= 1 then
+    return keys
   end
   local ft = vim.bo.filetype
   -- does not work on some filetype, e.g. markdown
@@ -138,11 +139,9 @@ function _G.handleNormalA()
     "rust",
     "json"
   }
-  local keys = "a"
   if vim.tbl_contains(white_list, ft) then
     keys = vim.api.nvim_replace_termcodes("a<C-f>", true, true, true)
   end
-
   return keys
 end
 
