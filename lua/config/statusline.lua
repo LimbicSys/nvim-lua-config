@@ -137,7 +137,7 @@ table.insert(
           t = colors.red
         }
         vim.api.nvim_command("hi galaxyvimode guifg=" .. mode_color[vim_mode])
-        return alias[vim_mode]
+        return "<" .. alias[vim_mode] .. ">"
       end,
       highlight = {colors.red, colors.bg, "bold"},
       separator = " ",
@@ -354,8 +354,8 @@ table.insert(
       condition = function()
         return vim.g.my_git_branch ~= nil
       end,
-      separator = "  ",
-      separator_highlight = {colors.violet, colors.bg},
+      separator = " @ ",
+      separator_highlight = {colors.violet, colors.bg, "bold"},
       highlight = {colors.violet, colors.bg, "bold"}
     }
   }
@@ -375,8 +375,9 @@ table.insert(
     DiffAdd = {
       provider = "DiffAdd",
       -- condition = checkwidth,
-      icon = " ",
-      highlight = {colors.green, colors.bg},
+      -- icon = " ",
+      icon = "+",
+      highlight = {colors.green, colors.bg, "bold"},
       separator = " ",
       separator_highlight = {"NONE", colors.bg}
     }
@@ -389,8 +390,9 @@ table.insert(
     DiffModified = {
       provider = "DiffModified",
       -- condition = checkwidth,
-      icon = "  ",
-      highlight = {colors.orange, colors.bg}
+      -- icon = " ",
+      icon = " ~",
+      highlight = {colors.orange, colors.bg, "bold"}
     }
   }
 )
@@ -401,25 +403,26 @@ table.insert(
     DiffRemove = {
       provider = "DiffRemove",
       -- condition = checkwidth,
-      icon = "  ",
-      highlight = {colors.red, colors.bg}
+      -- icon = " ",
+      icon = " -",
+      highlight = {colors.red, colors.bg, "bold"}
     }
   }
 )
 
-table.insert(
-  gls.right,
-  {
-    RainbowBlue = {
-      provider = function()
-        return " ▊"
-      end,
-      highlight = {colors.blue, colors.bg},
-      separator = " ",
-      separator_highlight = {"NONE", colors.bg}
-    }
-  }
-)
+-- table.insert(
+--   gls.right,
+--   {
+--     RainbowBlue = {
+--       provider = function()
+--         return " ▊"
+--       end,
+--       highlight = {colors.blue, colors.bg},
+--       separator = " ",
+--       separator_highlight = {"NONE", colors.bg}
+--     }
+--   }
+-- )
 
 table.insert(
   gls.short_line_left,
@@ -438,7 +441,6 @@ table.insert(
   {
     SFileName = {
       provider = function()
-        return
       end,
       condition = function()
         if buffer_not_empty() then

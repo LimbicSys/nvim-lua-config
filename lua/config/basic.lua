@@ -145,4 +145,4 @@ function _G.handleNormalA()
   return keys
 end
 
-vim.api.nvim_buf_set_keymap(0, "n", "a", "v:lua.handleNormalA()", {noremap = true, expr = true})
+vim.api.nvim_set_keymap("n", "a", "v:lua.handleNormalA()", {noremap = true, expr = true})
