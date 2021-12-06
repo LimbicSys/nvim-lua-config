@@ -146,3 +146,11 @@ function _G.handleNormalA()
 end
 
 vim.api.nvim_set_keymap("n", "a", "v:lua.handleNormalA()", {noremap = true, expr = true})
+
+-- TODO: only open when vim does not open any other files
+vim.cmd [[
+augroup OpenRecent
+autocmd!
+autocmd VimEnter * lua require"open-recent".open_recent()
+augroup END
+]]
