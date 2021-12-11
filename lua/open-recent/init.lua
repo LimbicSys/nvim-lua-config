@@ -16,6 +16,14 @@ function M.open_recent()
   if in_pager_mode() then
     return
   end
+
+  local cwd = vim.loop.cwd()
+  cwd = cwd:gsub([[\]], [[\\]])
+  -- TODO: write in lua
+  local root = vim.fn["gutentags#get_project_root"](cwd)
+  if root == "" or root == nil then
+    return
+  end
   local current_buffer = vim.api.nvim_get_current_buf()
   local current_file = vim.api.nvim_buf_get_name(current_buffer)
   local results = {}
@@ -25,8 +33,6 @@ function M.open_recent()
     end
   end
 
-  local cwd = vim.loop.cwd()
-  cwd = cwd:gsub([[\]], [[\\]])
   results =
     vim.tbl_filter(
     function(file)

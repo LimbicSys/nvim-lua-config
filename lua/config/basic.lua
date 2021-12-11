@@ -70,6 +70,7 @@ vim.api.nvim_set_keymap("n", "]t", "<CMD>tabnext<CR>", map_opts)
 
 -- save
 vim.api.nvim_set_keymap("n", "<C-s>", "<CMD>w<CR>", map_opts)
+vim.api.nvim_set_keymap("n", "<space>fs", "<CMD>w<CR>", map_opts)
 
 -- close window
 vim.api.nvim_set_keymap("n", "<Leader>eq", "<CMD>q<CR>", map_opts)
@@ -151,6 +152,6 @@ vim.api.nvim_set_keymap("n", "a", "v:lua.handleNormalA()", {noremap = true, expr
 vim.cmd [[
 augroup OpenRecent
 autocmd!
-autocmd VimEnter * lua require"open-recent".open_recent()
+autocmd VimEnter * :silent! lua require"open-recent".open_recent()
 augroup END
 ]]
