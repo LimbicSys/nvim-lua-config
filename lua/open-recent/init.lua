@@ -12,6 +12,44 @@ local in_pager_mode = function()
   return pager_mode
 end
 
+-- strips the ending slash in a path
+local function strip_slash(path)
+  return vim.fn.fnamemodify(path, ":s?[/\\]$??")
+end
+
+-- display error messages.
+local function eprintln(msg)
+  vim.api.nvim_echo({{msg, "Error"}}, true, {})
+end
+
+local function find_project_root(cwd)
+  local root_markers = {".root", ".git"}
+  local previous_path = ""
+  local path = strip_slash(cwd)
+  while path ~= previous_path do
+    for _, root in pairs(root_markers) do
+      if vim.fn.empty(vim.fn.globpath(path, root, 1)) ~= 1 then
+        local project_dir = vim.fn.simplify(vim.fn.fnamemodify(path, ":p"))
+        project_dir = strip_slash(project_dir)
+
+        -- found project marker in the root path
+        if project_dir == "" or #project_dir == 0 then
+          eprintln(string.format("found project marker %s in the root path", root))
+          break
+        end
+
+        -- TODO: support exclude path
+
+        return project_dir
+      end
+    end
+
+    previous_path = path
+    path = vim.fn.fnamemodify(path, ":h")
+  end
+  return nil
+end
+
 function M.open_recent()
   if in_pager_mode() then
     return
@@ -19,8 +57,8 @@ function M.open_recent()
 
   local cwd = vim.loop.cwd()
   cwd = cwd:gsub([[\]], [[\\]])
-  -- TODO: write in lua
-  local root = vim.fn["gutentags#get_project_root"](cwd)
+  -- local root = vim.fn["gutentags#get_project_root"](cwd)
+  local root = find_project_root(cwd)
   if root == "" or root == nil then
     return
   end

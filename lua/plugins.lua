@@ -67,7 +67,6 @@ return require("packer").startup(
       -- status line
       use {
         "NTBBloodbath/galaxyline.nvim",
-        branch = "main",
         requires = "liuchengxu/vista.vim",
         config = function()
           require("config.statusline")
@@ -231,8 +230,7 @@ return require("packer").startup(
         end
       }
       use {
-        "mg979/vim-visual-multi",
-        branch = "master"
+        "mg979/vim-visual-multi"
       }
 
       -- snippets
@@ -266,7 +264,6 @@ return require("packer").startup(
         "nvim-treesitter/nvim-treesitter",
         -- We recommend updating the parsers on update
         run = ":TSUpdate",
-        branch = "0.5-compat",
         config = function()
           require("config.treesitter")
         end
@@ -341,7 +338,6 @@ return require("packer").startup(
 
       use {
         "tami5/lspsaga.nvim",
-        branch = "nvim51",
         config = function()
           require("config.lspsaga")
         end
