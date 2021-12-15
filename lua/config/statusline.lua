@@ -32,7 +32,9 @@ gl.short_line_list = {
   "DiffviewFiles",
   "vim-plug",
   "spectre_panel",
-  "qf"
+  "qf",
+  "NeogitStatus",
+  "NeogitCommitView"
 }
 gls.left = {}
 gls.right = {}

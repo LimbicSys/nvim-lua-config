@@ -415,6 +415,13 @@ return require("packer").startup(
         end
       }
 
+      use {
+        "TimUntersberger/neogit",
+        config = function()
+          require("config.neogit")
+        end
+      }
+
       -- project
       -- NOTE: last load
       use "tpope/vim-projectionist"
