@@ -3,7 +3,8 @@
 # XDG_CONFIG_HOME="${HOME}/.config/nvim-lua"
 currentPath=`pwd`
 
-files=("init.lua" "lua/" "ftplugin/" "snippet/" "clang_format_template/" "vimspector_json/")
+files=("init.lua" "lua/" "ftplugin/" "snippet/" "clang_format_template/" "vimspector_json/" \
+       "ftdetect/", "indent/", "syntax/")
 # link_targets_prefix=("${XDG_CONFIG_HOME}" "${XDG_CONFIG_HOME}" "${XDG_CONFIG_HOME}")
 
 # echo ${#files[@]}
