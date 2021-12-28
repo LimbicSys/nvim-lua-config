@@ -8,5 +8,5 @@ local function toggle_quickfix()
   vim.cmd("botright copen")
 end
 
-local map = require "cartographer"
+local map = require("cartographer")
 map.n.nore.silent[";c"] = toggle_quickfix

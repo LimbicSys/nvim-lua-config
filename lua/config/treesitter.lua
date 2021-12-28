@@ -1,8 +1,8 @@
-require("nvim-treesitter.configs").setup {
+require("nvim-treesitter.configs").setup({
   highlight = {
     enable = true,
-    custom_captures = {}
-  }
+    custom_captures = {},
+  },
   -- incremental_selection = {
   --   enable = true,
   --   keymaps = {
@@ -15,4 +15,4 @@ require("nvim-treesitter.configs").setup {
   -- indent = {
   --   enable = true
   -- }
-}
+})

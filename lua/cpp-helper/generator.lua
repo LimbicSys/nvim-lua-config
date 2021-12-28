@@ -7,7 +7,7 @@ local M = {}
 
 function M.generate_definition()
   local cpp_func = cpp_util.get_function_at_cursor()
-  if #(cpp_func.func_name) == 0 then
+  if #cpp_func.func_name == 0 then
     return
   end
 
@@ -24,8 +24,8 @@ function M.generate_definition()
   local line_count = api.nvim_buf_line_count(target_buf)
   local target_pos = line_count -- insert at the end of buffer by default
 
-  local namespace_start_idx = #(cpp_func.namespaces) + 1
-  if #(cpp_func.namespaces) > 0 then
+  local namespace_start_idx = #cpp_func.namespaces + 1
+  if #cpp_func.namespaces > 0 then
     local idx, end_line = cpp_util.find_namespace_end(cpp_func.namespaces)
     target_pos = end_line
     if target_pos == 0 then
@@ -49,21 +49,15 @@ function M.generate_definition()
     end_bracket = cpp_util.add_indent(end_bracket)
   end
 
-  api.nvim_buf_set_lines(
-    target_buf,
-    target_pos,
-    target_pos,
-    true,
-    {
-      empty_line,
-      func_text .. " {",
-      empty_line,
-      end_bracket
-    }
-  )
+  api.nvim_buf_set_lines(target_buf, target_pos, target_pos, true, {
+    empty_line,
+    func_text .. " {",
+    empty_line,
+    end_bracket,
+  })
 
   -- move cursor to the function body
-  api.nvim_win_set_cursor(0, {target_pos + 3, 1})
+  api.nvim_win_set_cursor(0, { target_pos + 3, 1 })
 end
 
 function M.guard_header()
@@ -74,17 +68,11 @@ function M.guard_header()
   end
 
   local guard_text = cpp_util.get_guard_text(base_filename)
-  api.nvim_buf_set_lines(
-    0,
-    0,
-    0,
-    true,
-    {
-      "#ifndef " .. guard_text,
-      "#define " .. guard_text,
-      empty_line
-    }
-  )
+  api.nvim_buf_set_lines(0, 0, 0, true, {
+    "#ifndef " .. guard_text,
+    "#define " .. guard_text,
+    empty_line,
+  })
 
   local line_count = api.nvim_buf_line_count(0)
   api.nvim_buf_set_lines(
@@ -94,7 +82,7 @@ function M.guard_header()
     true,
     {
       empty_line,
-      "#endif // !" .. guard_text
+      "#endif // !" .. guard_text,
     }
   )
 end

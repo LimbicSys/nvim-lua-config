@@ -17,12 +17,12 @@ function CommentaryWithCursor()
   local split_len = fn.strlen(fn.split(vim.g.commentstring, "%s")[0]) + 1
 
   if fn.strlen(fn.getline(".")) > old_size then
-    fn.cursor({line_number, old_col + split_len})
+    fn.cursor({ line_number, old_col + split_len })
   else
-    fn.cursor({line_number, old_col - split_len})
+    fn.cursor({ line_number, old_col - split_len })
   end
 end
 
 vim.api.nvim_set_keymap("n", "<C-_>", "<Plug>CommentaryLine", {})
-vim.api.nvim_set_keymap("i", "<C-_>", "<Esc><Cmd>lua CommentaryWithCursor<CR>a", {noremap = true})
+vim.api.nvim_set_keymap("i", "<C-_>", "<Esc><Cmd>lua CommentaryWithCursor<CR>a", { noremap = true })
 vim.api.nvim_set_keymap("x", "<C-_>", "<Plug>Commentary", {})

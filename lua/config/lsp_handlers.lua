@@ -1,5 +1,5 @@
-local log = require "vim.lsp.log"
-local util = require "vim.lsp.util"
+local log = require("vim.lsp.log")
+local util = require("vim.lsp.util")
 local vim = vim
 local api = vim.api
 
@@ -49,25 +49,16 @@ local function response_to_list(map_result, entity)
     else
       config = config or {}
       if config.loclist then
-        vim.fn.setloclist(
-          0,
-          {},
-          " ",
-          {
-            title = "Language Server",
-            items = map_result(result, ctx.bufnr)
-          }
-        )
+        vim.fn.setloclist(0, {}, " ", {
+          title = "Language Server",
+          items = map_result(result, ctx.bufnr),
+        })
         api.nvim_command("lopen")
       else
-        vim.fn.setqflist(
-          {},
-          " ",
-          {
-            title = "Language Server",
-            items = map_result(result, ctx.bufnr)
-          }
-        )
+        vim.fn.setqflist({}, " ", {
+          title = "Language Server",
+          items = map_result(result, ctx.bufnr),
+        })
         api.nvim_command("botright copen")
       end
     end

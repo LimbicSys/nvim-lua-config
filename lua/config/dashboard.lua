@@ -28,5 +28,5 @@ vim.g.dashboard_custom_shortcut = {
   new_file = "Leader n f",
   change_colorscheme = "Leader t c",
   find_word = "Leader f a",
-  book_marks = "Leader f b"
+  book_marks = "Leader f b",
 }

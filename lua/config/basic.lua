@@ -28,7 +28,7 @@ opt.mouse = "a"
 opt.splitright = true
 opt.splitbelow = true
 opt.cursorline = true
-opt.colorcolumn = {100}
+opt.colorcolumn = { 100 }
 opt.switchbuf = "useopen"
 
 opt.signcolumn = "yes"
@@ -52,7 +52,7 @@ opt.laststatus = 2
 
 vim.cmd("autocmd BufNewFile,BufRead *.json setlocal filetype=jsonc")
 
-local map_opts = {noremap = true, silent = true}
+local map_opts = { noremap = true, silent = true }
 
 -- use Ctrl+h/j/k/l to switch window
 vim.api.nvim_set_keymap("n", "<C-h>", "<C-w>h", map_opts)
@@ -101,8 +101,7 @@ vim.api.nvim_set_keymap("n", "D", '"_D', map_opts)
 vim.api.nvim_set_keymap("x", "d", '"_d', map_opts)
 vim.api.nvim_set_keymap("n", "c", '"_c', map_opts)
 
-vim.cmd(
-  [[
+vim.cmd([[
   augroup SetDiffColor
     autocmd!
     autocmd VimEnter * highlight DiffAdd guifg=None guibg=#4B5632
@@ -110,16 +109,15 @@ vim.cmd(
     autocmd VimEnter * highlight DiffDelete guifg=None guibg=#6F1313
     autocmd VimEnter * highlight DiffText guifg=None guibg=#6F1313
   augroup END
-]]
-)
+]])
 
 -- Highlight on yank
-vim.cmd [[
+vim.cmd([[
   augroup YankHighlight
     autocmd!
     autocmd TextYankPost * silent! lua vim.highlight.on_yank()
   augroup end
-]]
+]])
 
 -- auto indent when type a at the beginning of a line
 function _G.handleNormalA()
@@ -138,7 +136,7 @@ function _G.handleNormalA()
     "sh",
     "java",
     "rust",
-    "json"
+    "json",
   }
   if vim.tbl_contains(white_list, ft) then
     keys = vim.api.nvim_replace_termcodes("a<C-f>", true, true, true)
@@ -146,11 +144,11 @@ function _G.handleNormalA()
   return keys
 end
 
-vim.api.nvim_set_keymap("n", "a", "v:lua.handleNormalA()", {noremap = true, expr = true})
+vim.api.nvim_set_keymap("n", "a", "v:lua.handleNormalA()", { noremap = true, expr = true })
 
-vim.cmd [[
+vim.cmd([[
 augroup OpenRecent
 autocmd!
 autocmd VimEnter * :silent! lua require"open-recent".open_recent()
 augroup END
-]]
+]])

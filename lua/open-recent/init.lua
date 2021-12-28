@@ -19,11 +19,11 @@ end
 
 -- display error messages.
 local function eprintln(msg)
-  vim.api.nvim_echo({{msg, "Error"}}, true, {})
+  vim.api.nvim_echo({ { msg, "Error" } }, true, {})
 end
 
 local function find_project_root(cwd)
-  local root_markers = {".root", ".git"}
+  local root_markers = { ".root", ".git" }
   local previous_path = ""
   local path = strip_slash(cwd)
   while path ~= previous_path do
@@ -71,22 +71,14 @@ function M.open_recent()
     end
   end
 
-  results =
-    vim.tbl_filter(
-    function(file)
-      return vim.fn.matchstrpos(file, cwd)[2] ~= -1
-    end,
-    results
-  )
+  results = vim.tbl_filter(function(file)
+    return vim.fn.matchstrpos(file, cwd)[2] ~= -1
+  end, results)
 
   -- filter .git/*, may be opened by commit message
-  results =
-    vim.tbl_filter(
-    function(file)
-      return vim.fn.matchstrpos(file, "/.git")[2] == -1
-    end,
-    results
-  )
+  results = vim.tbl_filter(function(file)
+    return vim.fn.matchstrpos(file, "/.git")[2] == -1
+  end, results)
 
   if #results > 1 then
     vim.cmd(string.format("edit %s", results[1]))

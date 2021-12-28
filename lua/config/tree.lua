@@ -8,7 +8,7 @@ vim.g.nvim_tree_width_allow_resize = 1 -- 0 by default, will not resize the tree
 vim.g.nvim_tree_show_icons = {
   git = 1,
   folders = 1,
-  files = 1
+  files = 1,
 }
 -- If 0, do not show the icons for one of 'git' 'folder' and 'files'
 -- 1 by default, notice that if 'files' is 1, it will only display
@@ -33,7 +33,7 @@ vim.g.nvim_tree_icons = {
     renamed = "➜",
     untracked = "★",
     deleted = "",
-    ignored = ""
+    ignored = "",
   },
   folder = {
     arrow_open = "",
@@ -43,22 +43,22 @@ vim.g.nvim_tree_icons = {
     empty = "",
     empty_open = "",
     symlink = "",
-    symlink_open = ""
+    symlink_open = "",
   },
   lsp = {
     hint = "",
     info = "",
     warning = "",
-    error = ""
+    error = "",
   },
   filters = {
     dotfiles = false,
-    custom = {".git", "node_modules", ".cache"}
-  }
+    custom = { ".git", "node_modules", ".cache" },
+  },
 }
 
 -- following options are the default
-require "nvim-tree".setup {
+require("nvim-tree").setup({
   -- disables netrw completely
   disable_netrw = true,
   -- hijack netrw window on startup
@@ -76,7 +76,7 @@ require "nvim-tree".setup {
     -- enable the feature
     enable = true,
     -- allow to open the tree if it was previously closed
-    auto_open = true
+    auto_open = true,
   },
   -- hijack the cursor in the tree to put it at the start of the filename
   hijack_cursor = false,
@@ -91,14 +91,14 @@ require "nvim-tree".setup {
     update_cwd = false,
     -- list of buffer names / filetypes that will not update the cwd if the file isn't found under the current root directory
     -- only relevant when `update_focused_file.update_cwd` is true and `update_focused_file.enable` is true
-    ignore_list = {}
+    ignore_list = {},
   },
   -- configuration options for the system open command (`s` in the tree by default)
   system_open = {
     -- the command to run this, leaving nil should work in most cases
     cmd = nil,
     -- the command arguments as a list
-    args = {}
+    args = {},
   },
   view = {
     -- width of the window, can be either a number (columns) or a string in `%`, for left or right side placement
@@ -114,21 +114,21 @@ require "nvim-tree".setup {
       -- if true, it will only use your list to set the mappings
       custom_only = false,
       -- list of mappings to set on the tree manually
-      list = {}
-    }
+      list = {},
+    },
   },
   git = {
-    ignore = false
-  }
-}
+    ignore = false,
+  },
+})
 
 -- Disable default mappings by plugin
 -- Bindings are enable by default, disabled on any non-zero value
 -- let nvim_tree_disable_keybindings=1
 
-vim.api.nvim_set_keymap("n", ";e", "<CMD>NvimTreeToggle<CR>", {noremap = true})
+vim.api.nvim_set_keymap("n", ";e", "<CMD>NvimTreeToggle<CR>", { noremap = true })
 -- nnoremap <leader>r :NvimTreeRefresh<CR>
-vim.api.nvim_set_keymap("n", ";a", "<CMD>NvimTreeFindFile<CR>", {noremap = true})
+vim.api.nvim_set_keymap("n", ";a", "<CMD>NvimTreeFindFile<CR>", { noremap = true })
 -- NvimTreeOpen and NvimTreeClose are also available if you need them
 
 -- a list of groups can be found at `:help nvim_tree_highlight`

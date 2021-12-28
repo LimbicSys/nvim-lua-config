@@ -8,7 +8,7 @@ end
 local InputMethodSwitcher = {
   obtain_im_cmd = "",
   switch_im_cmd = "",
-  default_im_key = ""
+  default_im_key = "",
   -- saved_im_key = ""
 }
 
@@ -30,23 +30,18 @@ function InputMethodSwitcher:switch_to_default_im()
     return
   end
   local insert_im_key = ""
-  local job =
-    Job:new(
-    {
-      command = self.obtain_im_cmd
-    }
-  )
-  job:add_on_exit_callback(
-    function(j, code, singnal)
-      insert_im_key = j:result()[1]
-      if insert_im_key ~= nil or #insert_im_key > 0 then
-        vim.b.saved_im_key = trim(insert_im_key)
-      end
-      if self.default_im_key ~= vim.b.saved_im_key then
-        self:switch_to_im(self.default_im_key)
-      end
+  local job = Job:new({
+    command = self.obtain_im_cmd,
+  })
+  job:add_on_exit_callback(function(j, code, singnal)
+    insert_im_key = j:result()[1]
+    if insert_im_key ~= nil or #insert_im_key > 0 then
+      vim.b.saved_im_key = trim(insert_im_key)
     end
-  )
+    if self.default_im_key ~= vim.b.saved_im_key then
+      self:switch_to_im(self.default_im_key)
+    end
+  end)
   job:start()
 end
 
@@ -62,12 +57,12 @@ function InputMethodSwitcher:switch_to_im(im_key)
     return
   end
   if im_key ~= nil and im_key ~= "" then
-    Job:new(
-      {
+    Job
+      :new({
         command = self.switch_im_cmd,
-        args = {im_key}
-      }
-    ):start()
+        args = { im_key },
+      })
+      :start()
   end
 end
 

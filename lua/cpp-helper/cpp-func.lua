@@ -1,4 +1,4 @@
-local CppFunc = {namespaces = {}, class = "", return_type = nil, return_kind = "", func_name = "", params = ""}
+local CppFunc = { namespaces = {}, class = "", return_type = nil, return_kind = "", func_name = "", params = "" }
 CppFunc.__index = CppFunc
 
 local padding = " "

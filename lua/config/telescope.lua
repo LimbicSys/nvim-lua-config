@@ -1,13 +1,13 @@
-require("telescope").setup {
+require("telescope").setup({
   extensions = {
     fzf = {
       fuzzy = true, -- false will only do exact matching
       override_generic_sorter = true, -- override the generic sorter
       override_file_sorter = true, -- override the file sorter
-      case_mode = "smart_case" -- or "ignore_case" or "respect_case" the default case_mode is "smart_case"
-    }
-  }
-}
+      case_mode = "smart_case", -- or "ignore_case" or "respect_case" the default case_mode is "smart_case"
+    },
+  },
+})
 
 -- To get fzf loaded and working with telescope, you need to call
 -- load_extension, somewhere after setup function:
@@ -33,26 +33,22 @@ local function loadTemplate(opts)
   opts.depth = opts.depth or 1
   opts.cwd = opts.cwd and vim.fn.expand(opts.cwd) or vim.loop.cwd()
   opts.new_filename = opts.new_filename or "newfile"
-  opts.new_finder =
-    opts.new_finder or
-    function(path)
+  opts.new_finder = opts.new_finder
+    or function(path)
       opts.cwd = path
       local data = {}
 
-      scan.scan_dir(
-        path,
-        {
-          hidden = opts.hidden or false,
-          add_dirs = true,
-          depth = opts.depth,
-          on_insert = function(entry, typ)
-            table.insert(data, typ == "directory" and (entry .. os_sep) or entry)
-          end
-        }
-      )
+      scan.scan_dir(path, {
+        hidden = opts.hidden or false,
+        add_dirs = true,
+        depth = opts.depth,
+        on_insert = function(entry, typ)
+          table.insert(data, typ == "directory" and (entry .. os_sep) or entry)
+        end,
+      })
       table.insert(data, 1, ".." .. os_sep)
 
-      return finders.new_table {
+      return finders.new_table({
         results = data,
         entry_maker = (function()
           local gen = make_entry.gen_from_file(opts)
@@ -61,56 +57,49 @@ local function loadTemplate(opts)
             tmp.ordinal = Path:new(entry):make_relative(opts.cwd)
             return tmp
           end
-        end)()
-      }
+        end)(),
+      })
     end
 
-  pickers.new(
-    opts,
-    {
-      prompt_title = "File Browser",
-      finder = opts.new_finder(opts.cwd),
-      previewer = conf.file_previewer(opts),
-      sorter = conf.file_sorter(opts),
-      attach_mappings = function(prompt_bufnr, map)
-        local readToBuffer = function()
-          local selection = action_state.get_selected_entry()
-          actions.close(prompt_bufnr)
-          if vim.fn.buflisted(opts.new_filename) == 1 then
-            return
-          end
-          vim.cmd("tabe " .. opts.new_filename)
-          vim.cmd("0read " .. selection.value)
-          -- print(vim.inspect('exists'))
-          api.nvim_feedkeys(api.nvim_replace_termcodes("<esc>", true, false, true), "n", true)
+  pickers.new(opts, {
+    prompt_title = "File Browser",
+    finder = opts.new_finder(opts.cwd),
+    previewer = conf.file_previewer(opts),
+    sorter = conf.file_sorter(opts),
+    attach_mappings = function(prompt_bufnr, map)
+      local readToBuffer = function()
+        local selection = action_state.get_selected_entry()
+        actions.close(prompt_bufnr)
+        if vim.fn.buflisted(opts.new_filename) == 1 then
+          return
         end
-        map("i", "<cr>", readToBuffer)
-        map("n", "<cr>", readToBuffer)
-        return true
+        vim.cmd("tabe " .. opts.new_filename)
+        vim.cmd("0read " .. selection.value)
+        -- print(vim.inspect('exists'))
+        api.nvim_feedkeys(api.nvim_replace_termcodes("<esc>", true, false, true), "n", true)
       end
-    }
-  ):find()
+      map("i", "<cr>", readToBuffer)
+      map("n", "<cr>", readToBuffer)
+      return true
+    end,
+  }):find()
 end
 
 function Load_clang_format_template()
-  loadTemplate(
-    {
-      cwd = "~/.config/nvim/clang_format_template",
-      new_filename = ".clang-format"
-    }
-  )
+  loadTemplate({
+    cwd = "~/.config/nvim/clang_format_template",
+    new_filename = ".clang-format",
+  })
 end
 
 function Load_vimspector_template()
-  loadTemplate(
-    {
-      cwd = "~/.config/nvim/vimspector_json",
-      new_filename = ".vimspector.json"
-    }
-  )
+  loadTemplate({
+    cwd = "~/.config/nvim/vimspector_json",
+    new_filename = ".vimspector.json",
+  })
 end
 
-local opts = {noremap = true, silent = true}
+local opts = { noremap = true, silent = true }
 -- vim.api.nvim_set_keymap("n", "<leader>fs", "<cmd>lua Load_clang_format_template()<cr>", opts)
 -- vim.api.nvim_set_keymap("n", "<leader>vs", "<cmd>lua Load_vimspector_template()<cr>", opts)
 vim.api.nvim_set_keymap("n", ";f", "<Cmd>lua require('telescope.builtin').grep_string()<CR>", opts)

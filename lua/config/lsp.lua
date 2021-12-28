@@ -1,6 +1,6 @@
-vim.api.nvim_command [[ hi def link LspReferenceText illuminatedWord ]]
-vim.api.nvim_command [[ hi def link LspReferenceWrite illuminatedWord  ]]
-vim.api.nvim_command [[ hi def link LspReferenceRead illuminatedWord  ]]
+vim.api.nvim_command([[ hi def link LspReferenceText illuminatedWord ]])
+vim.api.nvim_command([[ hi def link LspReferenceWrite illuminatedWord  ]])
+vim.api.nvim_command([[ hi def link LspReferenceRead illuminatedWord  ]])
 
 -- local nvim_lsp = require("lspconfig")
 
@@ -18,11 +18,11 @@ local on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   -- buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-  require "illuminate".on_attach(client)
+  require("illuminate").on_attach(client)
   -- require "lsp_signature".on_attach(client)
 
   -- Mappings.
-  local opts = {noremap = true, silent = true}
+  local opts = { noremap = true, silent = true }
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
@@ -65,8 +65,8 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
   properties = {
     "documentation",
     "detail",
-    "additionalTextEdits"
-  }
+    "additionalTextEdits",
+  },
 }
 
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
@@ -75,66 +75,56 @@ local common_config = {
   on_attach = on_attach,
   capabilities = capabilities,
   flags = {
-    debounce_text_changes = 150
-  }
+    debounce_text_changes = 150,
+  },
 }
 
 local lsp_installer = require("nvim-lsp-installer")
 -- Register a handler that will be called for all installed servers.
 -- Alternatively, you may also register handlers on specific server instances instead (see example below).
-lsp_installer.on_server_ready(
-  function(server)
-    local config = {}
+lsp_installer.on_server_ready(function(server)
+  local config = {}
 
-    if server.name == "sumneko_lua" then
-      config =
-        require("lua-dev").setup(
-        {
-          lspconfig = common_config
-        }
-      )
-    elseif server.name == "efm" then
-      config = vim.tbl_deep_extend("force", config, common_config)
-      config["init_options"] = {documentFormatting = true}
-      config["filetypes"] = {"lua"}
-      config["settings"] = {
-        rootMarkers = {".git/", ".root"},
-        languages = {
-          lua = {
-            {
-              formatCommand = "luafmt --indent-count=2 --stdin",
-              formatStdin = true
-            }
-          }
-        }
-      }
-    else
-      vim.tbl_deep_extend("force", config, common_config)
-    end
-
-    server:setup(config)
+  if server.name == "sumneko_lua" then
+    config = require("lua-dev").setup({
+      lspconfig = common_config,
+    })
+  elseif server.name == "efm" then
+    config = vim.tbl_deep_extend("force", config, common_config)
+    config["init_options"] = { documentFormatting = true }
+    config["filetypes"] = { "lua" }
+    config["settings"] = {
+      rootMarkers = { ".git/", ".root" },
+      languages = {
+        lua = {
+          {
+            formatCommand = "luafmt --indent-count=2 --stdin",
+            formatStdin = true,
+          },
+        },
+      },
+    }
+  else
+    vim.tbl_deep_extend("force", config, common_config)
   end
-)
+
+  server:setup(config)
+end)
 
 -- local installed language server
 -- clangd
 local clangd_config = {}
 clangd_config = vim.tbl_deep_extend("force", clangd_config, common_config)
-clangd_config["cmd"] = {"clangd", "--background-index", "--fallback-style=Microsoft", "--header-insertion=never"}
-local default_capabilities =
-  vim.tbl_deep_extend(
-  "force",
-  capabilities,
-  {
-    textDocument = {
-      completion = {
-        editsNearCursor = true
-      },
-      switchSourceHeader = true
+clangd_config["cmd"] = { "clangd", "--background-index", "--fallback-style=Microsoft", "--header-insertion=never" }
+local default_capabilities = vim.tbl_deep_extend("force", capabilities, {
+  textDocument = {
+    completion = {
+      editsNearCursor = true,
     },
-    offsetEncoding = {"utf-8", "utf-16"}
-  }
-)
+    switchSourceHeader = true,
+  },
+  offsetEncoding = { "utf-8", "utf-16" },
+})
 clangd_config["capabilities"] = default_capabilities
-require "lspconfig".clangd.setup(clangd_config)
-vim.api.nvim_set_keymap("n", "<M-o>", "<Cmd>ClangdSwitchSourceHeader<CR>", {silent = true})
+require("lspconfig").clangd.setup(clangd_config)
+vim.api.nvim_set_keymap("n", "<M-o>", "<Cmd>ClangdSwitchSourceHeader<CR>", { silent = true })

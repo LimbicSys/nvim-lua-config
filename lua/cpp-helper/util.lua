@@ -55,7 +55,7 @@ end
 
 local function cpp_switch_source_header(bufnr)
   bufnr = lsp_util.validate_bufnr(bufnr)
-  local params = {uri = vim.uri_from_bufnr(bufnr)}
+  local params = { uri = vim.uri_from_bufnr(bufnr) }
   local results = vim.lsp.buf_request_sync(bufnr, "textDocument/switchSourceHeader", params)
   for _, res in ipairs(results) do
     if res["result"] ~= nil then
@@ -163,7 +163,7 @@ end
 
 function M.find_namespace_end(namespace_list)
   local cursor = api.nvim_win_get_cursor(0)
-  local cursor_range = {cursor[1] - 1, cursor[2]}
+  local cursor_range = { cursor[1] - 1, cursor[2] }
   local root = ts_utils.get_root_for_position(unpack(cursor_range))
 
   if not root then

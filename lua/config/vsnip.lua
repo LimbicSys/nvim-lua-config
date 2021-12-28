@@ -1,5 +1,5 @@
 -- Expand
-local opts = {expr = true}
+local opts = { expr = true }
 vim.api.nvim_set_keymap("i", "<C-l>", "vsnip#expandable()  ? '<Plug>(vsnip-expand)' : ''", opts)
 vim.api.nvim_set_keymap("s", "<C-l>", "vsnip#expandable()  ? '<Plug>(vsnip-expand)' : ''", opts)
 

@@ -1,71 +1,65 @@
-local util = require "vim.lsp.util"
+local util = require("vim.lsp.util")
 
-require("formatter").setup(
-  {
-    logging = false,
-    filetype = {
-      -- ["*"] = {
-      --   function()
-      --     return {cmd = {"sed -i 's/[ \t]*$//'"}} -- remove trailing whitespace
-      --   end
-      -- },
-      -- javascript = {
-      --   -- prettier
-      --   function()
-      --     return {
-      --       exe = "prettier",
-      --       args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0), "--single-quote"},
-      --       stdin = true
-      --     }
-      --   end
-      -- },
-      -- rust = {
-      --   -- Rustfmt
-      --   function()
-      --     return {
-      --       exe = "rustfmt",
-      --       args = {"--emit=stdout"},
-      --       stdin = true
-      --     }
-      --   end
-      -- },
-      lua = {
-        -- luafmt
-        function()
-          return {
-            exe = "luafmt",
-            args = {"--indent-count", 2, "--stdin"},
-            stdin = true
-          }
-        end
-      },
-      cpp = {
-        -- clang-format
-        function()
-          return {
-            exe = "clang-format",
-            args = {"-style=file", "--fallback-style=Microsoft"},
-            stdin = true,
-            cwd = vim.fn.expand("%:p:h") -- Run clang-format in cwd of the file.
-          }
-        end
-      }
-    }
-  }
-)
+require("formatter").setup({
+  logging = false,
+  filetype = {
+    -- ["*"] = {
+    --   function()
+    --     return {cmd = {"sed -i 's/[ \t]*$//'"}} -- remove trailing whitespace
+    --   end
+    -- },
+    -- javascript = {
+    --   -- prettier
+    --   function()
+    --     return {
+    --       exe = "prettier",
+    --       args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0), "--single-quote"},
+    --       stdin = true
+    --     }
+    --   end
+    -- },
+    -- rust = {
+    --   -- Rustfmt
+    --   function()
+    --     return {
+    --       exe = "rustfmt",
+    --       args = {"--emit=stdout"},
+    --       stdin = true
+    --     }
+    --   end
+    -- },
+    lua = {
+      -- luafmt
+      function()
+        return {
+          exe = "luafmt",
+          args = { "--indent-count", 2, "--stdin" },
+          stdin = true,
+        }
+      end,
+    },
+    cpp = {
+      -- clang-format
+      function()
+        return {
+          exe = "clang-format",
+          args = { "-style=file", "--fallback-style=Microsoft" },
+          stdin = true,
+          cwd = vim.fn.expand("%:p:h"), -- Run clang-format in cwd of the file.
+        }
+      end,
+    },
+  },
+})
 
 -- format by efm
 local function select_client(method)
-  local efm_blacklist = {"cpp"}
+  local efm_blacklist = { "cpp" }
 
   local clients = vim.tbl_values(vim.lsp.buf_get_clients())
-  clients =
-    vim.tbl_filter(
-    function(client)
-      return client.supports_method(method)
-    end,
-    clients
-  )
+  clients = vim.tbl_filter(function(client)
+    return client.supports_method(method)
+  end, clients)
 
   local ft = vim.bo.filetype
 

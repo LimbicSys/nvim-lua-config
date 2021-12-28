@@ -1,4 +1,4 @@
-require "nvim-treesitter.configs".setup {
+require("nvim-treesitter.configs").setup({
   playground = {
     enable = true,
     disable = {},
@@ -14,7 +14,7 @@ require "nvim-treesitter.configs".setup {
       unfocus_language = "F",
       update = "R",
       goto_node = "<cr>",
-      show_help = "?"
-    }
-  }
-}
+      show_help = "?",
+    },
+  },
+})

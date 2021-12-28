@@ -1,5 +1,5 @@
-vim.opt.tags = {"./.tags", ".tags"}
-vim.g.gutentags_project_root = {".root", ".svn", ".git", ".hg", ".project"}
+vim.opt.tags = { "./.tags", ".tags" }
+vim.g.gutentags_project_root = { ".root", ".svn", ".git", ".hg", ".project" }
 
 vim.g.gutentags_ctags_tagfile = ".tags"
 
@@ -11,7 +11,7 @@ vim.g.gutentags_ctags_extra_args = {
   "--extra=+q",
   "--c++-kinds=+px",
   "--c-kinds=+px",
-  "--exclude=.ccls-cache/*"
+  "--exclude=.ccls-cache/*",
 }
 
 if vim.fn.isdirectory(vim_tags) ~= 1 then
