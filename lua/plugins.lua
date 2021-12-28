@@ -328,7 +328,8 @@ return require("packer").startup(
           "folke/lua-dev.nvim",
           "RRethy/vim-illuminate",
           "ray-x/lsp_signature.nvim",
-          "hrsh7th/cmp-nvim-lsp"
+          "hrsh7th/cmp-nvim-lsp",
+          "tami5/lspsaga.nvim"
         },
         config = function()
           require("config.lsp")
@@ -338,6 +339,7 @@ return require("packer").startup(
 
       use {
         "tami5/lspsaga.nvim",
+        branch = "nvim6.0",
         config = function()
           require("config.lspsaga")
         end

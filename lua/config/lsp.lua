@@ -44,6 +44,18 @@ local on_attach = function(client, bufnr)
   -- buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
   buf_set_keymap("n", "<space>ci", "<cmd>lua vim.lsp.buf.incoming_calls()<CR>", opts)
   buf_set_keymap("n", "<space>co", "<cmd>lua vim.lsp.buf.outgoing_calls()<CR>", opts)
+
+  --- lspsaga functions
+  buf_set_keymap("n", "<Leader>a", "<cmd>Lspsaga code_action<cr>", opts)
+  buf_set_keymap("x", "<Leader>a", ":<c-u>Lspsaga range_code_action<cr>", opts)
+  -- buf_set_keym0, "n", "K",  "<cmd>Lspsaga hover_doc<cr>", {silent = true, noremap = true})
+  buf_set_keymap("n", "<Leader>dd", "<cmd>Lspsaga show_line_diagnostics<cr>", opts)
+  buf_set_keymap("n", "<Leader>cd", "<cmd>Lspsaga show_cursor_diagnostics<cr>", opts)
+  buf_set_keymap("n", "]g", "<cmd>Lspsaga diagnostic_jump_next<cr>", opts)
+  buf_set_keymap("n", "[g", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opts)
+  buf_set_keymap("n", "<C-f>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<cr>", opts)
+  buf_set_keymap("n", "<C-b>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<cr>", opts)
+  buf_set_keymap("n", "<Leader>dp", "<cmd>Lspsaga preview_definition<cr>", opts)
 end
 
 -- config that activates keymaps and enables snippet support
