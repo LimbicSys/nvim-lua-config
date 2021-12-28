@@ -32,8 +32,8 @@ require("formatter").setup({
       -- luafmt
       function()
         return {
-          exe = "luafmt",
-          args = { "--indent-count", 2, "--stdin" },
+          exe = "stylua",
+          args = { "-" },
           stdin = true,
         }
       end,
