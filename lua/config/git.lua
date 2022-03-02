@@ -33,9 +33,6 @@ require("gitsigns").setup({
     ["o ih"] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>',
     ["x ih"] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>',
   },
-  watch_index = {
-    interval = 1000,
-  },
   current_line_blame = false,
   current_line_blame_opts = {
     virt_text = true,

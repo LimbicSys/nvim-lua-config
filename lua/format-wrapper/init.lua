@@ -83,6 +83,7 @@ local function select_client(method)
   return nil
 end
 
+-- FIXME: bug
 local function formatting_sync(options, timeout_ms)
   local client = select_client("textDocument/formatting")
   if client == nil then
@@ -90,7 +91,8 @@ local function formatting_sync(options, timeout_ms)
   end
 
   local params = util.make_formatting_params(options)
-  local result, err = client.request_sync("textDocument/formatting", params, timeout_ms, vim.api.nvim_get_current_buf())
+  local bufnr = vim.api.nvim_get_current_buf()
+  local result, err = client.request_sync("textDocument/formatting", params, timeout_ms, bufnr)
   if result and result.result then
     util.apply_text_edits(result.result)
   elseif err then
@@ -113,7 +115,8 @@ function M.formatting()
   -- lsp_format_list["lua"] = 1
 
   if lsp_format_list[ft] ~= nil then
-    formatting_sync()
+    -- formatting_sync()
+    vim.lsp.buf.formatting_sync()
   else
     require("formatter.format").format("", "", 1, vim.fn.line("$"), true)
   end
