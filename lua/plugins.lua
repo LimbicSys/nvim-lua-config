@@ -355,6 +355,13 @@ return require("packer").startup({
     --   end
     -- }
 
+    use({
+      "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+      config = function ()
+        require("config.lsp_lines")
+      end
+    })
+
     use("hrsh7th/cmp-buffer")
     use("hrsh7th/cmp-nvim-lsp")
     use("hrsh7th/cmp-path")
