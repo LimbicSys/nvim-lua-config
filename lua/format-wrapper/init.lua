@@ -118,7 +118,7 @@ function M.formatting()
     -- formatting_sync()
     vim.lsp.buf.formatting_sync()
   else
-    require("formatter.format").format("", "", 1, vim.fn.line("$"), true)
+    require("formatter.format").format("", "", 1, vim.fn.line("$"), { write = true })
   end
 end
 
