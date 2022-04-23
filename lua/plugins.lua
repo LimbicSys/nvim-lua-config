@@ -423,6 +423,13 @@ return require("packer").startup({
       end,
     })
 
+    use({
+      "gbprod/substitute.nvim",
+      config = function()
+        require("config.substitute")
+      end,
+    })
+
     -- project
     -- NOTE: last load
     use("tpope/vim-projectionist")
