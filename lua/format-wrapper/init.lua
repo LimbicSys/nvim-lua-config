@@ -3,37 +3,12 @@ local util = require("vim.lsp.util")
 require("formatter").setup({
   logging = false,
   filetype = {
-    -- ["*"] = {
-    --   function()
-    --     return {cmd = {"sed -i 's/[ \t]*$//'"}} -- remove trailing whitespace
-    --   end
-    -- },
-    -- javascript = {
-    --   -- prettier
-    --   function()
-    --     return {
-    --       exe = "prettier",
-    --       args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0), "--single-quote"},
-    --       stdin = true
-    --     }
-    --   end
-    -- },
-    -- rust = {
-    --   -- Rustfmt
-    --   function()
-    --     return {
-    --       exe = "rustfmt",
-    --       args = {"--emit=stdout"},
-    --       stdin = true
-    --     }
-    --   end
-    -- },
     lua = {
       -- luafmt
       function()
         return {
           exe = "stylua",
-          args = { "-" },
+          args = { "--indent-type space", "--indent-width 2" },
           stdin = true,
         }
       end,
