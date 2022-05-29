@@ -51,10 +51,14 @@ return require("packer").startup({
     })
     use("suy/vim-context-commentstring")
 
-    -- color theme
+    -- color theme, NOTE: load before statusline
     -- use 'haishanh/night-owl.vim'
     use("Limbicsys/zephyr-nvim")
     -- use 'joshdick/onedark.vim'
+    use({
+      "catppuccin/nvim",
+      as = "catppuccin",
+    })
 
     -- markdown
     use({

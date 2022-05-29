@@ -1,14 +1,14 @@
-local util = require("vim.lsp.util")
+-- local util = require("vim.lsp.util")
 
 require("formatter").setup({
   logging = false,
   filetype = {
     lua = {
-      -- luafmt
+      -- stylua
       function()
         return {
           exe = "stylua",
-          args = { "--indent-type space", "--indent-width 2" },
+          args = { "--indent-type", "Spaces", "--indent-width", "2", "-" },
           stdin = true,
         }
       end,
@@ -18,7 +18,7 @@ require("formatter").setup({
       function()
         return {
           exe = "clang-format",
-          args = { "-style=file", "--fallback-style=Microsoft" },
+          args = { "-style=file", "--fallback-style=Microsoft", "--" },
           stdin = true,
           cwd = vim.fn.expand("%:p:h"), -- Run clang-format in cwd of the file.
         }
@@ -56,23 +56,6 @@ local function select_client(method)
     return clients[1]
   end
   return nil
-end
-
--- FIXME: bug
-local function formatting_sync(options, timeout_ms)
-  local client = select_client("textDocument/formatting")
-  if client == nil then
-    return
-  end
-
-  local params = util.make_formatting_params(options)
-  local bufnr = vim.api.nvim_get_current_buf()
-  local result, err = client.request_sync("textDocument/formatting", params, timeout_ms, bufnr)
-  if result and result.result then
-    util.apply_text_edits(result.result)
-  elseif err then
-    vim.notify("vim.lsp.buf.formatting_sync: " .. err, vim.log.levels.WARN)
-  end
 end
 
 local M = {}

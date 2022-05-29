@@ -1,62 +1,3 @@
--- vim.g.nvim_tree_side = 'right' | 'left' "left by default
-vim.g.nvim_tree_width = 40 -- 30 by default
--- vim.g.nvim_tree_quit_on_open = 0 -- 0 by default, closes the tree when you open a file
-vim.g.nvim_tree_git_hl = 1 -- 0 by default, will enable file highlight for git attributes (can be used without the icons).
-vim.g.nvim_tree_root_folder_modifier = ":~" -- This is the default. See :help filename-modifiers for more options
-vim.g.nvim_tree_width_allow_resize = 1 -- 0 by default, will not resize the tree when opening a file
-vim.g.nvim_tree_show_icons = {
-  git = 1,
-  folders = 1,
-  files = 1,
-}
--- If 0, do not show the icons for one of 'git' 'folder' and 'files'
--- 1 by default, notice that if 'files' is 1, it will only display
--- if nvim-web-devicons is installed and on your runtimepath
-
-vim.g.nvim_tree_special_files = {} -- List of filenames that gets highlighted with NvimTreeSpecialFile
-vim.g.nvim_tree_special_files["README.md"] = 1
-vim.g.nvim_tree_special_files["readme.md"] = 1
-vim.g.nvim_tree_special_files["readme"] = 1
-vim.g.nvim_tree_special_files["Makefile"] = 1
-vim.g.nvim_tree_special_files["MAKEFILE"] = 1
-
--- default will show icon by default if no icon is provided
--- default shows no icon by default
-vim.g.nvim_tree_icons = {
-  default = "",
-  symlink = "",
-  git = {
-    unstaged = "✗",
-    staged = "✓",
-    unmerged = "",
-    renamed = "➜",
-    untracked = "★",
-    deleted = "",
-    ignored = "",
-  },
-  folder = {
-    arrow_open = "",
-    arrow_closed = "",
-    default = "",
-    open = "",
-    empty = "",
-    empty_open = "",
-    symlink = "",
-    symlink_open = "",
-  },
-  lsp = {
-    hint = "",
-    info = "",
-    warning = "",
-    error = "",
-  },
-  filters = {
-    dotfiles = false,
-    custom = { ".git", "node_modules", ".cache" },
-  },
-}
-
--- following options are the default
 require("nvim-tree").setup({
   -- disables netrw completely
   disable_netrw = true,
@@ -115,6 +56,7 @@ require("nvim-tree").setup({
     },
   },
   renderer = {
+    highlight_git = true,
     indent_markers = {
       enable = true,
       icons = {

@@ -1,6 +1,4 @@
-require("zephyr")
-vim.api.nvim_command("colorscheme zephyr")
-
+require("config.colorscheme")
 if require("galaxyline.condition").check_git_workspace() then
   vim.cmd([[
     augroup GetGitBranch
