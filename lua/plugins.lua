@@ -432,6 +432,13 @@ return require("packer").startup({
       end,
     })
 
+    use({
+      "mfussenegger/nvim-lint",
+      config = function()
+        require("config.lint")
+      end,
+    })
+
     -- project
     -- NOTE: last load
     use("tpope/vim-projectionist")

@@ -1,4 +1,4 @@
-vim.cmd([[ augroup formatOnSave
+vim.cmd([[ augroup FormatOnSave
     autocmd!
     autocmd BufWritePost * silent! lua require"format-wrapper".format_on_save()
   augroup end ]])
