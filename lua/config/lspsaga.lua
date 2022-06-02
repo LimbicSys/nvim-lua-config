@@ -1,6 +1,7 @@
 require("lspsaga").init_lsp_saga({
   code_action_prompt = {
-    sign = false,
+    sign = true,
+    virtual_text = false,
   },
   finder_action_keys = {
     open = "o",

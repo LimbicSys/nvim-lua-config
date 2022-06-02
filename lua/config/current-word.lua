@@ -20,3 +20,8 @@ vim.cmd([[
       autocmd VimEnter * hi illuminatedWord cterm=underline guifg=#282a36 guibg=#d98e48
   augroup END
 ]])
+
+-- NOTE: should execute after colorscheme
+-- vim.cmd([[ hi def link LspReferenceText illuminatedWord ]])
+-- vim.cmd([[ hi def link LspReferenceWrite illuminatedWord  ]])
+-- vim.cmd([[ hi def link LspReferenceRead illuminatedWord  ]])
