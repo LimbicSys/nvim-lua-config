@@ -106,4 +106,4 @@ vim.api.nvim_set_keymap("n", ";f", "<Cmd>lua require('telescope.builtin').grep_s
 vim.api.nvim_set_keymap("n", "<leader>h", "<Cmd>lua require('telescope.builtin').oldfiles({cwd_only=true})<CR>", opts)
 
 vim.cmd("command! LoadClangFormatTemplate lua Load_clang_format_template()")
-vim.cmd("command! LoadClangFormatTemplate lua Load_vimspector_template()")
+vim.cmd("command! LoadVimspectorTemplate lua Load_vimspector_template()")
