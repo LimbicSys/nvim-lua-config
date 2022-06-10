@@ -69,7 +69,6 @@ vim.api.nvim_set_keymap("n", "[t", "<CMD>tabpre<CR>", map_opts)
 vim.api.nvim_set_keymap("n", "]t", "<CMD>tabnext<CR>", map_opts)
 
 -- save
-vim.api.nvim_set_keymap("n", "<C-s>", "<CMD>w<CR>", map_opts)
 vim.api.nvim_set_keymap("n", "<space>fs", "<CMD>w<CR>", map_opts)
 
 -- close window
