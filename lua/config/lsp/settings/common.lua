@@ -30,10 +30,11 @@ local on_attach = function(client, bufnr)
   -- buf_set_keymap("n", "<space>f", vim.lsp.buf.formatting, opts)
   vim.keymap.set("n", "<space>ci", vim.lsp.buf.incoming_calls, opts)
   vim.keymap.set("n", "<space>co", vim.lsp.buf.outgoing_calls, opts)
+  vim.keymap.set("n", "<Leader>a", vim.lsp.buf.code_action, opts)
+  vim.keymap.set("x", "<Leader>a", vim.lsp.buf.range_code_action, opts)
 
   --- lspsaga functions
-  vim.keymap.set("n", "<Leader>a", "<cmd>Lspsaga code_action<cr>", opts)
-  vim.keymap.set("x", "<Leader>a", ":<c-u>Lspsaga range_code_action<cr>", opts)
+  -- vim.keymap.set("n", "<Leader>a", "<cmd>Lspsaga code_action<cr>", opts)
   -- buf_set_keym0, "n", "K",  "<cmd>Lspsaga hover_doc<cr>", {silent = true, noremap = true})
   vim.keymap.set("n", "<C-f>", function()
     require("lspsaga.action").smart_scroll_with_saga(-1)
