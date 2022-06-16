@@ -47,15 +47,6 @@ end
 
 -- config that activates keymaps and enables snippet support
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-capabilities.textDocument.completion.completionItem.resolveSupport = {
-  properties = {
-    "documentation",
-    "detail",
-    "additionalTextEdits",
-  },
-}
-
 local status_ok, cmp_lsp = pcall(require, "cmp_nvim_lsp")
 if status_ok then
   capabilities = cmp_lsp.update_capabilities(capabilities)

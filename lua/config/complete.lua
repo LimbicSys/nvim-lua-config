@@ -9,7 +9,6 @@ cmp.setup({
     end,
   },
   completion = {
-    completeopt = "menuone,noselect",
     keyword_length = 2,
   },
   -- You can set mapping if you want.
@@ -20,17 +19,16 @@ cmp.setup({
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
     ["<C-Space>"] = cmp.mapping.complete(),
     ["<C-e>"] = cmp.mapping.close(),
-    ["<C-y>"] = cmp.mapping.confirm(),
     ["<CR>"] = cmp.mapping.confirm({ select = true }),
   },
   -- You should specify your *installed* sources.
-  sources = {
+  sources = cmp.config.sources({
     { name = "nvim_lsp" },
     { name = "vsnip" },
     -- {name = "luasnip"},
     -- {name = "buffer"},
     { name = "path" },
-  },
+  }),
 })
 
 -- you need setup cmp first put this after cmp.setup()
@@ -44,3 +42,19 @@ vim.cmd([[highlight! link CmpItemAbbrMatchFuzzy Pmenu]])
 vim.cmd([[highlight! link CmpItemMenu Pmenu]])
 
 vim.cmd([[highlight! CmpItemAbbrDeprecated gui=strikethrough]])
+
+cmp.setup.cmdline("/", {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = cmp.config.sources({
+    { name = "nvim_lsp_document_symbol" },
+    { name = "buffer" },
+  }),
+})
+
+cmp.setup.cmdline(":", {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = {
+    { { name = "cmdline" }, { name = "cmdline_history" } },
+    { name = "path" },
+  },
+})
