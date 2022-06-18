@@ -1,6 +1,10 @@
+local cmp = require("cmp")
+local clangd_source = require("config.complete_sources.clangd-constructor")
+
 vim.opt.completeopt = { "menuone", "noinsert", "noselect" }
 
-local cmp = require("cmp")
+cmp.register_source("clangd_constructor", clangd_source.new())
+
 cmp.setup({
   snippet = {
     expand = function(args)
@@ -9,7 +13,7 @@ cmp.setup({
     end,
   },
   completion = {
-    keyword_length = 2,
+    keyword_length = 1,
   },
   -- You can set mapping if you want.
   mapping = {
@@ -23,6 +27,7 @@ cmp.setup({
   },
   -- You should specify your *installed* sources.
   sources = cmp.config.sources({
+    { name = "clangd_constructor" },
     { name = "nvim_lsp" },
     { name = "vsnip" },
     -- {name = "luasnip"},
