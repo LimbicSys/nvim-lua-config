@@ -55,9 +55,9 @@ source.is_available = function(self)
   return client ~= nil and client.name == "clangd"
 end
 
--- source.get_keyword_pattern = function()
---   return [[::\zs\%(-\?\d\+\%(\.\d\+\)\?\|\h\w*\%(-\w*\)*\)]]
--- end
+source.get_keyword_pattern = function()
+  return [[::\zs\%(-\?\d\+\%(\.\d\+\)\?\|\h\w*\%(-\w*\)*\)]]
+end
 
 source.get_debug_name = function()
   return "Clangd.Constructor"
@@ -104,8 +104,8 @@ source.complete = function(self, _, callback)
                 table.insert(items, {
                   label = label,
                   insertText = label,
-                  filterText = " ",
-                  sortText = " ",
+                  filterText = label,
+                  sortText = label,
                   kind = cmp.lsp.CompletionItemKind.Constructor,
                   data = node,
                 })
