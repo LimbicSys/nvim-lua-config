@@ -17,7 +17,7 @@ end
 
 -- TODO: consider existing using namespace statement
 -- 1. get the using namespace statements
--- 2. if exsits, ship
+-- 2. if exsits, skip
 function CppFunc:get_func_def_text(namespace_start_idx)
   if #self.return_type == 0 or #self.func_name == 0 or #self.params == 0 then
     return ""

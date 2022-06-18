@@ -126,7 +126,7 @@ function M.get_target_buf()
 end
 
 function M.get_guard_text(base_filename)
-  return "__" .. string.upper(base_filename) .. "_H__"
+  return string.upper(base_filename) .. "_H"
 end
 
 local function get_namespace_end(root_namespace_node, namespace_list, idx)
