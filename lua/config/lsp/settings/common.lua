@@ -2,8 +2,8 @@ local M = {}
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
-  local status_ok, illuminate = pcall(require, "illuminate")
-  if status_ok then
+  local ill_ok, illuminate = pcall(require, "illuminate")
+  if ill_ok then
     illuminate.on_attach(client)
   end
 

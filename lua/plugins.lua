@@ -69,12 +69,11 @@ return require("packer").startup({
 
     -- status line
     use({
-      "NTBBloodbath/galaxyline.nvim",
-      requires = "liuchengxu/vista.vim",
-      config = function()
-        require("config.statusline")
-      end,
+      "rebelot/heirline.nvim",
     })
+    -- use({
+    --   "NTBBloodbath/galaxyline.nvim",
+    -- })
     use({
       "akinsho/bufferline.nvim",
       config = function()
@@ -325,6 +324,10 @@ return require("packer").startup({
     })
 
     use({
+      "SmiteshP/nvim-navic",
+    })
+
+    use({
       "neovim/nvim-lspconfig",
       requires = {
         "williamboman/nvim-lsp-installer",
@@ -333,6 +336,7 @@ return require("packer").startup({
         "ray-x/lsp_signature.nvim",
         "hrsh7th/cmp-nvim-lsp",
         "tami5/lspsaga.nvim",
+        "SmiteshP/nvim-navic",
       },
       config = function()
         require("config.lsp")
@@ -350,12 +354,6 @@ return require("packer").startup({
     -- use 'nvim-lua/lsp-status.nvim'
     -- use 'RishabhRD/popfix'
     -- use 'RishabhRD/nvim-lsputils'
-    -- use {
-    --   "hrsh7th/nvim-compe",
-    --   config = function()
-    --     require("config.complete")
-    --   end
-    -- }
 
     use("hrsh7th/cmp-buffer")
     use("hrsh7th/cmp-nvim-lsp")

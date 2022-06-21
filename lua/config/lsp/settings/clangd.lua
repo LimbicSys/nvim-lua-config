@@ -17,6 +17,11 @@ clangd_config["capabilities"] = default_capabilities
 clangd_config["on_attach"] = function(client, bufnr)
   common_config.on_attach(client, bufnr)
   vim.api.nvim_set_keymap("n", "<M-o>", "<Cmd>ClangdSwitchSourceHeader<CR>", { silent = true })
+
+  local navic_ok, navic = pcall(require, "nvim-navic")
+  if navic_ok then
+    navic.on_attach(client, bufnr)
+  end
 end
 
 M.config = clangd_config
