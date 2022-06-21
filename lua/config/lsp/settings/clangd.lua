@@ -20,7 +20,7 @@ clangd_config["on_attach"] = function(client, bufnr)
 
   local navic_ok, navic = pcall(require, "nvim-navic")
   if navic_ok then
-    navic.on_attach(client, bufnr)
+    navic.attach(client, bufnr)
   end
 end
 

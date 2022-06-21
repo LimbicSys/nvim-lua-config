@@ -344,6 +344,13 @@ return require("packer").startup({
     })
 
     use({
+      "j-hui/fidget.nvim",
+      config = function()
+        require("fidget").setup()
+      end,
+    })
+
+    use({
       "tami5/lspsaga.nvim",
       config = function()
         require("config.lspsaga")
