@@ -63,9 +63,9 @@ source.get_debug_name = function()
   return "Clangd.Constructor"
 end
 
-source.get_trigger_characters = function()
-  return { ":" }
-end
+-- source.get_trigger_characters = function()
+--   return { ":" }
+-- end
 
 source.complete = function(self, _, callback)
   local client = self:_get_client()

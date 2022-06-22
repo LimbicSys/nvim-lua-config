@@ -34,6 +34,17 @@ cmp.setup({
     -- {name = "buffer"},
     { name = "path" },
   }),
+  formatting = {
+    -- avoid a bug
+    format = function(entry, vim_item)
+      local word = vim_item.word
+      if word.sub(word, -1) == ":" then
+        vim_item.word = string.sub(word, 1, string.len(word) - 1)
+        vim_item.abbr = string.sub(word, 1, string.len(word) - 1)
+      end
+      return vim_item
+    end,
+  },
 })
 
 -- you need setup cmp first put this after cmp.setup()

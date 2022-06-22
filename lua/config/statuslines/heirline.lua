@@ -36,6 +36,11 @@ local colors = {
 
 require("heirline").load_colors(colors)
 
+local Bar = {
+  provider = "▊ ",
+  hl = { fg = colors.blue, bg = colors.bg },
+}
+
 local ViMode = {
   -- get vim current mode, this information will be required by the provider
   -- and the highlight functions, so we compute it only once per component
@@ -298,6 +303,8 @@ local Space = {
 }
 
 local DefaultStatusline = {
+  Bar,
+  Space,
   ViMode,
   Space,
   FileName,
@@ -317,6 +324,7 @@ local DefaultStatusline = {
   FileFormat,
   Space,
   Git,
+  Space,
 }
 
 local InactiveStatusline = {
@@ -324,6 +332,8 @@ local InactiveStatusline = {
     return not conditions.is_active()
   end,
 
+  Bar,
+  Space,
   FileType,
   Space,
   FileName,
@@ -351,6 +361,8 @@ local SpecialStatusline = {
     })
   end,
 
+  Bar,
+  Space,
   FileType,
   Space,
   HelpFileName,
@@ -362,6 +374,8 @@ local TerminalStatusline = {
     return conditions.buffer_matches({ buftype = { "terminal" } })
   end,
 
+  Bar,
+  Space,
   -- Quickly add a condition to the ViMode to only show it when buffer is active!
   { condition = conditions.is_active, ViMode, Space },
   FileType,
