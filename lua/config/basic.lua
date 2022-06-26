@@ -1,3 +1,4 @@
+local augroup = require("easy-augroup")
 local opt = vim.opt
 
 opt.hlsearch = true
@@ -100,23 +101,25 @@ vim.api.nvim_set_keymap("n", "D", '"_D', map_opts)
 vim.api.nvim_set_keymap("x", "d", '"_d', map_opts)
 vim.api.nvim_set_keymap("n", "c", '"_c', map_opts)
 
-vim.cmd([[
-  augroup SetDiffColor
-    autocmd!
-    autocmd VimEnter * highlight DiffAdd guifg=None guibg=#4B5632
-    autocmd VimEnter * highlight DiffChange guifg=None guibg=#4B1818
-    autocmd VimEnter * highlight DiffDelete guifg=None guibg=#6F1313
-    autocmd VimEnter * highlight DiffText guifg=None guibg=#6F1313
-  augroup END
-]])
+augroup.create_hl_group("SetDiffColor", {
+  { name = "DiffAdd", value = { fg = "None", bg = "#4b5632" } },
+  { name = "DiffChange", value = { fg = "None", bg = "#4b1818" } },
+  { name = "DiffDelete", value = { fg = "None", bg = "#6f1313" } },
+  { name = "DiffText", value = { fg = "None", bg = "#6f1313" } },
+})
 
 -- Highlight on yank
-vim.cmd([[
-  augroup YankHighlight
-    autocmd!
-    autocmd TextYankPost * silent! lua vim.highlight.on_yank()
-  augroup end
-]])
+augroup.create_cmd_group("HighlightYank", {
+  {
+    event = "TextYankPost",
+    opts = {
+      pattern = "*",
+      callback = function()
+        vim.highlight.on_yank()
+      end,
+    },
+  },
+})
 
 -- auto indent when type a at the beginning of a line
 function _G.handleNormalA()
@@ -145,9 +148,8 @@ end
 
 vim.api.nvim_set_keymap("n", "a", "v:lua.handleNormalA()", { noremap = true, expr = true })
 
-vim.cmd([[
-augroup OpenRecent
-autocmd!
-autocmd VimEnter * :silent! lua require"open-recent".open_recent()
-augroup END
-]])
+vim.api.nvim_create_autocmd("VimEnter", {
+  pattern = "*",
+  once = true,
+  callback = require("open-recent").open_recent,
+})

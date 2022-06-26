@@ -1,9 +1,14 @@
-vim.cmd([[
-  augroup Commentary
-    autocmd!
-    autocmd FileType cpp,c,jsonc setlocal  commentstring=//\ %s
-  augroup END
-]])
+local augroup = require("easy-augroup")
+
+augroup.create_cmd_group("Commentary", {
+  {
+    event = "FileType",
+    opts = {
+      pattern = { "cpp", "c", "jsonc" },
+      command = [[setlocal  commentstring=//\ %s]],
+    },
+  },
+})
 
 function CommentaryWithCursor()
   local fn = vim.fn

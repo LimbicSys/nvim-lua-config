@@ -1,11 +1,6 @@
-vim.cmd([[
-  augroup gitsigns_augroup
-    autocmd!
-    autocmd VimEnter * highlight GitSignsAddCus guifg=#98be65
-    autocmd VimEnter * highlight GitSignsChangeCus guifg=#ffaa00
-    autocmd VimEnter * highlight GitSignsDeleteCus guifg=#ec5f67
-augroup END
-]])
+vim.api.nvim_set_hl(0, "GitSignsAddCus", { fg = "#98be65" })
+vim.api.nvim_set_hl(0, "GitSignsChangeCus", { fg = "#ffaa00" })
+vim.api.nvim_set_hl(0, "GitSignsDeleteCus", { fg = "#ec5f67" })
 
 require("gitsigns").setup({
   signs = {

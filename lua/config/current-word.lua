@@ -1,3 +1,5 @@
+local augroup = require("easy-augroup")
+
 vim.g.Illuminate_ftblacklist = {
   "coc-explorer",
   "vista",
@@ -14,12 +16,15 @@ vim.g.Illuminate_ftblacklist = {
 vim.g.Illuminate_delay = 500
 -- vim.g:Illuminate_highlightUnderCursor = 0
 
-vim.cmd([[
-  augroup illuminate_augroup
-      autocmd!
-      autocmd VimEnter * hi illuminatedWord cterm=underline guifg=#282a36 guibg=#d98e48
-  augroup END
-]])
+augroup.create_hl_group("Illuminate", {
+  {
+    name = "illuminatedWord",
+    value = {
+      fg = "#282a36",
+      bg = "#d98e48",
+    },
+  },
+})
 
 -- NOTE: should execute after colorscheme
 -- vim.cmd([[ hi def link LspReferenceText illuminatedWord ]])

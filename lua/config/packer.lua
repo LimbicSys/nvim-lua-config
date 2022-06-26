@@ -1,6 +1,11 @@
-vim.cmd([[
-  augroup PackerCompile
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
-  augroup END
-]])
+local augroup = require("easy-augroup")
+
+augroup.create_cmd_group("PackerCompile", {
+  {
+    event = "BufWritePost",
+    opts = {
+      pattern = "plugins.lua",
+      command = "source <afile> | PackerCompile",
+    },
+  },
+})
