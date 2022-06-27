@@ -51,6 +51,16 @@ return require("packer").startup({
     })
     use("suy/vim-context-commentstring")
 
+    use({
+      "danymat/neogen",
+      config = function()
+        require("config.neogen")
+      end,
+      requires = "nvim-treesitter/nvim-treesitter",
+      -- Uncomment next line if you want to follow only stable versions
+      tag = "*",
+    })
+
     -- color theme, NOTE: load before statusline
     -- use 'haishanh/night-owl.vim'
     use("Limbicsys/zephyr-nvim")
@@ -297,16 +307,6 @@ return require("packer").startup({
       end,
     })
 
-    -- grep
-    use({
-      "mhinz/vim-grepper",
-      cmd = "Grepper",
-      keys = "<plug>(GrepperOperator)",
-      config = function()
-        require("config.grepper")
-      end,
-    })
-
     use({
       "windwp/nvim-autopairs",
       -- requires = "hrsh7th/nvim-cmp",
@@ -316,12 +316,12 @@ return require("packer").startup({
     })
 
     -- lsp
-    use({
-      "ray-x/lsp_signature.nvim",
-      config = function()
-        require("config.lsp_signature")
-      end,
-    })
+    -- use({
+    --   "ray-x/lsp_signature.nvim",
+    --   config = function()
+    --     require("config.lsp_signature")
+    --   end,
+    -- })
 
     use({
       "SmiteshP/nvim-navic",
@@ -368,6 +368,7 @@ return require("packer").startup({
     use("hrsh7th/cmp-cmdline")
     use("dmitmel/cmp-cmdline-history")
     use("hrsh7th/cmp-nvim-lsp-document-symbol")
+    use("hrsh7th/cmp-nvim-lsp-signature-help")
     use({
       "hrsh7th/cmp-vsnip",
       requires = "hrsh7th/vim-vsnip",

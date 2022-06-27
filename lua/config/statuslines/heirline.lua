@@ -140,32 +140,10 @@ local FileName = {
   },
 }
 
-local FileSize = {
-  provider = function()
-    -- stackoverflow, compute human readable file size
-    local suffix = { "b", "k", "M", "G", "T", "P", "E" }
-    local fsize = vim.fn.getfsize(vim.api.nvim_buf_get_name(0))
-    fsize = (fsize < 0 and 0) or fsize
-    if fsize <= 0 then
-      return "0" .. suffix[1]
-    end
-    local i = math.floor((math.log(fsize) / math.log(1024)))
-    return string.format("%.2g%s", fsize / math.pow(1024, i), suffix[i])
-  end,
-  hl = {
-    fg = colors.green,
-    bg = colors.bg,
-  },
-  -- never update
-  update = function()
-    return false
-  end,
-}
-
 LineInfo = {
   provider = "%l:%c",
   hl = {
-    fg = colors.green,
+    fg = colors.yellow,
     bg = colors.bg,
   },
 }
@@ -173,7 +151,7 @@ LineInfo = {
 Percent = {
   provider = "%p%%",
   hl = {
-    fg = colors.green,
+    fg = colors.teal,
     bg = colors.bg,
   },
 }
@@ -283,7 +261,6 @@ local Navic = {
     -- instantiate the new child
     self[1] = self:new(children, 1)
   end,
-  hl = { fg = colors.overlay2 },
 }
 
 Navic = utils.make_flexible_component(1, Navic, { provider = "" })
@@ -308,8 +285,6 @@ local DefaultStatusline = {
   ViMode,
   Space,
   FileName,
-  Space,
-  FileSize,
   Space,
   LineInfo,
   Space,
