@@ -84,10 +84,18 @@ return require("packer").startup({
     -- use({
     --   "NTBBloodbath/galaxyline.nvim",
     -- })
+
+    -- bufferline
     use({
       "akinsho/bufferline.nvim",
       config = function()
         require("config.bufferline")
+      end,
+    })
+    use({
+      "tiagovla/scope.nvim",
+      config = function()
+        require("scope").setup()
       end,
     })
 
