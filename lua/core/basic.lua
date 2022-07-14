@@ -148,8 +148,47 @@ end
 
 vim.api.nvim_set_keymap("n", "a", "v:lua.handleNormalA()", { noremap = true, expr = true })
 
-vim.api.nvim_create_autocmd("VimEnter", {
-  pattern = "*",
-  once = true,
-  callback = require("open-recent").open_recent,
-})
+local function diagnostic_set_min_severity(min_severity)
+  vim.diagnostic.config({
+    underline = {
+      severity = { min = min_severity },
+    },
+    virtual_text = {
+      severity = { min = min_severity },
+    },
+    signs = {
+      severity = { min = min_severity },
+    },
+  })
+end
+
+local function diagnostic_severity_error()
+  diagnostic_set_min_severity(vim.diagnostic.severity.ERROR)
+end
+
+local function diagnostic_severity_warning()
+  diagnostic_set_min_severity(vim.diagnostic.severity.WARN)
+end
+
+local function diagnostic_severity_info()
+  diagnostic_set_min_severity(vim.diagnostic.severity.INFO)
+end
+
+local function diagnostic_severity_hint()
+  diagnostic_set_min_severity(vim.diagnostic.severity.HINT)
+end
+
+-- work on all buffers
+vim.api.nvim_create_user_command("DiagSeverityError", diagnostic_severity_error, {})
+vim.api.nvim_create_user_command("DiagSeverityWarning", diagnostic_severity_warning, {})
+vim.api.nvim_create_user_command("DiagSeverityInfo", diagnostic_severity_info, {})
+vim.api.nvim_create_user_command("DiagSeverityHint", diagnostic_severity_hint, {})
+
+-- work on current buffer
+vim.api.nvim_create_user_command("DiagHide", vim.diagnostic.hide, {})
+
+local opts = { noremap = true, silent = true }
+vim.keymap.set("n", "<Leader>dd", "<cmd>Lspsaga show_line_diagnostics<cr>", opts)
+vim.keymap.set("n", "<Leader>dcd", "<cmd>Lspsaga show_cursor_diagnostics<cr>", opts)
+vim.keymap.set("n", "]g", "<cmd>Lspsaga diagnostic_jump_next<cr>", opts)
+vim.keymap.set("n", "[g", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opts)

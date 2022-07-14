@@ -1,9 +1,7 @@
-local M = {}
-
 local InputMethodSwitcher = require("im-switcher.switcher")
 local augroup = require("easy-augroup")
 
-function M.setup(opt)
+local function setup(opt)
   local obtain_im_cmd = opt.obtain_im_cmd or ""
   local switch_im_cmd = opt.switch_im_cmd or ""
   local default_im_key = opt.default_im_key or ""
@@ -31,4 +29,16 @@ function M.setup(opt)
   })
 end
 
-return M
+local opt = {}
+
+if vim.fn.has("wsl") == 1 then
+  opt.obtain_im_cmd = "im-select.exe"
+  opt.switch_im_cmd = "im-select.exe"
+  opt.default_im_key = "1033"
+  setup(opt)
+elseif vim.fn.has("mac") == 1 then
+  opt.obtain_im_cmd = "macism"
+  opt.switch_im_cmd = "macism"
+  opt.default_im_key = "com.apple.keylayout.ABC"
+  setup(opt)
+end

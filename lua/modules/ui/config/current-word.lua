@@ -10,6 +10,7 @@ vim.g.Illuminate_ftblacklist = {
   "qf",
   "DiffviewFiles",
   "help",
+  "NeogitStatus",
   "",
 }
 

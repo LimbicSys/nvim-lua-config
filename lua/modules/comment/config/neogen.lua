@@ -1,1 +1,3 @@
-require("neogen").setup({})
+require("neogen").setup({
+  enabled = true,
+})

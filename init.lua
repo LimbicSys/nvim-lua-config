@@ -1,9 +1,9 @@
-require("core")
+require("core") -- basic config and other plugins
 
 -- load after installed plugins
-require("config.colorscheme")
-require("config.statusline")
+require("colorscheme")
+require("statusline")
 require("cpp-helper")
-require("config.im-switcher")
+require("im-switcher")
 require("toggle-list")
-require("config.diagnostic")
+require("open-recent")
