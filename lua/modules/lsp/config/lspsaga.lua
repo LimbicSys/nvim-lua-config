@@ -1,5 +1,5 @@
 require("lspsaga").init_lsp_saga({
-  code_action_prompt = {
+  code_action_lightbulb = {
     sign = true,
     virtual_text = false,
   },
@@ -14,9 +14,5 @@ require("lspsaga").init_lsp_saga({
   code_action_keys = {
     quit = "<Esc>",
     exec = "<CR>",
-  },
-  rename_action_keys = {
-    quit = "<C-c>",
-    exec = "<CR>", -- quit can be a table
   },
 })

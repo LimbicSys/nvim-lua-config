@@ -14,7 +14,7 @@ use({
     "RRethy/vim-illuminate",
     "ray-x/lsp_signature.nvim",
     "hrsh7th/cmp-nvim-lsp",
-    "tami5/lspsaga.nvim",
+    "glepnir/lspsaga.nvim",
     "SmiteshP/nvim-navic",
   },
   config = function()
@@ -30,7 +30,7 @@ use({
 })
 
 use({
-  "tami5/lspsaga.nvim",
+  "glepnir/lspsaga.nvim",
   config = function()
     require("modules.lsp.config.lspsaga")
   end,
