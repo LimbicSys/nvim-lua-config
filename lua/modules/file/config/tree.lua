@@ -51,11 +51,6 @@ require("nvim-tree").setup({
     highlight_git = true,
     indent_markers = {
       enable = true,
-      icons = {
-        corner = "└ ",
-        edge = "│ ",
-        none = "  ",
-      },
     },
     icons = {
       webdev_colors = true,

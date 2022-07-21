@@ -1,6 +1,10 @@
-vim.api.nvim_set_hl(0, "GitSignsAddCus", { fg = "#98be65" })
-vim.api.nvim_set_hl(0, "GitSignsChangeCus", { fg = "#ffaa00" })
-vim.api.nvim_set_hl(0, "GitSignsDeleteCus", { fg = "#ec5f67" })
+local group = require("easy-augroup")
+
+group.create_hl_group("GitSignsCus", {
+  { name = "GitSignsAddCus", value = { fg = "#98be65" } },
+  { name = "GitSignsChangeCus", value = { fg = "#ffaa00" } },
+  { name = "GitSignDeletesCus", value = { fg = "#ec5f67" } },
+})
 
 require("gitsigns").setup({
   signs = {

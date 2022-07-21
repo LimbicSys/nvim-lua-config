@@ -3,6 +3,7 @@ local format_wrapper = require("format-wrapper")
 
 augroup.create_cmd_group("FormatOnSave", {
   {
+    -- TODO: use sync format and make it triggered on BufWritePre
     event = "BufWritePost",
     opts = {
       pattern = "*",
