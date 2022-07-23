@@ -1,8 +1,8 @@
 require("nvim-tree").setup({
   -- disables netrw completely
-  disable_netrw = true,
+  disable_netrw = false,
   -- hijack netrw window on startup
-  hijack_netrw = true,
+  hijack_netrw = false,
   -- open the tree when running this setup function
   open_on_setup = false,
   -- will not open on setup if the filetype is in this list

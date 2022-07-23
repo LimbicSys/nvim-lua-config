@@ -7,3 +7,7 @@ use({
     require("modules.file.config.tree")
   end,
 })
+
+use({
+  "tpope/vim-vinegar",
+})

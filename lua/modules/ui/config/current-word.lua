@@ -11,6 +11,7 @@ vim.g.Illuminate_ftblacklist = {
   "DiffviewFiles",
   "help",
   "NeogitStatus",
+  "netrw",
   "",
 }
 

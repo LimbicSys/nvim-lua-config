@@ -332,6 +332,7 @@ local SpecialStatusline = {
         "spectre_panel",
         "NeogitStatus",
         "NeogitCommitView",
+        "netrw",
       },
     })
   end,
