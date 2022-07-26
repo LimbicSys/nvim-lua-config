@@ -188,3 +188,7 @@ vim.api.nvim_create_user_command("DiagSeverityHint", diagnostic_severity_hint, {
 vim.api.nvim_create_user_command("DiagHide", function()
   vim.diagnostic.hide()
 end, {})
+
+local opts = { noremap = true, silent = true }
+vim.keymap.set("n", "]g", vim.diagnostic.goto_next, opts)
+vim.keymap.set("n", "[g", vim.diagnostic.goto_prev, opts)

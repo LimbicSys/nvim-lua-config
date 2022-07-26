@@ -16,3 +16,10 @@ require("lspsaga").init_lsp_saga({
     exec = "<CR>",
   },
 })
+
+vim.keymap.set(
+  "n",
+  "<leader>dd",
+  require("lspsaga.diagnostic").show_line_diagnostics,
+  { silent = true, noremap = true }
+)
