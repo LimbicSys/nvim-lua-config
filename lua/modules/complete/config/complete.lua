@@ -1,9 +1,25 @@
 local cmp = require("cmp")
+local keymap = require("cmp.utils.keymap")
+local feedkeys = require("cmp.utils.feedkeys")
 local clangd_source = require("modules.complete.config.complete_sources.clangd-constructor")
 
 vim.opt.completeopt = { "menuone", "noinsert", "noselect" }
 
 cmp.register_source("clangd_constructor", clangd_source.new())
+
+local keymap_cinkeys = function(expr)
+  return string.format(keymap.t("<Cmd>set cinkeys=%s<CR>"), expr and vim.fn.escape(expr, "| \t\\") or "")
+end
+
+local confirm = function(fallback)
+  if cmp.visible() then
+    feedkeys.call(keymap_cinkeys(), "n")
+    cmp.confirm({ select = true })
+    feedkeys.call(keymap_cinkeys(vim.bo.cinkeys), "n")
+  else
+    fallback()
+  end
+end
 
 cmp.setup({
   snippet = {
@@ -15,7 +31,6 @@ cmp.setup({
   completion = {
     keyword_length = 1,
   },
-  -- You can set mapping if you want.
   mapping = {
     ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
     ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
@@ -23,7 +38,7 @@ cmp.setup({
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
     ["<C-Space>"] = cmp.mapping.complete(),
     ["<C-e>"] = cmp.mapping.close(),
-    ["<CR>"] = cmp.mapping.confirm({ select = true }),
+    ["<CR>"] = cmp.mapping(confirm, { "i" }),
   },
   -- You should specify your *installed* sources.
   sources = cmp.config.sources({
@@ -35,17 +50,6 @@ cmp.setup({
     { name = "path" },
     { name = "nvim_lsp_signature_help" },
   }),
-  formatting = {
-    -- avoid a bug
-    format = function(entry, vim_item)
-      local word = vim_item.word
-      if word.sub(word, -1) == ":" then
-        vim_item.word = string.sub(word, 1, string.len(word) - 1)
-        vim_item.abbr = string.sub(word, 1, string.len(word) - 1)
-      end
-      return vim_item
-    end,
-  },
 })
 
 -- you need setup cmp first put this after cmp.setup()

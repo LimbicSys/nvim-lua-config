@@ -3,7 +3,13 @@ local M = {}
 local common_config = require("modules.lsp.config.lspconfig.settings.common").common_config
 local clangd_config = {}
 clangd_config = vim.tbl_deep_extend("force", clangd_config, common_config)
-clangd_config["cmd"] = { "clangd", "--background-index", "--fallback-style=Microsoft", "--header-insertion=never" }
+clangd_config["cmd"] = {
+  "clangd",
+  "--background-index",
+  "--fallback-style=Microsoft",
+  "--header-insertion=never",
+  "--header-insertion-decorators=false",
+}
 local default_capabilities = vim.tbl_deep_extend("force", common_config.capabilities, {
   textDocument = {
     completion = {
