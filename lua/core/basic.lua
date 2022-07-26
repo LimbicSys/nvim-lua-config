@@ -185,10 +185,6 @@ vim.api.nvim_create_user_command("DiagSeverityInfo", diagnostic_severity_info, {
 vim.api.nvim_create_user_command("DiagSeverityHint", diagnostic_severity_hint, {})
 
 -- work on current buffer
-vim.api.nvim_create_user_command("DiagHide", vim.diagnostic.hide, {})
-
-local opts = { noremap = true, silent = true }
-vim.keymap.set("n", "<Leader>dd", "<cmd>Lspsaga show_line_diagnostics<cr>", opts)
-vim.keymap.set("n", "<Leader>dcd", "<cmd>Lspsaga show_cursor_diagnostics<cr>", opts)
-vim.keymap.set("n", "]g", "<cmd>Lspsaga diagnostic_jump_next<cr>", opts)
-vim.keymap.set("n", "[g", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opts)
+vim.api.nvim_create_user_command("DiagHide", function()
+  vim.diagnostic.hide()
+end, {})
