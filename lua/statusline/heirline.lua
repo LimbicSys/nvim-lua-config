@@ -158,6 +158,9 @@ Percent = {
 
 local FileType = {
   provider = function()
+    if vim.bo.filetype == "" then
+      return string.upper(vim.bo.buftype)
+    end
     return string.upper(vim.bo.filetype)
   end,
   hl = { fg = colors.blue, bg = colors.bg, bold = true },
@@ -318,7 +321,7 @@ local InactiveStatusline = {
 local SpecialStatusline = {
   condition = function()
     return conditions.buffer_matches({
-      buftype = { "nofile", "prompt", "help", "quickfix" },
+      buftype = { "nofile", "prompt", "help", "quickfix", "terminal" },
       filetype = {
         "^git.*",
         "fugitive",
