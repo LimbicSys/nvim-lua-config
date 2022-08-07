@@ -6,6 +6,8 @@ use({
 
 use("folke/lua-dev.nvim")
 
+use({ "p00f/clangd_extensions.nvim" })
+
 use({
   "neovim/nvim-lspconfig",
   requires = {
@@ -16,6 +18,7 @@ use({
     "hrsh7th/cmp-nvim-lsp",
     "glepnir/lspsaga.nvim",
     "SmiteshP/nvim-navic",
+    "p00f/clangd_extensions.nvim",
   },
   config = function()
     require("modules.lsp.config.lspconfig")
@@ -35,6 +38,7 @@ use({
     require("modules.lsp.config.lspsaga")
   end,
 })
+
 -- use 'steelsojka/completion-buffers'
 -- use 'nvim-lua/lsp-status.nvim'
 -- use 'RishabhRD/popfix'

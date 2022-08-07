@@ -21,6 +21,16 @@ local confirm = function(fallback)
   end
 end
 
+local function lsp_scores(entry1, entry2)
+  local diff
+  if entry1.completion_item.score and entry2.completion_item.score then
+    diff = (entry2.completion_item.score * entry2.score) - (entry1.completion_item.score * entry1.score)
+  else
+    diff = entry2.score - entry1.score
+  end
+  return (diff < 0)
+end
+
 cmp.setup({
   snippet = {
     expand = function(args)
@@ -50,6 +60,18 @@ cmp.setup({
     { name = "path" },
     { name = "nvim_lsp_signature_help" },
   }),
+  sorting = {
+    comparators = {
+      cmp.config.compare.offset,
+      cmp.config.compare.exact,
+      cmp.config.compare.recently_used,
+      cmp.config.compare.score,
+      cmp.config.compare.kind,
+      cmp.config.compare.sort_text,
+      cmp.config.compare.length,
+      cmp.config.compare.order,
+    },
+  },
 })
 
 -- you need setup cmp first put this after cmp.setup()

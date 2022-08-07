@@ -50,6 +50,7 @@ function Packer:load_packer()
     display = {
       open_fn = require("packer.util").float,
     },
+    max_jobs = 50,
   })
   packer.reset()
   local use = packer.use
