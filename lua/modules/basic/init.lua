@@ -5,9 +5,6 @@ use("nvim-lua/plenary.nvim")
 -- icons
 use("kyazdani42/nvim-web-devicons")
 
--- easy map
-use("Iron-E/nvim-cartographer")
-
 -- quick fix
 use({
   "kevinhwang91/nvim-bqf",

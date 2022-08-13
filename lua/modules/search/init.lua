@@ -11,24 +11,10 @@ use({
 })
 
 use({
-  "junegunn/fzf",
-  run = function()
-    vim.fn["fzf#install()"]()
-  end,
-})
-
-use({
   "junegunn/fzf.vim",
   config = function()
     require("modules.search.config.fzf")
   end,
-})
-
-use({
-  "theniceboy/fzf-gitignore",
-  run = ":UpdateRemoteuses",
-  cmd = "FzfGitignore",
-  keys = " <Plug>(fzf-gitignore)",
 })
 
 use({

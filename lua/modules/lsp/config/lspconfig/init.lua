@@ -6,7 +6,7 @@ end
 local lspconfig = require("lspconfig")
 
 lsp_installer.setup({
-  ensure_installed = { "bashls", "vimls", "jsonls", "sumneko_lua" },
+  -- ensure_installed = { "bashls", "vimls", "jsonls", "sumneko_lua" },
 })
 
 local servers = { "bashls", "vimls", "jsonls", "sumneko_lua", "clangd", "cmake", "efm" }

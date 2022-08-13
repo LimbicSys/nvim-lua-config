@@ -1,2 +1,1 @@
-local map = require("cartographer")
-map.n.nore["<Leader>g"] = "<Cmd>Git<CR>"
+vim.keymap.set("n", "<Leader>g", "<CMD>Git<CR>", { noremap = true })

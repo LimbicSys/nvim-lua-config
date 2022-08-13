@@ -8,5 +8,4 @@ local function toggle_quickfix()
   vim.cmd("botright copen")
 end
 
-local map = require("cartographer")
-map.n.nore.silent[";c"] = toggle_quickfix
+vim.keymap.set("n", ";c", toggle_quickfix, { noremap = true, silent = true })
