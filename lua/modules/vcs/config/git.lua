@@ -3,16 +3,20 @@ local group = require("easy-augroup")
 group.create_hl_group("GitSignsCus", {
   { name = "GitSignsAddCus", value = { fg = "#98be65" } },
   { name = "GitSignsChangeCus", value = { fg = "#ffaa00" } },
-  { name = "GitSignDeletesCus", value = { fg = "#ec5f67" } },
+  { name = "GitSignsDeleteCus", value = { fg = "#ec5f67" } },
 })
 
+--#region
+--#region
+--#region
+--#region
 require("gitsigns").setup({
   signs = {
-    add = { hl = "GitSignsAddCus", text = "│", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
-    change = { hl = "GitSignsChangeCus", text = "│", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
-    delete = { hl = "GitSignsDeleteCus", text = "_", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
-    topdelete = { hl = "GitSignsDeleteCus", text = "‾", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
-    changedelete = { hl = "GitSignsChangeCus", text = "~", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
+    add = { hl = "GitSignsAddCus", text = "▋", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
+    change = { hl = "GitSignsChangeCus", text = "▋", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
+    delete = { hl = "GitSignsDeleteCus", text = "▋", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
+    topdelete = { hl = "GitSignsDeleteCus", text = "▔", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
+    changedelete = { hl = "GitSignsChangeCus", text = "▎", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
   },
   numhl = false,
   linehl = false,
