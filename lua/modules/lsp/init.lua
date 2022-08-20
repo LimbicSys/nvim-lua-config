@@ -8,6 +8,8 @@ use("folke/lua-dev.nvim")
 
 use({ "p00f/clangd_extensions.nvim" })
 
+use("mfussenegger/nvim-jdtls")
+
 use({
   "neovim/nvim-lspconfig",
   requires = {
