@@ -10,6 +10,8 @@ use({
   end,
 })
 
+use("junegunn/fzf")
+
 use({
   "junegunn/fzf.vim",
   config = function()

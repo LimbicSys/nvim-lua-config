@@ -1,4 +1,5 @@
-require("core") -- basic config and other plugins
+-- basic config and other plugins
+require("core")
 
 -- load after installed plugins
 require("colorscheme")
