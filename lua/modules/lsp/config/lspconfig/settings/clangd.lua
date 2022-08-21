@@ -22,7 +22,9 @@ local default_capabilities = vim.tbl_deep_extend("force", common_config.capabili
 clangd_config["capabilities"] = default_capabilities
 clangd_config["on_attach"] = function(client, bufnr)
   common_config.on_attach(client, bufnr)
-  vim.api.nvim_set_keymap("n", "<M-o>", "<Cmd>ClangdSwitchSourceHeader<CR>", { silent = true })
+  local opts = { noremap = true, silent = true, buffer = bufnr }
+
+  vim.keymap.set("n", "<M-o>", "<Cmd>ClangdSwitchSourceHeader<CR>", opts)
 
   local navic_ok, navic = pcall(require, "nvim-navic")
   if navic_ok then
