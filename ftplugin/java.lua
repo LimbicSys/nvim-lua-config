@@ -3,6 +3,7 @@ local jdtls = require("jdtls")
 local data_path = vim.fn.stdpath("data")
 local jdtls_path = data_path .. "/lsp_servers/jdtls"
 local config_file_path = jdtls_path .. "/config_linux"
+local jar = vim.fn.expand(jdtls_path .. "/plugins/org.eclipse.equinox.launcher_*.jar")
 
 if vim.fn.has("mac") == 1 then
   config_file_path = jdtls_path .. "/config_mac"
@@ -26,29 +27,35 @@ jdtls_config["cmd"] = {
   "--add-opens",
   "java.base/java.lang=ALL-UNNAMED",
   "-jar",
-  jdtls_path .. "/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar",
+  jar,
   "-configuration",
   config_file_path,
   "-data",
   data_path .. "/javaworkspace/folder",
 }
-jdtls_config["root_dir"] = require("jdtls.setup").find_root({ ".git", "mvnw", "gradlew", ".root" })
-jdtls["on_attach"] = function(client, bufnr)
+jdtls_config["root_dir"] = require("jdtls.setup").find_root({ ".git", "mvnw", "gradlew", ".root", "pom.xml" })
+jdtls_config["on_attach"] = function(client, bufnr)
+  print("java lsp on attach")
   common_config.on_attach(client, bufnr)
   local opts = { noremap = true, silent = true, buffer = bufnr }
-  vim.keymap("n", "<M-o>", jdtls.organize_imports, opts)
-  vim.keymap("x", "<leader>em", function()
+  vim.keymap.set("n", "<M-o>", require("jdtls").organize_imports, opts)
+  vim.keymap.set("x", "<leader>em", function()
     jdtls.extract_method(true)
   end, opts)
-end
 
-jdtls.start_or_attach(jdtls_config)
-
-vim.cmd([[
+  vim.cmd([[
     command! -buffer -nargs=? -complete=custom,v:lua.require'jdtls'._complete_compile JdtCompile lua require('jdtls').compile(<f-args>)
     command! -buffer -nargs=? -complete=custom,v:lua.require'jdtls'._complete_set_runtime JdtSetRuntime lua require('jdtls').set_runtime(<f-args>)
     command! -buffer JdtUpdateConfig lua require('jdtls').update_project_config()
     command! -buffer JdtJol lua require('jdtls').jol()
     command! -buffer JdtBytecode lua require('jdtls').javap()
     command! -buffer JdtJshell lua require('jdtls').jshell()
-]])
+  ]])
+
+  local navic_ok, navic = pcall(require, "nvim-navic")
+  if navic_ok then
+    navic.attach(client, bufnr)
+  end
+end
+
+jdtls.start_or_attach(jdtls_config)
