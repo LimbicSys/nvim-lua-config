@@ -68,15 +68,13 @@ function M.formatting()
     return
   end
 
-  local lsp_format_list = {}
-  lsp_format_list["cpp"] = 1
-  -- lsp_format_list["lua"] = 1
+  local lsp_format_list = { "cpp", "java" }
 
-  if lsp_format_list[ft] ~= nil then
+  if vim.tbl_contains(lsp_format_list, ft) then
     -- formatting_sync()
     vim.lsp.buf.formatting_sync()
   else
-    require("formatter.format").format("", "", 1, vim.fn.line("$"), { write = true })
+    require("formatter.format").format("", "", 1, vim.fn.line("$"), { write = true, lock = true })
   end
 end
 

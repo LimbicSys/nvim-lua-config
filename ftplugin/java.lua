@@ -35,7 +35,6 @@ jdtls_config["cmd"] = {
 }
 jdtls_config["root_dir"] = require("jdtls.setup").find_root({ ".git", "mvnw", "gradlew", ".root", "pom.xml" })
 jdtls_config["on_attach"] = function(client, bufnr)
-  print("java lsp on attach")
   common_config.on_attach(client, bufnr)
   local opts = { noremap = true, silent = true, buffer = bufnr }
   vim.keymap.set("n", "<M-o>", require("jdtls").organize_imports, opts)

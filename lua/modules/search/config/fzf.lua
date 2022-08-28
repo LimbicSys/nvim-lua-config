@@ -1,4 +1,5 @@
 vim.api.nvim_set_keymap("n", "<space>pf", "<Cmd>Files<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<C-e>", "<Cmd>Files<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<C-t>", "<Cmd>Tags<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<M-t>", "<Cmd>BTags<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<M-f>", "<Cmd>Rg<CR>", { noremap = true })

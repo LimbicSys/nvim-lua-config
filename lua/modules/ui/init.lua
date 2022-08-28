@@ -20,6 +20,7 @@ use({
 -- bufferline
 use({
   "akinsho/bufferline.nvim",
+  tab = "v2.*",
   config = function()
     require("modules.ui.config.bufferline")
   end,
@@ -35,6 +36,7 @@ use({
 
 use({
   "lukas-reineke/indent-blankline.nvim",
+  tab = "v*",
   config = function()
     require("modules.ui.config.indentline")
   end,
