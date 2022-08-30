@@ -1,26 +1,44 @@
 local augroup = require("easy-augroup")
 
-vim.g.Illuminate_ftblacklist = {
-  "coc-explorer",
-  "vista",
-  "dashboard",
-  "floaterm",
-  "NvimTree",
-  "lsputil_locations_list",
-  "qf",
-  "DiffviewFiles",
-  "help",
-  "NeogitStatus",
-  "netrw",
-  "",
-}
+require("illuminate").configure({
+  delay = 500,
+  filetypes_denylist = {
+    'dirvish',
+    'fugitive',
+    "coc-explorer",
+    "vista",
+    "dashboard",
+    "floaterm",
+    "NvimTree",
+    "lsputil_locations_list",
+    "qf",
+    "DiffviewFiles",
+    "help",
+    "NeogitStatus",
+    "netrw",
+    "",
+  }
+})
 
-vim.g.Illuminate_delay = 500
 -- vim.g:Illuminate_highlightUnderCursor = 0
 
 augroup.create_hl_group("Illuminate", {
   {
-    name = "illuminatedWord",
+    name = "IlluminatedWordText",
+    value = {
+      fg = "#282a36",
+      bg = "#d98e48",
+    },
+  },
+  {
+    name = "IlluminatedWordRead",
+    value = {
+      fg = "#282a36",
+      bg = "#d98e48",
+    },
+  },
+  {
+    name = "IlluminatedWordTextWrite",
     value = {
       fg = "#282a36",
       bg = "#d98e48",
