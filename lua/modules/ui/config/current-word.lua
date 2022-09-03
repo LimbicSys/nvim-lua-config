@@ -16,6 +16,7 @@ require("illuminate").configure({
     "help",
     "NeogitStatus",
     "netrw",
+    "packer",
     "",
   },
 })
@@ -36,7 +37,7 @@ augroup.create_hl_group("Illuminate", {
     value = color_value,
   },
   {
-    name = "IlluminatedWordTextWrite",
+    name = "IlluminatedWordWrite",
     value = color_value,
   },
 })

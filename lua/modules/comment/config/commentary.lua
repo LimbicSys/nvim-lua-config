@@ -10,7 +10,7 @@ augroup.create_cmd_group("Commentary", {
   },
 })
 
-function CommentaryWithCursor()
+local function commentaryWithCursor()
   local fn = vim.fn
   local line_number = fn.line(".")
   local old_col = fn.col(".")
@@ -28,6 +28,6 @@ function CommentaryWithCursor()
   end
 end
 
-vim.api.nvim_set_keymap("n", "<C-_>", "<Plug>CommentaryLine", {})
-vim.api.nvim_set_keymap("i", "<C-_>", "<Esc><Cmd>lua CommentaryWithCursor<CR>a", { noremap = true })
-vim.api.nvim_set_keymap("x", "<C-_>", "<Plug>Commentary", {})
+vim.keymap.set("n", "<C-/>", "<Plug>CommentaryLine")
+vim.keymap.set("i", "<C-/>", commentaryWithCursor)
+vim.keymap.set("x", "<C-/>", "<Plug>Commentary")

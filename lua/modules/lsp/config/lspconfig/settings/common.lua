@@ -2,10 +2,10 @@ local M = {}
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
-  local ill_ok, illuminate = pcall(require, "illuminate")
-  if ill_ok then
-    illuminate.on_attach(client)
-  end
+  -- local ill_ok, illuminate = pcall(require, "illuminate")
+  -- if ill_ok then
+  --   illuminate.on_attach(client)
+  -- end
 
   -- Mappings.
   local opts = { noremap = true, silent = true, buffer = bufnr }
@@ -20,7 +20,7 @@ local on_attach = function(client, bufnr)
   -- buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
   -- buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
   vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, opts)
-  vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, opts)
+  -- vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, opts)
   -- buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
   -- buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
@@ -29,12 +29,13 @@ local on_attach = function(client, bufnr)
   -- buf_set_keymap("n", "<space>f", vim.lsp.buf.formatting, opts)
   vim.keymap.set("n", "<space>ci", vim.lsp.buf.incoming_calls, opts)
   vim.keymap.set("n", "<space>co", vim.lsp.buf.outgoing_calls, opts)
-  vim.keymap.set("n", "<Leader>a", vim.lsp.buf.code_action, opts)
-  vim.keymap.set("x", "<Leader>a", vim.lsp.buf.range_code_action, opts)
+  -- vim.keymap.set("n", "<Leader>a", vim.lsp.buf.code_action, opts)
+  -- vim.keymap.set("x", "<Leader>a", vim.lsp.buf.range_code_action, opts)
 
   --- lspsaga functions
-  -- vim.keymap.set("n", "<Leader>a", "<cmd>Lspsaga code_action<cr>", opts)
-  -- buf_set_keym0, "n", "K",  "<cmd>Lspsaga hover_doc<cr>", {silent = true, noremap = true})
+  vim.keymap.set("n", "<f2>", "<cmd>Lspsaga rename<CR>", opts)
+  vim.keymap.set("n", "<leader>a", "<cmd>Lspsaga code_action<CR>", opts)
+  vim.keymap.set("x", "<leader>a", ":<C-U>Lspsaga range_code_action<CR>", { silent = true, buffer = bufnr })
   vim.keymap.set("n", "<C-f>", function()
     require("lspsaga.action").smart_scroll_with_saga(-1)
   end, opts)
