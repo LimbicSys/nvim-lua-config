@@ -3,8 +3,8 @@ local augroup = require("easy-augroup")
 require("illuminate").configure({
   delay = 500,
   filetypes_denylist = {
-    'dirvish',
-    'fugitive',
+    "dirvish",
+    "fugitive",
     "coc-explorer",
     "vista",
     "dashboard",
@@ -17,32 +17,27 @@ require("illuminate").configure({
     "NeogitStatus",
     "netrw",
     "",
-  }
+  },
 })
 
 -- vim.g:Illuminate_highlightUnderCursor = 0
 
+local color_value = {
+  -- fg = "#282a36",
+  bg = "#52576e",
+}
 augroup.create_hl_group("Illuminate", {
   {
     name = "IlluminatedWordText",
-    value = {
-      fg = "#282a36",
-      bg = "#d98e48",
-    },
+    value = color_value,
   },
   {
     name = "IlluminatedWordRead",
-    value = {
-      fg = "#282a36",
-      bg = "#d98e48",
-    },
+    value = color_value,
   },
   {
     name = "IlluminatedWordTextWrite",
-    value = {
-      fg = "#282a36",
-      bg = "#d98e48",
-    },
+    value = color_value,
   },
 })
 

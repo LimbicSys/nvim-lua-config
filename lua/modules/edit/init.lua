@@ -25,6 +25,7 @@ use({
 use("Limbicsys/vim-indent-object")
 use("kana/vim-textobj-user")
 use("kana/vim-textobj-entire")
+use("wellle/targets.vim")
 
 use({
   "gbprod/substitute.nvim",

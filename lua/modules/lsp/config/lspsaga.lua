@@ -17,9 +17,5 @@ require("lspsaga").init_lsp_saga({
   },
 })
 
-vim.keymap.set(
-  "n",
-  "<leader>dd",
-  require("lspsaga.diagnostic").show_line_diagnostics,
-  { silent = true, noremap = true }
-)
+local opt = { silent = true, noremap = true }
+vim.keymap.set("n", "<leader>dd", require("lspsaga.diagnostic").show_line_diagnostics, opt)

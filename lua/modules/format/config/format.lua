@@ -16,3 +16,5 @@ vim.api.nvim_create_user_command("ToggleFormat", format_wrapper.toggle_format_on
 vim.api.nvim_create_user_command("FormatBuffer", format_wrapper.formatting, {})
 
 vim.cmd([[command! -nargs=? -range=% -bar RangeFormat lua vim.lsp.buf.range_formatting()]])
+
+vim.keymap.set("n", "<space>fb", format_wrapper.formatting, { silent = true, noremap = true })
