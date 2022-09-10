@@ -36,13 +36,7 @@ local on_attach = function(client, bufnr)
   vim.keymap.set("n", "<f2>", "<cmd>Lspsaga rename<CR>", opts)
   vim.keymap.set("n", "<leader>a", "<cmd>Lspsaga code_action<CR>", opts)
   vim.keymap.set("x", "<leader>a", ":<C-U>Lspsaga range_code_action<CR>", { silent = true, buffer = bufnr })
-  vim.keymap.set("n", "<C-f>", function()
-    require("lspsaga.action").smart_scroll_with_saga(-1)
-  end, opts)
-  vim.keymap.set("n", "<C-b>", function()
-    require("lspsaga.action").smart_scroll_with_saga(1)
-  end, opts)
-  vim.keymap.set("n", "<Leader>dp", require("lspsaga.definition").preview_definition, opts)
+  vim.keymap.set("n", "<Leader>dp", "<cmd>Lspsaga peek_definition<CR>", opts)
 end
 
 -- config that activates keymaps and enables snippet support

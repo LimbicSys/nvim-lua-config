@@ -28,6 +28,11 @@ local function commentaryWithCursor()
   end
 end
 
-vim.keymap.set("n", "<C-/>", "<Plug>CommentaryLine")
-vim.keymap.set("i", "<C-/>", commentaryWithCursor)
-vim.keymap.set("x", "<C-/>", "<Plug>Commentary")
+local comment_key = "<C-/>"
+if vim.fn.has("wsl") == 1 then
+  comment_key = "<C-_>"
+end
+
+vim.keymap.set("n", comment_key, "<Plug>CommentaryLine")
+vim.keymap.set("i", comment_key, commentaryWithCursor)
+vim.keymap.set("x", comment_key, "<Plug>Commentary")
