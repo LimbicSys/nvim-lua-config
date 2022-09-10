@@ -30,12 +30,11 @@ local on_attach = function(client, bufnr)
   vim.keymap.set("n", "<space>ci", vim.lsp.buf.incoming_calls, opts)
   vim.keymap.set("n", "<space>co", vim.lsp.buf.outgoing_calls, opts)
   -- vim.keymap.set("n", "<Leader>a", vim.lsp.buf.code_action, opts)
-  -- vim.keymap.set("x", "<Leader>a", vim.lsp.buf.range_code_action, opts)
+  vim.keymap.set("x", "<Leader>a", vim.lsp.buf.range_code_action, opts)
 
   --- lspsaga functions
   vim.keymap.set("n", "<f2>", "<cmd>Lspsaga rename<CR>", opts)
   vim.keymap.set("n", "<leader>a", "<cmd>Lspsaga code_action<CR>", opts)
-  vim.keymap.set("x", "<leader>a", ":<C-U>Lspsaga range_code_action<CR>", { silent = true, buffer = bufnr })
   vim.keymap.set("n", "<Leader>dp", "<cmd>Lspsaga peek_definition<CR>", opts)
 end
 

@@ -33,7 +33,19 @@ jdtls_config["cmd"] = {
   "-data",
   data_path .. "/javaworkspace/folder",
 }
+
 jdtls_config["root_dir"] = require("jdtls.setup").find_root({ ".git", "mvnw", "gradlew", ".root", "pom.xml" })
+
+jdtls_config["settings"] = {
+  java = {
+    signatureHelp = { enabled = true },
+    completion = {
+      enable = true,
+      overwrite = false
+    }
+  }
+}
+
 jdtls_config["on_attach"] = function(client, bufnr)
   common_config.on_attach(client, bufnr)
   local opts = { noremap = true, silent = true, buffer = bufnr }
