@@ -11,9 +11,17 @@ use({ "p00f/clangd_extensions.nvim" })
 use("mfussenegger/nvim-jdtls")
 
 use({
+  "williamboman/mason.nvim",
+  config = function()
+    require("mason").setup()
+  end,
+})
+
+use({ "williamboman/mason-lspconfig.nvim" })
+
+use({
   "neovim/nvim-lspconfig",
   requires = {
-    "williamboman/nvim-lsp-installer",
     "folke/lua-dev.nvim",
     "RRethy/vim-illuminate",
     "ray-x/lsp_signature.nvim",

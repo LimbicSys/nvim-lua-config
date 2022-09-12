@@ -1,7 +1,7 @@
 local jdtls = require("jdtls")
 
 local data_path = vim.fn.stdpath("data")
-local jdtls_path = data_path .. "/lsp_servers/jdtls"
+local jdtls_path = data_path .. "/jdtls"
 local config_file_path = jdtls_path .. "/config_linux"
 local jar = vim.fn.expand(jdtls_path .. "/plugins/org.eclipse.equinox.launcher_*.jar")
 
@@ -41,9 +41,9 @@ jdtls_config["settings"] = {
     signatureHelp = { enabled = true },
     completion = {
       enable = true,
-      overwrite = false
-    }
-  }
+      overwrite = false,
+    },
+  },
 }
 
 jdtls_config["on_attach"] = function(client, bufnr)

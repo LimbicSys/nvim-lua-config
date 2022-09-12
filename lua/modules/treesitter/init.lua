@@ -11,6 +11,13 @@ use({
 -- use 'romgrk/nvim-treesitter-context'
 
 use({
+  "nvim-treesitter/nvim-treesitter-textobjects",
+  config = function()
+    require("modules.treesitter.config.treesitter-textobject")
+  end,
+})
+
+use({
   "nvim-treesitter/playground",
   requires = "nvim-treesitter/nvim-treesitter",
   cmd = "TSPlaygroundToggle",
@@ -18,4 +25,3 @@ use({
     require("modules.treesitter.config.treesitter-playground")
   end,
 })
-
