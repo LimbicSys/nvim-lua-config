@@ -29,7 +29,7 @@ opt.mouse = "a"
 opt.splitright = true
 opt.splitbelow = true
 opt.cursorline = true
-opt.colorcolumn = { 100 }
+-- opt.colorcolumn = { 100 }
 opt.switchbuf = "useopen"
 
 opt.signcolumn = "yes"
