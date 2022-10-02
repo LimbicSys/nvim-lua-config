@@ -1,12 +1,6 @@
 local M = {}
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
-  -- local ill_ok, illuminate = pcall(require, "illuminate")
-  -- if ill_ok then
-  --   illuminate.on_attach(client)
-  -- end
 
+local function set_keymap(bufnr)
   -- Mappings.
   local opts = { noremap = true, silent = true, buffer = bufnr }
 
@@ -36,6 +30,17 @@ local on_attach = function(client, bufnr)
   vim.keymap.set("n", "<f2>", "<cmd>Lspsaga rename<CR>", opts)
   vim.keymap.set("n", "<leader>a", "<cmd>Lspsaga code_action<CR>", opts)
   vim.keymap.set("n", "<Leader>dp", "<cmd>Lspsaga peek_definition<CR>", opts)
+end
+
+-- Use an on_attach function to only map the following keys
+-- after the language server attaches to the current buffer
+local on_attach = function(client, bufnr)
+  local navic_ok, navic = pcall(require, "nvim-navic")
+  if navic_ok and client.server_capabilities.documentSymbolProvider then
+    navic.attach(client, bufnr)
+  end
+
+  set_keymap(bufnr)
 end
 
 -- config that activates keymaps and enables snippet support

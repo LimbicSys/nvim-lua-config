@@ -15,16 +15,12 @@ require("lspsaga").init_lsp_saga({
     quit = "<Esc>",
     exec = "<CR>",
   },
+  symbol_in_winbar = {
+    separator = " > ",
+    show_file = false,
+    in_custom = true,
+  },
 })
 
 local opt = { silent = true, noremap = true }
 vim.keymap.set("n", "<leader>dd", require("lspsaga.diagnostic").show_line_diagnostics, opt)
-
-require("easy-augroup").create_hl_group("LspSagaHighLight", {
-  {
-    name = "LspSagaLightBulb",
-    value = {
-      fg = "#81C8BE"
-    },
-  }
-})

@@ -1,7 +1,3 @@
--- author: glepnr https://github.com/glepnir
--- date: 2022-07-02
--- License: MIT
-
 local fn, uv, api = vim.fn, vim.loop, vim.api
 local vim_path = vim.fn.stdpath("config")
 local data_dir = string.format("%s/site/", vim.fn.stdpath("data"))

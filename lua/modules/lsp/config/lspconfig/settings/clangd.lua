@@ -25,11 +25,6 @@ clangd_config["on_attach"] = function(client, bufnr)
   local opts = { noremap = true, silent = true, buffer = bufnr }
 
   vim.keymap.set("n", "<M-o>", "<Cmd>ClangdSwitchSourceHeader<CR>", opts)
-
-  local navic_ok, navic = pcall(require, "nvim-navic")
-  if navic_ok then
-    navic.attach(client, bufnr)
-  end
 end
 
 M.config = clangd_config

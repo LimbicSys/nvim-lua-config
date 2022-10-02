@@ -1,6 +1,23 @@
 local conditions = require("heirline.conditions")
 local utils = require("heirline.utils")
 
+local disabled_buftype = { "nofile", "prompt", "help", "quickfix", "terminal" }
+local disabled_filetype = {
+  "^git.*",
+  "fugitive",
+  "NvimTree",
+  "vista",
+  "dbui",
+  "coc-explorer",
+  "VimspectorPrompt",
+  "DiffviewFiles",
+  "vim-plug",
+  "spectre_panel",
+  "NeogitStatus",
+  "NeogitCommitView",
+  "netrw",
+}
+
 local colors = {
   rosewater = "#F2D5CF",
   flamingo = "#EEBEBE",
@@ -321,22 +338,8 @@ local InactiveStatusline = {
 local SpecialStatusline = {
   condition = function()
     return conditions.buffer_matches({
-      buftype = { "nofile", "prompt", "help", "quickfix", "terminal" },
-      filetype = {
-        "^git.*",
-        "fugitive",
-        "NvimTree",
-        "vista",
-        "dbui",
-        "coc-explorer",
-        "VimspectorPrompt",
-        "DiffviewFiles",
-        "vim-plug",
-        "spectre_panel",
-        "NeogitStatus",
-        "NeogitCommitView",
-        "netrw",
-      },
+      buftype = disabled_buftype,
+      filetype = disabled_filetype,
     })
   end,
 
@@ -380,5 +383,25 @@ local StatusLines = {
   InactiveStatusline,
   DefaultStatusline,
 }
+
+-- local WinBars = {
+--   fallthrough = false,
+--   {
+--     -- Hide the winbar for special buffers
+--     condition = function()
+--       return conditions.buffer_matches({
+--         buftype = disabled_buftype,
+--         filetype = disabled_filetype,
+--       })
+--     end,
+--     init = function()
+--       vim.opt_local.winbar = nil
+--     end,
+--   },
+--   {
+--     Navic,
+--     Align,
+--   },
+-- }
 
 require("heirline").setup(StatusLines)
