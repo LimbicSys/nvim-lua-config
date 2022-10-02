@@ -58,3 +58,11 @@ use({
     require("colorizer").setup()
   end,
 })
+
+-- delete a buffer without messing up your window layout
+use({
+  "famiu/bufdelete.nvim",
+  config = function()
+    vim.keymap.set("n", "<Leader>c", "<CMD>Bdelete<CR>")
+  end,
+})
