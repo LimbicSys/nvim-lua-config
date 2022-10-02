@@ -12,6 +12,15 @@ end
 -- TODO: refer to lsp installer's config
 local common_config = require("modules.lsp.config.lspconfig.settings.common").common_config
 local jdtls_config = {}
+jdtls_config["settings"] = {
+  java = {
+    signatureHelp = { enabled = true },
+    completion = {
+      enable = true,
+      overwrite = false,
+    },
+  },
+}
 jdtls_config = vim.tbl_deep_extend("force", jdtls_config, common_config)
 jdtls_config["cmd"] = {
   "java",
@@ -36,16 +45,6 @@ jdtls_config["cmd"] = {
 
 jdtls_config["root_dir"] = require("jdtls.setup").find_root({ ".git", "mvnw", "gradlew", ".root", "pom.xml" })
 
-jdtls_config["settings"] = {
-  java = {
-    signatureHelp = { enabled = true },
-    completion = {
-      enable = true,
-      overwrite = false,
-    },
-  },
-}
-
 jdtls_config["on_attach"] = function(client, bufnr)
   common_config.on_attach(client, bufnr)
   local opts = { noremap = true, silent = true, buffer = bufnr }
@@ -62,11 +61,8 @@ jdtls_config["on_attach"] = function(client, bufnr)
     command! -buffer JdtBytecode lua require('jdtls').javap()
     command! -buffer JdtJshell lua require('jdtls').jshell()
   ]])
-
-  local navic_ok, navic = pcall(require, "nvim-navic")
-  if navic_ok then
-    navic.attach(client, bufnr)
-  end
 end
+
+print(vim.inspect(jdtls_config))
 
 jdtls.start_or_attach(jdtls_config)
