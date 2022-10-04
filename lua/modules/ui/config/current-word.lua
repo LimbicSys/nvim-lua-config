@@ -27,6 +27,7 @@ local color_value = {
   -- fg = "#282a36",
   bg = "#52576e",
 }
+
 augroup.create_hl_group("Illuminate", {
   {
     name = "IlluminatedWordText",

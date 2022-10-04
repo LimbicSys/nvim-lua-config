@@ -63,6 +63,4 @@ jdtls_config["on_attach"] = function(client, bufnr)
   ]])
 end
 
-print(vim.inspect(jdtls_config))
-
 jdtls.start_or_attach(jdtls_config)
