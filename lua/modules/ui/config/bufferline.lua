@@ -10,6 +10,12 @@ require("bufferline").setup({
           return false
         end
       end
+
+      -- java class file
+      if vim.fn.bufname(buf):match("class$") then
+        return false
+      end
+
       return true
     end,
   },
