@@ -110,17 +110,18 @@ augroup.create_hl_group("SetDiffColor", {
 })
 
 -- Highlight on yank
-augroup.create_cmd_group("HighlightYank", {
-  {
-    event = "TextYankPost",
-    opts = {
-      pattern = "*",
-      callback = function()
-        vim.highlight.on_yank()
-      end,
-    },
-  },
-})
+-- use yanky.nvim setting
+-- augroup.create_cmd_group("HighlightYank", {
+--   {
+--     event = "TextYankPost",
+--     opts = {
+--       pattern = "*",
+--       callback = function()
+--         vim.highlight.on_yank()
+--       end,
+--     },
+--   },
+-- })
 
 -- auto indent when type a at the beginning of a line
 function _G.handleNormalA()

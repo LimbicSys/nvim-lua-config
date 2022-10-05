@@ -35,12 +35,12 @@ use({
   end,
 })
 
-use({
-  "j-hui/fidget.nvim",
-  config = function()
-    require("fidget").setup()
-  end,
-})
+-- use({
+--   "j-hui/fidget.nvim",
+--   config = function()
+--     require("fidget").setup()
+--   end,
+-- })
 
 use({
   "glepnir/lspsaga.nvim",

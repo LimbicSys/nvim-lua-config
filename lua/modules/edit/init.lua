@@ -2,7 +2,7 @@ local use = require("core.pack").use
 
 use({
   "phaazon/hop.nvim",
-  branch = "v2", -- optional but strongly recommended
+  branch = "v*", -- optional but strongly recommended
   config = function()
     require("modules.edit.config.hop")
   end,
@@ -19,6 +19,9 @@ use({
 
 use({
   "mg979/vim-visual-multi",
+  config = function()
+    require("modules.edit.config.visual-multi")
+  end,
 })
 
 -- text objects
@@ -30,5 +33,13 @@ use({
   "gbprod/substitute.nvim",
   config = function()
     require("modules.edit.config.substitute")
+  end,
+})
+
+-- Lua
+use({
+  "gbprod/yanky.nvim",
+  config = function()
+    require("modules.edit.config.yanky")
   end,
 })
