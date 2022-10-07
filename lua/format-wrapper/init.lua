@@ -27,36 +27,36 @@ require("formatter").setup({
   },
 })
 
--- format by efm
-local function select_client(method)
-  local efm_blacklist = { "cpp" }
+-- -- format by efm
+-- local function select_client(method)
+--   local efm_blacklist = { "cpp" }
 
-  local clients = vim.tbl_values(vim.lsp.buf_get_clients())
-  clients = vim.tbl_filter(function(client)
-    return client.supports_method(method)
-  end, clients)
+--   local clients = vim.tbl_values(vim.lsp.buf_get_clients())
+--   clients = vim.tbl_filter(function(client)
+--     return client.supports_method(method)
+--   end, clients)
 
-  local ft = vim.bo.filetype
+--   local ft = vim.bo.filetype
 
-  if not vim.tbl_contains(efm_blacklist, ft) then
-    for i = 1, #clients do
-      if clients[i].name == "efm" then
-        return clients[i]
-      end
-    end
-  else
-    for i = 1, #clients do
-      if clients[i].name ~= "efm" then
-        return clients[i]
-      end
-    end
-  end
+--   if not vim.tbl_contains(efm_blacklist, ft) then
+--     for i = 1, #clients do
+--       if clients[i].name == "efm" then
+--         return clients[i]
+--       end
+--     end
+--   else
+--     for i = 1, #clients do
+--       if clients[i].name ~= "efm" then
+--         return clients[i]
+--       end
+--     end
+--   end
 
-  if #clients > 0 then
-    return clients[1]
-  end
-  return nil
-end
+--   if #clients > 0 then
+--     return clients[1]
+--   end
+--   return nil
+-- end
 
 local M = {}
 
@@ -72,7 +72,7 @@ function M.formatting()
 
   if vim.tbl_contains(lsp_format_list, ft) then
     -- formatting_sync()
-    vim.lsp.buf.formatting_sync()
+    vim.lsp.buf.format()
   else
     require("formatter.format").format("", "", 1, vim.fn.line("$"), { write = true, lock = true })
   end
@@ -89,7 +89,7 @@ end
 
 function M.toggle_format_on_save()
   do_format_on_save = not do_format_on_save
-  print(string.format("Format on save: %s", convert_bool(do_format_on_save)))
+  vim.notify(string.format("Format on save: %s", convert_bool(do_format_on_save)))
 end
 
 function M.format_on_save()
@@ -104,11 +104,11 @@ end
 
 function M.enable_format_on_save()
   do_format_on_save = true
-  print(string.format("Format on save: %s", convert_bool(do_format_on_save)))
+  vim.notify(string.format("Format on save: %s", convert_bool(do_format_on_save)))
 end
 
 function M.format_on_save_status()
-  print(string.format("Format on save: %s", convert_bool(do_format_on_save)))
+  vim.notify(string.format("Format on save: %s", convert_bool(do_format_on_save)))
 end
 
 return M
