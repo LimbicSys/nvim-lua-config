@@ -1,6 +1,7 @@
 require("nvim-treesitter.configs").setup({
   highlight = {
     enable = true,
+    disable = { "help" },
     custom_captures = {},
   },
   -- incremental_selection = {

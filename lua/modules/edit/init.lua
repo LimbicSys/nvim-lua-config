@@ -2,7 +2,7 @@ local use = require("core.pack").use
 
 use({
   "phaazon/hop.nvim",
-  branch = "v*", -- optional but strongly recommended
+  tag = "v*", -- optional but strongly recommended
   config = function()
     require("modules.edit.config.hop")
   end,

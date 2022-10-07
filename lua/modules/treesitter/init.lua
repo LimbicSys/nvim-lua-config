@@ -8,6 +8,7 @@ use({
     require("modules.treesitter.config.treesitter")
   end,
 })
+
 -- use 'romgrk/nvim-treesitter-context'
 
 use({
