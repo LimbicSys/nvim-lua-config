@@ -20,7 +20,8 @@ use({
 -- bufferline
 use({
   "akinsho/bufferline.nvim",
-  tab = "v2.*",
+  tag = "v*",
+  requires = "kyazdani42/nvim-web-devicons",
   config = function()
     require("modules.ui.config.bufferline")
   end,

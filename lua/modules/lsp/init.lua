@@ -4,7 +4,7 @@ use({
   "SmiteshP/nvim-navic",
 })
 
-use("folke/lua-dev.nvim")
+use("folke/neodev.nvim")
 
 use({ "p00f/clangd_extensions.nvim" })
 

@@ -1,6 +1,9 @@
+local bufferline_hl = require("catppuccin.groups.integrations.bufferline").get({})
+
 require("bufferline").setup({
   options = {
     show_buffer_close_icons = false,
+    show_buffer_icons = false,
     -- enforce_regular_tabs = true
     custom_filter = function(buf, buf_nums)
       local bt = vim.bo[buf].buftype
@@ -19,6 +22,7 @@ require("bufferline").setup({
       return true
     end,
   },
+  highlights = bufferline_hl,
 })
 
 -- These commands will navigate through buffers in order regardless of which mode you are using

@@ -24,11 +24,10 @@ local function set_keymap(bufnr)
   vim.keymap.set("n", "<space>ci", vim.lsp.buf.incoming_calls, opts)
   vim.keymap.set("n", "<space>co", vim.lsp.buf.outgoing_calls, opts)
   -- vim.keymap.set("n", "<Leader>a", vim.lsp.buf.code_action, opts)
-  vim.keymap.set("x", "<Leader>a", vim.lsp.buf.range_code_action, opts)
 
   --- lspsaga functions
   vim.keymap.set("n", "<f2>", "<cmd>Lspsaga rename<CR>", opts)
-  vim.keymap.set("n", "<leader>a", "<cmd>Lspsaga code_action<CR>", opts)
+  vim.keymap.set({ "n", "x" }, "<leader>a", "<cmd>Lspsaga code_action<CR>", opts)
   vim.keymap.set("n", "<Leader>dp", "<cmd>Lspsaga peek_definition<CR>", opts)
 end
 
@@ -47,7 +46,7 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 local status_ok, cmp_lsp = pcall(require, "cmp_nvim_lsp")
 if status_ok then
-  capabilities = cmp_lsp.update_capabilities(capabilities)
+  capabilities = cmp_lsp.default_capabilities()
 end
 
 M.common_config = {

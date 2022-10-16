@@ -1,47 +1,48 @@
 local augroup = require("easy-augroup")
 local opt = vim.opt
+local o = vim.o
 
-opt.hlsearch = true
-opt.incsearch = true
-opt.ignorecase = true
-opt.smartcase = true
-opt.number = true
-opt.relativenumber = true
-opt.scrolloff = 3
-opt.clipboard = "unnamedplus"
+o.hlsearch = true
+o.incsearch = true
+o.ignorecase = true
+o.smartcase = true
+o.number = true
+o.relativenumber = true
+o.scrolloff = 3
+o.clipboard = "unnamedplus"
 
-opt.tabstop = 4
-opt.softtabstop = 4
-opt.shiftwidth = 4
-opt.autoindent = true
-opt.smartindent = true
-opt.smarttab = true
-opt.expandtab = true
-opt.termguicolors = true
+o.tabstop = 4
+o.softtabstop = 4
+o.shiftwidth = 4
+o.autoindent = true
+o.smartindent = true
+o.smarttab = true
+o.expandtab = true
+o.termguicolors = true
 
 vim.g.mapleader = ","
-opt.pastetoggle = "<leader>q"
-opt.foldmethod = "indent"
+o.pastetoggle = "<leader>q"
+o.foldmethod = "indent"
 -- opt.foldenable = false
 -- opt.foldcolumn = "auto"
-opt.foldlevel = 99
-opt.mouse = "a"
-opt.splitright = true
-opt.splitbelow = true
-opt.cursorline = true
+o.foldlevel = 99
+o.mouse = "a"
+o.splitright = true
+o.splitbelow = true
+o.cursorline = true
 -- opt.colorcolumn = { 100 }
-opt.switchbuf = "useopen"
+o.switchbuf = "useopen"
 
-opt.signcolumn = "yes"
-opt.hidden = true
+o.signcolumn = "yes"
+o.hidden = true
 
 -- Some servers have issues with backup files, see #649.
-opt.backup = false
-opt.writebackup = false
+o.backup = false
+o.writebackup = false
 
-opt.cmdheight = 1
+o.cmdheight = 1
 
-opt.updatetime = 1000
+o.updatetime = 1000
 
 -- Don't pass messages to |ins-completion-menu|.
 opt.shortmess:append("c")
@@ -49,7 +50,7 @@ opt.shortmess:append("c")
 -- don't give the intro message when starting Vim
 opt.shortmess:append("I")
 
-opt.laststatus = 2
+o.laststatus = 2
 
 vim.cmd("autocmd BufNewFile,BufRead *.json setlocal filetype=jsonc")
 
