@@ -1,6 +1,7 @@
 local catppuccin = require("catppuccin")
 
 catppuccin.setup({
+  flavour = "frappe",
   integrations = {
     nvimtree = {
       show_root = true,
@@ -10,5 +11,4 @@ catppuccin.setup({
   },
 })
 
-vim.g.catppuccin_flavour = "frappe" -- latte, frappe, macchiato, mocha
 vim.cmd([[colorscheme catppuccin]])

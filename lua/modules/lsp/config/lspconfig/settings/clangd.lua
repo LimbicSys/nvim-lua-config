@@ -9,6 +9,7 @@ clangd_config["cmd"] = {
   "--fallback-style=Microsoft",
   "--header-insertion=never",
   "--header-insertion-decorators=false",
+  "--clang-tidy",
 }
 local default_capabilities = vim.tbl_deep_extend("force", common_config.capabilities, {
   textDocument = {

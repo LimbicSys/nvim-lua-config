@@ -281,6 +281,9 @@ local Navic = {
     -- instantiate the new child
     self[1] = self:new(children, 1)
   end,
+  hl = {
+    bg = colors.bg,
+  },
 }
 
 Navic = utils.make_flexible_component(1, Navic, { provider = "" })
