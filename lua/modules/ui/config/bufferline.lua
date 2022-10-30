@@ -1,9 +1,12 @@
+require("colorscheme")
+
 local bufferline_hl = require("catppuccin.groups.integrations.bufferline").get({})
 
 require("bufferline").setup({
   options = {
     show_buffer_close_icons = false,
-    show_buffer_icons = false,
+    show_buffer_icons = true,
+    separator_style = "thick",
     -- enforce_regular_tabs = true
     custom_filter = function(buf, buf_nums)
       local bt = vim.bo[buf].buftype

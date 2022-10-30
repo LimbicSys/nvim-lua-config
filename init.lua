@@ -2,7 +2,6 @@
 require("core")
 
 -- load after installed plugins
-require("colorscheme")
 require("statusline")
 require("cpp-helper")
 require("java-helper")
