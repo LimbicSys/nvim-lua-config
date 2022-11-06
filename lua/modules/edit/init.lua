@@ -43,3 +43,10 @@ use({
     require("modules.edit.config.yanky")
   end,
 })
+
+use({
+  "max397574/better-escape.nvim",
+  config = function()
+    require("modules.edit.config.better-escape")
+  end,
+})

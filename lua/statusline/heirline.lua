@@ -284,9 +284,8 @@ local Navic = {
   hl = {
     bg = colors.bg,
   },
+  flexible = 1,
 }
-
-Navic = utils.make_flexible_component(1, Navic, { provider = "" })
 
 local Align = {
   provider = "%=",
@@ -313,8 +312,8 @@ local DefaultStatusline = {
   Space,
   Percent,
   Align,
-  Navic,
-  Align,
+  -- Navic,
+  -- Align,
   FileType,
   Space,
   FileEncoding,

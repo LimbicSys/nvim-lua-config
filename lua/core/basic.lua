@@ -50,7 +50,7 @@ opt.shortmess:append("c")
 -- don't give the intro message when starting Vim
 opt.shortmess:append("I")
 
-o.laststatus = 2
+o.laststatus = 3
 
 vim.cmd("autocmd BufNewFile,BufRead *.json setlocal filetype=jsonc")
 

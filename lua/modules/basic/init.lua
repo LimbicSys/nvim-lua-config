@@ -21,8 +21,8 @@ use({
 })
 
 use({
-  "max397574/better-escape.nvim",
+  "folke/trouble.nvim",
   config = function()
-    require("modules.edit.config.better-escape")
+    require("modules.basic.config.trouble")
   end,
 })

@@ -16,9 +16,8 @@ require("lspsaga").init_lsp_saga({
     exec = "<CR>",
   },
   symbol_in_winbar = {
-    separator = " > ",
-    show_file = false,
-    in_custom = true,
+    enable = true,
+    show_file = true,
   },
 })
 
