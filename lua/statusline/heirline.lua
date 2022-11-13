@@ -1,5 +1,4 @@
 local conditions = require("heirline.conditions")
-local utils = require("heirline.utils")
 
 local disabled_buftype = { "nofile", "prompt", "help", "quickfix", "terminal" }
 local disabled_filetype = {
@@ -258,33 +257,51 @@ local TerminalName = {
   hl = { fg = "blue", bold = true },
 }
 
-local Navic = {
-  condition = require("nvim-navic").is_available,
-  init = function(self)
-    local data = require("nvim-navic").get_data() or {}
-    local children = {}
-    -- create a child for each level
-    for i, d in ipairs(data) do
-      local child = {
-        {
-          provider = d.name,
-        },
-      }
-      -- add a separator only if needed
-      if #data > 1 and i < #data then
-        table.insert(child, {
-          provider = " > ",
-        })
-      end
-      table.insert(children, child)
+-- local Navic = {
+--   condition = require("nvim-navic").is_available,
+--   init = function(self)
+--     local data = require("nvim-navic").get_data() or {}
+--     local children = {}
+--     -- create a child for each level
+--     for i, d in ipairs(data) do
+--       local child = {
+--         {
+--           provider = d.name,
+--         },
+--       }
+--       -- add a separator only if needed
+--       if #data > 1 and i < #data then
+--         table.insert(child, {
+--           provider = " > ",
+--         })
+--       end
+--       table.insert(children, child)
+--     end
+--     -- instantiate the new child
+--     self[1] = self:new(children, 1)
+--   end,
+--   hl = {
+--     bg = colors.bg,
+--   },
+--   flexible = 1,
+-- }
+
+local LSPActive = {
+  condition = conditions.lsp_attached,
+  update = { "LspAttach", "LspDetach" },
+
+  -- You can keep it simple,
+  -- provider = " [LSP]",
+
+  -- Or complicate things a bit and get the servers names
+  provider = function()
+    local names = {}
+    for i, server in pairs(vim.lsp.buf_get_clients(0)) do
+      table.insert(names, server.name)
     end
-    -- instantiate the new child
-    self[1] = self:new(children, 1)
+    return "LSP [" .. table.concat(names, " ") .. "]"
   end,
-  hl = {
-    bg = colors.bg,
-  },
-  flexible = 1,
+  hl = { fg = "green", bold = true },
 }
 
 local Align = {
@@ -312,8 +329,8 @@ local DefaultStatusline = {
   Space,
   Percent,
   Align,
-  -- Navic,
-  -- Align,
+  LSPActive,
+  Align,
   FileType,
   Space,
   FileEncoding,

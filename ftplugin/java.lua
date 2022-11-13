@@ -64,3 +64,14 @@ jdtls_config["on_attach"] = function(client, bufnr)
 end
 
 jdtls.start_or_attach(jdtls_config)
+
+vim.opt_local.errorformat = {
+  "[%tRROR] %#Malformed POM %f: %m@%l:%c%.%#",
+  "[%tRROR] %#Non-parseable POM %f: %m %#\\@ line %l\\, column %c%.%#",
+  "[%[A-Z]%#] %f:[%l\\,%c] %t%[a-z]%#: %m",
+  "[%t%[A-Z]%#] %f:[%l\\,%c] %[%^:]%#: %m",
+  "%A[%[A-Z]%#] Exit code: %[0-9]%# - %f:%l: %m",
+  "%A[%[A-Z]%#] %f:%l: %m",
+  "%-Z[%[A-Z]%#] %p^",
+  "%C[%[A-Z]%#] %#%m",
+}

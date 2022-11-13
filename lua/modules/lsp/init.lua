@@ -29,6 +29,7 @@ use({
     "glepnir/lspsaga.nvim",
     "SmiteshP/nvim-navic",
     "p00f/clangd_extensions.nvim",
+    "folke/trouble.nvim",
   },
   config = function()
     require("modules.lsp.config.lspconfig")

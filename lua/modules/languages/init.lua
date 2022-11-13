@@ -6,6 +6,13 @@ use({
   ft = "markdown",
 })
 
+use({
+  "preservim/vim-markdown",
+  config = function()
+    require("modules.languages.config.markdown")
+  end,
+})
+
 -- jsonc
 use({
   "neoclide/jsonc.vim",
