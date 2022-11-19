@@ -1,14 +1,10 @@
-require("hop").setup()
-vim.api.nvim_set_keymap(
-  "n",
-  "f",
-  "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>",
-  {}
-)
+local hop = require("hop")
+hop.setup()
 
-vim.api.nvim_set_keymap(
-  "n",
-  "F",
-  "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>",
-  {}
-)
+local directions = require("hop.hint").HintDirection
+vim.keymap.set("n", "f", function()
+  hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true })
+end, { remap = true })
+vim.keymap.set("n", "F", function()
+  hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true })
+end, { remap = true })

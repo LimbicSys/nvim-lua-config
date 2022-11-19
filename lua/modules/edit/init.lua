@@ -1,10 +1,19 @@
 local use = require("core.pack").use
 
+use("tpope/vim-repeat")
+
 use({
   "phaazon/hop.nvim",
   tag = "v*", -- optional but strongly recommended
   config = function()
     require("modules.edit.config.hop")
+  end,
+})
+
+use({
+  "ggandor/leap.nvim",
+  config = function()
+    require("leap").add_default_mappings()
   end,
 })
 

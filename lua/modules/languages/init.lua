@@ -21,3 +21,8 @@ use({
 
 -- kitty conf
 use("fladson/vim-kitty")
+
+-- rescript
+use({
+  "rescript-lang/vim-rescript",
+})

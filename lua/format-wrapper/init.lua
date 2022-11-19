@@ -24,6 +24,11 @@ require("formatter").setup({
         }
       end,
     },
+    rescript = {
+      function()
+        vim.cmd("RescriptFormat")
+      end,
+    },
   },
 })
 
