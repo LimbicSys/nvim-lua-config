@@ -13,7 +13,7 @@ use({
 use({
   "ggandor/leap.nvim",
   config = function()
-    require("leap").add_default_mappings()
+    require("modules.edit.config.leap")
   end,
 })
 
