@@ -288,7 +288,7 @@ local TerminalName = {
 
 local LSPActive = {
   condition = conditions.lsp_attached,
-  update = { "LspAttach", "LspDetach", "BufEnter" },
+  update = { "LspAttach", "LspDetach", "BufWinEnter" },
 
   -- You can keep it simple,
   -- provider = " [LSP]",
