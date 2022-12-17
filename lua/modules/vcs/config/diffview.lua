@@ -24,16 +24,6 @@ require("diffview").setup({
     },
   },
   file_history_panel = {
-    log_options = {
-      single_file = {
-        max_count = 512,
-        follow = true,
-      },
-      multi_file = {
-        max_count = 128,
-        -- follow = false   -- `follow` only applies to single-file history
-      },
-    },
     win_config = { -- See ':h diffview-config-win_config'
       position = "bottom",
       height = 16,

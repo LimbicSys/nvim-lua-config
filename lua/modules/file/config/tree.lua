@@ -67,3 +67,12 @@ vim.api.nvim_set_keymap("n", ";a", "<CMD>NvimTreeFindFile<CR>", { noremap = true
 
 -- a list of groups can be found at `:help nvim_tree_highlight`
 -- highlight NvimTreeFolderIcon guibg=blue
+require("easy-augroup").create_hl_group("NvimTreeGit", {
+  {
+    name = "NvimTreeGitIgnored",
+    value = {
+      fg = "#626880"
+    }
+  }
+})
+
