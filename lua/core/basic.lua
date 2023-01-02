@@ -103,14 +103,13 @@ vim.api.nvim_set_keymap("n", "D", '"_D', map_opts)
 vim.api.nvim_set_keymap("x", "d", '"_d', map_opts)
 vim.api.nvim_set_keymap("n", "c", '"_c', map_opts)
 
-
 local function edit_cur_dir_file()
   local buf_name = vim.fn.bufname()
   local cur_dir = vim.fn.fnamemodify(buf_name, ":h")
   return ":e " .. cur_dir .. "/"
 end
 
-vim.keymap.set("n", "<space>.", edit_cur_dir_file, { expr=true })
+vim.keymap.set("n", "<space>.", edit_cur_dir_file, { expr = true })
 
 augroup.create_hl_group("SetDiffColor", {
   { name = "DiffAdd", value = { fg = "None", bg = "#4b5632" } },

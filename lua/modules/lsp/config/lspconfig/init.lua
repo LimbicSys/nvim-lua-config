@@ -10,7 +10,7 @@ lsp_installer.setup({
 })
 
 local servers =
-  { "bashls", "vimls", "jsonls", "sumneko_lua", "clangd", "cmake", "pyright", "rescriptls", "rust_analyzer" }
+  { "bashls", "vimls", "jsonls", "sumneko_lua", "clangd", "cmake", "pylsp", "rescriptls", "rust_analyzer" }
 
 for _, server in pairs(servers) do
   local has_custom_config, customed_config = pcall(require, "modules.lsp.config.lspconfig.settings." .. server)
