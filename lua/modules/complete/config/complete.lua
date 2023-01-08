@@ -21,16 +21,6 @@ local confirm = function(fallback)
   end
 end
 
-local function lsp_scores(entry1, entry2)
-  local diff
-  if entry1.completion_item.score and entry2.completion_item.score then
-    diff = (entry2.completion_item.score * entry2.score) - (entry1.completion_item.score * entry1.score)
-  else
-    diff = entry2.score - entry1.score
-  end
-  return (diff < 0)
-end
-
 cmp.setup({
   snippet = {
     expand = function(args)
@@ -76,7 +66,11 @@ cmp.setup({
 
 -- you need setup cmp first put this after cmp.setup()
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } }))
+cmp.event:on("confirm_done", function()
+  if vim.bo.filetype ~= "sh" then
+    cmp_autopairs.on_confirm_done({ map_char = { tex = "" } })
+  end
+end)
 
 vim.cmd([[highlight! link CmpItemAbbrMatch Pmenu]])
 

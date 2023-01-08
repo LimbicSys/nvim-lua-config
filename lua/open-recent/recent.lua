@@ -85,7 +85,7 @@ function M.open_recent()
     -- need detect filetype manually when used by **VimEtner** autocmd
     -- don't know why yet
     vim.cmd("filetype detect")
-    vim.fn["ProjectionistDetect"]()
+    -- vim.fn["ProjectionistDetect"]()
   end
 end
 
