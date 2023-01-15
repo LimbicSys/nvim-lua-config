@@ -296,7 +296,7 @@ local LSPActive = {
   -- Or complicate things a bit and get the servers names
   provider = function()
     local names = {}
-    for i, server in pairs(vim.lsp.buf_get_clients(0)) do
+    for _, server in pairs(vim.lsp.get_active_clients({ bufnr = 0 })) do
       table.insert(names, server.name)
     end
     return "LSP [" .. table.concat(names, " ") .. "]"
@@ -423,4 +423,6 @@ local StatusLines = {
 --   },
 -- }
 
-require("heirline").setup(StatusLines)
+require("heirline").setup({
+  statusline = StatusLines
+})
