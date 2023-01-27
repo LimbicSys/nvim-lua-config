@@ -1,4 +1,4 @@
-require("lspsaga").init_lsp_saga({
+require("lspsaga").setup({
   code_action_lightbulb = {
     sign = true,
     virtual_text = false,
@@ -22,7 +22,7 @@ require("lspsaga").init_lsp_saga({
 })
 
 local opt = { silent = true, noremap = true }
-vim.keymap.set("n", "<leader>dd", require("lspsaga.diagnostic").show_line_diagnostics, opt)
+vim.keymap.set("n", "<leader>dd", "<CMD>Lspsaga show_line_diagnsotic", opt)
 
 require("easy-augroup").create_hl_group("LspSagaHighLight", {
   {
