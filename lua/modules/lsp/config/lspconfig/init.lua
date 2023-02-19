@@ -5,12 +5,7 @@ end
 
 local lspconfig = require("lspconfig")
 
-lsp_installer.setup({
-  -- ensure_installed = { "bashls", "vimls", "jsonls", "sumneko_lua" },
-})
-
-local servers =
-  { "bashls", "vimls", "jsonls", "sumneko_lua", "clangd", "cmake", "pylsp", "rescriptls", "rust_analyzer" }
+local servers = { "bashls", "vimls", "jsonls", "lua_ls", "clangd", "cmake", "pylsp", "rescriptls", "rust_analyzer" }
 
 for _, server in pairs(servers) do
   local has_custom_config, customed_config = pcall(require, "modules.lsp.config.lspconfig.settings." .. server)
