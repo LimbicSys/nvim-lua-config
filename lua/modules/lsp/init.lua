@@ -22,7 +22,7 @@ use({ "williamboman/mason-lspconfig.nvim" })
 use({
   "neovim/nvim-lspconfig",
   requires = {
-    "folke/lua-dev.nvim",
+    "folke/neodev.nvim",
     "RRethy/vim-illuminate",
     "ray-x/lsp_signature.nvim",
     "hrsh7th/cmp-nvim-lsp",
