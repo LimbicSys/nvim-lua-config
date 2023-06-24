@@ -47,7 +47,6 @@ return {
     end,
   },
 
-  -- Lua
   {
     "gbprod/yanky.nvim",
     config = function()
@@ -59,6 +58,14 @@ return {
     "max397574/better-escape.nvim",
     config = function()
       require("modules.edit.config.better-escape")
+    end,
+  },
+
+  {
+    "abecodes/tabout.nvim",
+    dependencies = { "nvim-treesitter" }, -- or require if not used so far
+    config = function()
+      require("modules.edit.config.tabout")
     end,
   },
 }
