@@ -1,27 +1,28 @@
-local use = require("core.pack").use
+return {
+  {
+    -- comments
+    "tpope/vim-commentary",
+    config = function()
+      require("modules.comment.config.commentary")
+    end,
+  },
 
--- comments
-use({
-  "tpope/vim-commentary",
-  config = function()
-    require("modules.comment.config.commentary")
-  end,
-})
+  {
+    "folke/todo-comments.nvim",
+    config = function()
+      require("modules.comment.config.todo-comments")
+    end,
+  },
 
-use({
-  "folke/todo-comments.nvim",
-  config = function()
-    require("modules.comment.config.todo-comments")
-  end,
-})
-use("suy/vim-context-commentstring")
+  {
+    "suy/vim-context-commentstring",
+  },
 
-use({
-  "danymat/neogen",
-  config = function()
-    require("modules.comment.config.neogen")
-  end,
-  requires = "nvim-treesitter/nvim-treesitter",
-  -- Uncomment next line if you want to follow only stable versions
-  tag = "*",
-})
+  {
+    "danymat/neogen",
+    config = function()
+      require("modules.comment.config.neogen")
+    end,
+    dependencies = "nvim-treesitter/nvim-treesitter",
+  },
+}

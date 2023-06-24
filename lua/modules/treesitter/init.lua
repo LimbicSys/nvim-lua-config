@@ -1,28 +1,28 @@
-local use = require("core.pack").use
+return {
+  {
+    "nvim-treesitter/nvim-treesitter",
+    -- We recommend updating the parsers on update
+    build = ":TSUpdate",
+    config = function()
+      require("modules.treesitter.config.treesitter")
+    end,
+  },
 
-use({
-  "nvim-treesitter/nvim-treesitter",
-  -- We recommend updating the parsers on update
-  run = ":TSUpdate",
-  config = function()
-    require("modules.treesitter.config.treesitter")
-  end,
-})
+  --  'romgrk/nvim-treesitter-context'
 
--- use 'romgrk/nvim-treesitter-context'
+  {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    config = function()
+      require("modules.treesitter.config.treesitter-textobject")
+    end,
+  },
 
-use({
-  "nvim-treesitter/nvim-treesitter-textobjects",
-  config = function()
-    require("modules.treesitter.config.treesitter-textobject")
-  end,
-})
-
-use({
-  "nvim-treesitter/playground",
-  requires = "nvim-treesitter/nvim-treesitter",
-  cmd = "TSPlaygroundToggle",
-  config = function()
-    require("modules.treesitter.config.treesitter-playground")
-  end,
-})
+  {
+    "nvim-treesitter/playground",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    cmd = "TSPlaygroundToggle",
+    config = function()
+      require("modules.treesitter.config.treesitter-playground")
+    end,
+  },
+}

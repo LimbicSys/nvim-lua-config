@@ -1,28 +1,33 @@
-local use = require("core.pack").use
+return {
+  {
+    "nvim-lua/plenary.nvim",
+  },
 
-use("nvim-lua/plenary.nvim")
+  {
+    -- icons
+    "nvim-tree/nvim-web-devicons",
+    lazy = true,
+  },
 
--- icons
-use("kyazdani42/nvim-web-devicons")
+  {
+    -- quick fix
+    "kevinhwang91/nvim-bqf",
+    config = function()
+      require("modules.basic.config.quickfix")
+    end,
+  },
 
--- quick fix
-use({
-  "kevinhwang91/nvim-bqf",
-  config = function()
-    require("modules.basic.config.quickfix")
-  end,
-})
+  {
+    "timakro/vim-yadi",
+    config = function()
+      require("modules.basic.config.indent")
+    end,
+  },
 
-use({
-  "timakro/vim-yadi",
-  config = function()
-    require("modules.basic.config.indent")
-  end,
-})
-
-use({
-  "folke/trouble.nvim",
-  config = function()
-    require("modules.basic.config.trouble")
-  end,
-})
+  {
+    "folke/trouble.nvim",
+    config = function()
+      require("modules.basic.config.trouble")
+    end,
+  },
+}

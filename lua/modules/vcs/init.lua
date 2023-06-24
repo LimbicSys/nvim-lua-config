@@ -1,30 +1,30 @@
-local use = require("core.pack").use
+return {
 
--- git
-use({
-  "lewis6991/gitsigns.nvim",
-  tag = "v*",
-  config = function()
-    require("modules.vcs.config.git")
-  end,
-})
-use({
-  "tpope/vim-fugitive",
-  config = function()
-    require("modules.vcs.config.fugitive")
-  end,
-})
-use({
-  "sindrets/diffview.nvim",
-  config = function()
-    require("modules.vcs.config.diffview")
-  end,
-})
--- use 'airblade/vim-gitgutter'
+  -- git
+  {
+    "lewis6991/gitsigns.nvim",
+    version = "*",
+    config = function()
+      require("modules.vcs.config.git")
+    end,
+  },
+  {
+    "tpope/vim-fugitive",
+    config = function()
+      require("modules.vcs.config.fugitive")
+    end,
+  },
+  {
+    "sindrets/diffview.nvim",
+    config = function()
+      require("modules.vcs.config.diffview")
+    end,
+  },
 
-use({
-  "TimUntersberger/neogit",
-  config = function()
-    require("modules.vcs.config.neogit")
-  end,
-})
+  {
+    "TimUntersberger/neogit",
+    config = function()
+      require("modules.vcs.config.neogit")
+    end,
+  },
+}

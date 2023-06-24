@@ -1,56 +1,57 @@
-local use = require("core.pack").use
-
-use({
-  "SmiteshP/nvim-navic",
-})
-
-use("folke/neodev.nvim")
-
-use({ "p00f/clangd_extensions.nvim" })
-
-use("mfussenegger/nvim-jdtls")
-
-use({
-  "williamboman/mason.nvim",
-  config = function()
-    require("mason").setup()
-  end,
-})
-
-use({ "williamboman/mason-lspconfig.nvim" })
-
-use({
-  "neovim/nvim-lspconfig",
-  requires = {
-    "folke/neodev.nvim",
-    "RRethy/vim-illuminate",
-    "ray-x/lsp_signature.nvim",
-    "hrsh7th/cmp-nvim-lsp",
-    "glepnir/lspsaga.nvim",
+return {
+  {
     "SmiteshP/nvim-navic",
-    "p00f/clangd_extensions.nvim",
-    "folke/trouble.nvim",
   },
-  config = function()
-    require("modules.lsp.config.lspconfig")
-  end,
-})
 
--- use({
---   "j-hui/fidget.nvim",
---   config = function()
---     require("fidget").setup()
---   end,
--- })
+  { "folke/neodev.nvim" },
 
-use({
-  "glepnir/lspsaga.nvim",
-  config = function()
-    require("modules.lsp.config.lspsaga")
-  end,
-})
+  { "p00f/clangd_extensions.nvim" },
 
--- use 'steelsojka/completion-buffers'
--- use 'nvim-lua/lsp-status.nvim'
--- use 'RishabhRD/popfix'
--- use 'RishabhRD/nvim-lsputils'
+  { "mfussenegger/nvim-jdtls" },
+
+  {
+    "williamboman/mason.nvim",
+    config = function()
+      require("mason").setup()
+    end,
+  },
+
+  { "williamboman/mason-lspconfig.nvim" },
+
+  {
+    "neovim/nvim-lspconfig",
+    dependencies = {
+      "folke/neodev.nvim",
+      "RRethy/vim-illuminate",
+      "ray-x/lsp_signature.nvim",
+      "hrsh7th/cmp-nvim-lsp",
+      "glepnir/lspsaga.nvim",
+      "SmiteshP/nvim-navic",
+      "p00f/clangd_extensions.nvim",
+      "folke/trouble.nvim",
+    },
+    config = function()
+      require("modules.lsp.config.lspconfig")
+    end,
+  },
+
+  -- {
+  --   "j-hui/fidget.nvim",
+  --   config = function()
+  --     require("fidget").setup()
+  --   end,
+  -- },
+
+  {
+    "glepnir/lspsaga.nvim",
+    event = "LspAttach",
+    config = function()
+      require("modules.lsp.config.lspsaga")
+    end,
+  },
+
+  --  'steelsojka/completion-buffers'
+  --  'nvim-lua/lsp-status.nvim'
+  --  'RishabhRD/popfix'
+  --  'RishabhRD/nvim-lsputils'
+}

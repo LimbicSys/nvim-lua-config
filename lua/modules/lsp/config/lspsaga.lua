@@ -22,7 +22,7 @@ require("lspsaga").setup({
 })
 
 local opt = { silent = true, noremap = true }
-vim.keymap.set("n", "<leader>dd", "<CMD>Lspsaga show_line_diagnsotic", opt)
+vim.keymap.set("n", "<leader>dd", "<CMD>Lspsaga show_line_diagnostics<CR>", opt)
 
 require("easy-augroup").create_hl_group("LspSagaHighLight", {
   {

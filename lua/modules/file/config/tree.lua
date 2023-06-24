@@ -71,8 +71,7 @@ require("easy-augroup").create_hl_group("NvimTreeGit", {
   {
     name = "NvimTreeGitIgnored",
     value = {
-      fg = "#626880"
-    }
-  }
+      fg = "#626880",
+    },
+  },
 })
-

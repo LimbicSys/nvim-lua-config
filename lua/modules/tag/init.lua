@@ -1,15 +1,15 @@
-local use = require("core.pack").use
+return {
+  {
+    "ludovicchabant/vim-gutentags",
+    config = function()
+      require("modules.tag.config.gutentags")
+    end,
+  },
 
-use({
-  "ludovicchabant/vim-gutentags",
-  config = function()
-    require("modules.tag.config.gutentags")
-  end,
-})
-
-use({
-  "liuchengxu/vista.vim",
-  config = function()
-    require("modules.tag.config.vista")
-  end,
-})
+  {
+    "liuchengxu/vista.vim",
+    config = function()
+      require("modules.tag.config.vista")
+    end,
+  },
+}

@@ -1,27 +1,27 @@
-local use = require("core.pack").use
+return {
+  -- fuzzing finder
+  { "nvim-lua/popup.nvim" },
+  { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+  {
+    "nvim-telescope/telescope.nvim",
+    config = function()
+      require("modules.search.config.telescope")
+    end,
+  },
 
--- fuzzing finder
-use("nvim-lua/popup.nvim")
-use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
-use({
-  "nvim-telescope/telescope.nvim",
-  config = function()
-    require("modules.search.config.telescope")
-  end,
-})
+  { "junegunn/fzf" },
 
-use("junegunn/fzf")
+  {
+    "junegunn/fzf.vim",
+    config = function()
+      require("modules.search.config.fzf")
+    end,
+  },
 
-use({
-  "junegunn/fzf.vim",
-  config = function()
-    require("modules.search.config.fzf")
-  end,
-})
-
-use({
-  "windwp/nvim-spectre",
-  config = function()
-    require("modules.search.config.spectre")
-  end,
-})
+  {
+    "windwp/nvim-spectre",
+    config = function()
+      require("modules.search.config.spectre")
+    end,
+  },
+}
