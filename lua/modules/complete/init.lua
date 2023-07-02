@@ -8,6 +8,13 @@ return {
       "rafamadriz/friendly-snippets",
       -- "hrsh7th/vim-vsnip-integ"
     },
+    init = function()
+      -- If you want to use snippet for multiple filetypes, you can `g:vsnip_filetypes` for it.
+      -- let g:vsnip_filetypes = {}
+      -- let g:vsnip_filetypes.javascriptreact = ['javascript']
+      -- let g:vsnip_filetypes.typescriptreact = ['typescript']
+      vim.g.vsnip_snippet_dir = "~/.config/nvim/snippet"
+    end,
     config = function()
       require("modules.complete.config.vsnip")
     end,
@@ -25,6 +32,9 @@ return {
     "windwp/nvim-autopairs",
     dependencies = "hrsh7th/nvim-cmp",
     event = "InsertEnter",
+    init = function()
+      vim.g.completion_confirm_key = ""
+    end,
     config = function()
       require("modules.complete.config.autopairs")
     end,

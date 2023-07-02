@@ -3,7 +3,7 @@ local npairs = require("nvim-autopairs")
 -- local cond = require("nvim-autopairs.conds")
 
 npairs.setup()
-local rule = npairs.get_rule('"')
+-- local rule = npairs.get_rule('"')
 -- rule:with_pair(
 --   function()
 --     if vim.api.nvim_buf_get_option(0, "filetype") == "vim" then
@@ -26,7 +26,6 @@ local rule = npairs.get_rule('"')
 -- skip it, if you use another global object
 _G.MUtils = {}
 
-vim.g.completion_confirm_key = ""
 local cmp = require("cmp")
 MUtils.completion_confirm = function()
   if vim.fn.pumvisible() ~= 0 then

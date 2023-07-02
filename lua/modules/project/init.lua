@@ -8,8 +8,5 @@ return {
 
   {
     "windwp/nvim-projectconfig",
-    config = function()
-      require("nvim-projectconfig").load_project_config()
-    end,
   },
 }

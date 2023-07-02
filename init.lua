@@ -8,3 +8,6 @@ require("java-helper")
 require("im-switcher")
 require("toggle-list")
 require("open-recent")
+
+-- load project config at last
+require("nvim-projectconfig").load_project_config()

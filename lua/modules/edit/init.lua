@@ -20,17 +20,17 @@ return {
 
   {
     "chaoren/vim-wordmotion",
-    config = function()
+    init = function()
       require("modules.edit.config.wordmotion")
     end,
   },
 
-  -- {
-  --   "mg979/vim-visual-multi",
-  --   config = function()
-  --     require("modules.edit.config.visual-multi")
-  --   end,
-  -- },
+  {
+    "mg979/vim-visual-multi",
+    init = function()
+      require("modules.edit.config.visual-multi")
+    end,
+  },
 
   -- text objects
   { "Limbicsys/vim-indent-object" },

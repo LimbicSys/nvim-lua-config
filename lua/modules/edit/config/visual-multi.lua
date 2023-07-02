@@ -1,4 +1,4 @@
 vim.g.VM_maps = {
-  ["Find Under"] = "<C-m>",
-  ["Find Subword Under"] = "<C-m>",
+  ["Find Under"] = "gb",
+  ["Find Subword Under"] = "gb",
 }

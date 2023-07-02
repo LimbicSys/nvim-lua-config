@@ -30,6 +30,7 @@ return {
       "p00f/clangd_extensions.nvim",
       "folke/trouble.nvim",
     },
+    event = { "BufReadPre", "BufNewFile" },
     config = function()
       require("modules.lsp.config.lspconfig")
     end,

@@ -13,9 +13,3 @@ local function toggle_vista()
 end
 
 vim.keymap.set("n", ";t", toggle_vista)
-
-vim.g.visita_default_executive = "ctags"
-
-vim.g.vista_echo_cursor = 1
-vim.g.vista_echo_cursor_strategy = "floating_win"
-vim.g.vista_disable_statusline = true
