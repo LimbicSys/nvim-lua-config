@@ -2,7 +2,9 @@
 require("core")
 
 -- load after installed plugins
-require("statusline")
+-- require("statusline")
+
+-- TODO: load with lazy
 require("cpp-helper")
 require("java-helper")
 require("im-switcher")

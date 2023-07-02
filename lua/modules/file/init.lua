@@ -40,6 +40,16 @@ return {
       -- only needed if you want to use the commands with "_with_window_picker" suffix
       "s1n7ax/nvim-window-picker",
     },
+    event = "VeryLazy",
+    init = function()
+      vim.g.neo_tree_remove_legacy_commands = 1
+      if vim.fn.argc() == 1 then
+        local stat = vim.loop.fs_stat(vim.fn.argv(0))
+        if stat and stat.type == "directory" then
+          require("neo-tree")
+        end
+      end
+    end,
     config = function()
       require("modules.file.config.neotree")
     end,
@@ -47,5 +57,6 @@ return {
 
   {
     "tpope/vim-vinegar",
+    event = "VeryLazy",
   },
 }

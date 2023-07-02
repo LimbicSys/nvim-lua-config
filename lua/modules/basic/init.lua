@@ -12,6 +12,7 @@ return {
   {
     -- quick fix
     "kevinhwang91/nvim-bqf",
+    event = "VeryLazy",
     config = function()
       require("modules.basic.config.quickfix")
     end,
@@ -26,6 +27,7 @@ return {
 
   {
     "folke/trouble.nvim",
+    event = "VeryLazy",
     config = function()
       require("modules.basic.config.trouble")
     end,

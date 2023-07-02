@@ -3,6 +3,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     -- We recommend updating the parsers on update
     build = ":TSUpdate",
+    event = { "BufReadPost", "BufNewFile" },
     config = function()
       require("modules.treesitter.config.treesitter")
     end,
@@ -12,6 +13,8 @@ return {
 
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    event = { "BufReadPost", "BufNewFile" },
     config = function()
       require("modules.treesitter.config.treesitter-textobject")
     end,

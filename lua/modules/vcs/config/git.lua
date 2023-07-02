@@ -1,11 +1,3 @@
-local group = require("easy-augroup")
-
-group.create_hl_group("GitSignsCus", {
-  { name = "GitSignsAddCus", value = { fg = "#98be65" } },
-  { name = "GitSignsChangeCus", value = { fg = "#ffaa00" } },
-  { name = "GitSignsDeleteCus", value = { fg = "#ec5f67" } },
-})
-
 require("gitsigns").setup({
   signs = {
     add = { hl = "GitSignsAddCus", text = "▎", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },

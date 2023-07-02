@@ -1,6 +1,7 @@
 return {
   {
     "ludovicchabant/vim-gutentags",
+    event = "VeryLazy",
     init = function()
       require("modules.tag.config.gutentags")
     end,
@@ -8,6 +9,7 @@ return {
 
   {
     "liuchengxu/vista.vim",
+    event = "VeryLazy",
     init = function()
       vim.g.vista_default_executive = "ctags"
       vim.g.vista_echo_cursor = 1

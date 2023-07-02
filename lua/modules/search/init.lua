@@ -1,18 +1,21 @@
 return {
   -- fuzzing finder
-  { "nvim-lua/popup.nvim" },
-  { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
   {
     "nvim-telescope/telescope.nvim",
+    dependencies = {
+      { "nvim-lua/popup.nvim" },
+      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+    },
+    event = "VeryLazy",
     config = function()
       require("modules.search.config.telescope")
     end,
   },
 
-  { "junegunn/fzf" },
-
   {
     "junegunn/fzf.vim",
+    dependencies = "junegunn/fzf",
+    event = "VeryLazy",
     config = function()
       require("modules.search.config.fzf")
     end,
@@ -20,6 +23,7 @@ return {
 
   {
     "windwp/nvim-spectre",
+    event = "VeryLazy",
     config = function()
       require("modules.search.config.spectre")
     end,

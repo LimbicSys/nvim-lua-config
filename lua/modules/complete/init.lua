@@ -1,13 +1,11 @@
 return {
-  -- snippets
-  { "rafamadriz/friendly-snippets" },
-
   {
     "hrsh7th/vim-vsnip",
     dependencies = {
       "rafamadriz/friendly-snippets",
       -- "hrsh7th/vim-vsnip-integ"
     },
+    event = "VeryLazy",
     init = function()
       -- If you want to use snippet for multiple filetypes, you can `g:vsnip_filetypes` for it.
       -- let g:vsnip_filetypes = {}
@@ -31,7 +29,7 @@ return {
   {
     "windwp/nvim-autopairs",
     dependencies = "hrsh7th/nvim-cmp",
-    event = "InsertEnter",
+    event = { "InsertEnter", "CmdlineEnter" },
     init = function()
       vim.g.completion_confirm_key = ""
     end,
@@ -49,17 +47,12 @@ return {
   -- })
 
   {
-    "hrsh7th/cmp-vsnip",
-    dependencies = "hrsh7th/vim-vsnip",
-  },
-
-  {
     "hrsh7th/nvim-cmp",
     dependencies = {
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-path",
-      "hrsh7th/cmp-vsnip",
+      { "hrsh7th/cmp-vsnip", dependencies = "hrsh7th/vim-vsnip" },
       "hrsh7th/cmp-cmdline",
       "windwp/nvim-autopairs",
       "quangnguyen30192/cmp-nvim-tags",
@@ -67,6 +60,7 @@ return {
       "hrsh7th/cmp-nvim-lsp-document-symbol",
       "hrsh7th/cmp-nvim-lsp-signature-help",
     },
+    event = { "InsertEnter", "CmdlineEnter" },
     config = function()
       require("modules.complete.config.complete")
     end,

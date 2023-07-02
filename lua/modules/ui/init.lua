@@ -2,12 +2,17 @@ return {
   -- color theme, NOTE: load before statusline
   {
     "catppuccin/nvim",
+    lazy = true,
     name = "catppuccin",
   },
 
   -- statusline
   {
     "rebelot/heirline.nvim",
+    even = "VeryLazy",
+    config = function()
+      require("statusline.heirline")
+    end,
   },
   -- {
   --   "NTBBloodbath/galaxyline.nvim",
@@ -17,6 +22,7 @@ return {
   {
     "akinsho/bufferline.nvim",
     -- tag = "v*",
+    even = "VeryLazy",
     dependencies = "nvim-tree/nvim-web-devicons",
     config = function()
       require("modules.ui.config.bufferline")
@@ -26,6 +32,7 @@ return {
   -- group buffer by tab
   {
     "tiagovla/scope.nvim",
+    event = "VeryLazy",
     config = function()
       require("scope").setup()
     end,
@@ -34,6 +41,7 @@ return {
   {
     "lukas-reineke/indent-blankline.nvim",
     version = "*",
+    event = "VeryLazy",
     init = function()
       vim.g.indent_blankline_buftype_exclude = { "terminal", "nofile" }
       vim.g.indent_blankline_char = "│"
@@ -48,6 +56,7 @@ return {
   --  'dominikduda/vim_current_word'
   {
     "RRethy/vim-illuminate",
+    event = "VeryLazy",
     config = function()
       require("modules.ui.config.current-word")
     end,
@@ -64,6 +73,7 @@ return {
   -- delete a buffer without messing up your window layout
   {
     "famiu/bufdelete.nvim",
+    event = "VeryLazy",
     config = function()
       vim.keymap.set("n", "<Leader>c", "<CMD>Bdelete<CR>")
     end,

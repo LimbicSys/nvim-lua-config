@@ -1,7 +1,5 @@
 local neotree = require("neo-tree")
 
-vim.g.neo_tree_remove_legacy_commands = 1
-
 neotree.setup({
   enable_diagnostics = false,
   filesystem = {

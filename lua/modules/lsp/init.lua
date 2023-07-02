@@ -1,22 +1,19 @@
 return {
-  {
-    "SmiteshP/nvim-navic",
-  },
+  -- {
+  --   "SmiteshP/nvim-navic",
+  -- },
 
-  { "folke/neodev.nvim" },
+  { "p00f/clangd_extensions.nvim", ft = { "c", "cpp" } },
 
-  { "p00f/clangd_extensions.nvim" },
-
-  { "mfussenegger/nvim-jdtls" },
+  { "mfussenegger/nvim-jdtls", ft = "java" },
 
   {
     "williamboman/mason.nvim",
+    event = "VeryLazy",
     config = function()
       require("mason").setup()
     end,
   },
-
-  { "williamboman/mason-lspconfig.nvim" },
 
   {
     "neovim/nvim-lspconfig",
@@ -29,6 +26,8 @@ return {
       "SmiteshP/nvim-navic",
       "p00f/clangd_extensions.nvim",
       "folke/trouble.nvim",
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim",
     },
     event = { "BufReadPre", "BufNewFile" },
     config = function()

@@ -2,6 +2,7 @@ return {
   {
     -- comments
     "tpope/vim-commentary",
+    event = "VeryLazy",
     config = function()
       require("modules.comment.config.commentary")
     end,
@@ -9,6 +10,7 @@ return {
 
   {
     "folke/todo-comments.nvim",
+    event = "VeryLazy",
     config = function()
       require("modules.comment.config.todo-comments")
     end,
@@ -16,10 +18,12 @@ return {
 
   {
     "suy/vim-context-commentstring",
+    event = "VeryLazy",
   },
 
   {
     "danymat/neogen",
+    event = "VeryLazy",
     config = function()
       require("modules.comment.config.neogen")
     end,

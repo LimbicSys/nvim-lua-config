@@ -7,6 +7,7 @@ return {
 
   {
     "preservim/vim-markdown",
+    ft = "markdown",
     config = function()
       require("modules.languages.config.markdown")
     end,
@@ -22,7 +23,7 @@ return {
   { "fladson/vim-kitty" },
 
   -- rescript
-  {
-    "rescript-lang/vim-rescript",
-  },
+  -- {
+  --   "rescript-lang/vim-rescript",
+  -- },
 }

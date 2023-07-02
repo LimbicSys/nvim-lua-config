@@ -24,6 +24,14 @@ require("bufferline").setup({
 
       return true
     end,
+    offsets = {
+      {
+        filetype = "neo-tree",
+        text = "Neo-tree",
+        highlight = "Directory",
+        text_align = "left",
+      },
+    },
   },
   highlights = bufferline_hl,
 })
