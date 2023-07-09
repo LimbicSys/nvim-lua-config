@@ -1,7 +1,8 @@
 require("lspsaga").setup({
-  code_action_lightbulb = {
+  lightbulb = {
     sign = true,
     virtual_text = false,
+    enable_in_insert = false,
   },
   finder_action_keys = {
     open = "o",

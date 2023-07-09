@@ -1,7 +1,7 @@
 local jdtls = require("jdtls")
 
 local data_path = vim.fn.stdpath("data")
-local jdtls_path = data_path .. "/jdtls"
+local jdtls_path = data_path .. "/mason/packages/jdtls"
 local config_file_path = jdtls_path .. "/config_linux"
 local jar = vim.fn.expand(jdtls_path .. "/plugins/org.eclipse.equinox.launcher_*.jar")
 
@@ -29,7 +29,7 @@ jdtls_config["cmd"] = {
   "-Declipse.product=org.eclipse.jdt.ls.core.product",
   "-Dlog.protocol=true",
   "-Dlog.level=ALL",
-  "-Xms1g",
+  "-Xmx1g",
   "--add-modules=ALL-SYSTEM",
   "--add-opens",
   "java.base/java.util=ALL-UNNAMED",

@@ -2,15 +2,20 @@ return {
   -- color theme, NOTE: load before statusline
   {
     "catppuccin/nvim",
-    lazy = true,
     name = "catppuccin",
+    config = function()
+      require("colorscheme")
+    end,
   },
 
   -- statusline
   {
     "rebelot/heirline.nvim",
-    even = "VeryLazy",
+    init = function()
+      vim.o.laststatus = 0
+    end,
     config = function()
+      vim.o.laststatus = 3
       require("statusline.heirline")
     end,
   },
@@ -21,8 +26,7 @@ return {
   -- bufferline
   {
     "akinsho/bufferline.nvim",
-    -- tag = "v*",
-    even = "VeryLazy",
+    version = "*",
     dependencies = "nvim-tree/nvim-web-devicons",
     config = function()
       require("modules.ui.config.bufferline")

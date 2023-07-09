@@ -8,5 +8,9 @@ return {
 
   {
     "windwp/nvim-projectconfig",
+    event = "VeryLazy",
+    config = function()
+      require("nvim-projectconfig").load_project_config()
+    end,
   },
 }

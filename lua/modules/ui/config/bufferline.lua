@@ -1,5 +1,3 @@
-require("colorscheme")
-
 local bufferline_hl = require("catppuccin.groups.integrations.bufferline").get({})
 
 require("bufferline").setup({
