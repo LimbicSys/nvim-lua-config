@@ -1,3 +1,5 @@
+local config_dir = vim.fn.stdpath("config")
+
 return {
   -- markdown
   {
@@ -26,4 +28,20 @@ return {
   -- {
   --   "rescript-lang/vim-rescript",
   -- },
+
+  {
+    dir = config_dir .. "/lua/cpp-helper",
+    ft = { "cpp", "c" },
+    config = function()
+      require("cpp-helper")
+    end,
+  },
+
+  {
+    dir = config_dir .. "/lua/java-helper",
+    ft = "java",
+    config = function()
+      require("java-helper")
+    end,
+  },
 }

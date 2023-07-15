@@ -1,3 +1,5 @@
+local config_dir = vim.fn.stdpath("config")
+
 return {
   {
     "nvim-lua/plenary.nvim",
@@ -30,6 +32,21 @@ return {
     event = "VeryLazy",
     config = function()
       require("modules.basic.config.trouble")
+    end,
+  },
+
+  {
+    dir = config_dir .. "/lua/toggle-list",
+    event = "VeryLazy",
+    config = function()
+      require("toggle-list")
+    end,
+  },
+
+  {
+    dir = config_dir .. "/lua/open-recent",
+    config = function()
+      require("open-recent")
     end,
   },
 }

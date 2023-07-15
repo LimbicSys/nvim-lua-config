@@ -1,3 +1,5 @@
+local config_dir = vim.fn.stdpath("config")
+
 return {
   { "tpope/vim-repeat", event = "VeryLazy" },
 
@@ -74,6 +76,14 @@ return {
     event = "VeryLazy",
     config = function()
       require("modules.edit.config.tabout")
+    end,
+  },
+
+  {
+    dir = config_dir .. "/lua/im-switcher",
+    event = "VeryLazy",
+    config = function()
+      require("im-switcher")
     end,
   },
 }
