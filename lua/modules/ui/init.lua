@@ -61,7 +61,7 @@ return {
   --  'dominikduda/vim_current_word'
   {
     "RRethy/vim-illuminate",
-    event = "VeryLazy",
+    -- event = "VeryLazy",
     config = function()
       require("modules.ui.config.current-word")
     end,
