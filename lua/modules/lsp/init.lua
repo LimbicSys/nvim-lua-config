@@ -28,6 +28,7 @@ return {
       "folke/trouble.nvim",
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
+      "folke/neoconf.nvim",
     },
     event = { "BufReadPre", "BufNewFile" },
     config = function()
@@ -49,9 +50,4 @@ return {
       require("modules.lsp.config.lspsaga")
     end,
   },
-
-  --  'steelsojka/completion-buffers'
-  --  'nvim-lua/lsp-status.nvim'
-  --  'RishabhRD/popfix'
-  --  'RishabhRD/nvim-lsputils'
 }

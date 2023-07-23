@@ -45,6 +45,7 @@ return {
 
   {
     dir = config_dir .. "/lua/open-recent",
+    dependencies = "neovim/nvim-lspconfig",
     config = function()
       require("open-recent")
     end,

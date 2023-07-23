@@ -1,11 +1,13 @@
-local status_ok, lsp_installer = pcall(require, "mason-lspconfig")
+local status_ok, _ = pcall(require, "mason-lspconfig")
 if not status_ok then
   return
 end
 
+require("neoconf").setup()
+
 local lspconfig = require("lspconfig")
 
-local servers = { "bashls", "vimls", "jsonls", "lua_ls", "clangd", "cmake", "pylsp", "rescriptls", "rust_analyzer" }
+local servers = { "bashls", "vimls", "jsonls", "lua_ls", "clangd", "cmake", "pyright", "rescriptls", "rust_analyzer" }
 
 for _, server in pairs(servers) do
   local has_custom_config, customed_config = pcall(require, "modules.lsp.config.lspconfig.settings." .. server)

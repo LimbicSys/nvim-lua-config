@@ -21,7 +21,6 @@ o.expandtab = true
 o.termguicolors = true
 
 vim.g.mapleader = ","
-o.pastetoggle = "<leader>q"
 o.foldmethod = "indent"
 -- opt.foldenable = false
 -- opt.foldcolumn = "auto"
@@ -66,7 +65,7 @@ vim.api.nvim_set_keymap("n", "<C-l>", "<C-w>l", map_opts)
 -- vim.api.nvim_set_keymap("n", "[b", "<CMD>bprevious<CR>", map_opts)
 -- vim.api.nvim_set_keymap("n", "]b", "<CMD>bnext<CR>", map_opts)
 
--- buffer switch
+-- tab switch
 vim.api.nvim_set_keymap("n", "[t", "<CMD>tabpre<CR>", map_opts)
 vim.api.nvim_set_keymap("n", "]t", "<CMD>tabnext<CR>", map_opts)
 
@@ -134,27 +133,28 @@ augroup.create_hl_group("SetDiffColor", {
 
 -- auto indent when type a at the beginning of a line
 function _G.handleNormalA()
+  local keys = "a"
   if vim.fn.col(".") ~= 1 then
-    return "a"
+    return keys
   end
-  return "cc"
 
-  -- local ft = vim.bo.filetype
-  -- -- does not work on some filetype, e.g. markdown
-  -- local white_list = {
-  --   "c",
-  --   "cpp",
-  --   "go",
-  --   "python",
-  --   "lua",
-  --   "sh",
-  --   "java",
-  --   "rust",
-  --   "json",
-  -- }
-  -- if vim.tbl_contains(white_list, ft) then
-  --   keys = vim.api.nvim_replace_termcodes("a<C-f>", true, true, true)
-  -- end
+  local ft = vim.bo.filetype
+  -- does not work on some filetype, e.g. markdown
+  local white_list = {
+    "c",
+    "cpp",
+    "go",
+    "python",
+    "lua",
+    "sh",
+    "java",
+    "rust",
+    "json",
+  }
+  if vim.tbl_contains(white_list, ft) then
+    keys = vim.api.nvim_replace_termcodes("a<C-f>", true, true, true)
+  end
+  return keys
 end
 
 vim.api.nvim_set_keymap("n", "a", "v:lua.handleNormalA()", { noremap = true, expr = true })
