@@ -173,6 +173,8 @@ local function diagnostic_set_min_severity(min_severity)
   })
 end
 
+vim.diagnostic.config({ virtual_text = false })
+
 local function diagnostic_severity_error()
   diagnostic_set_min_severity(vim.diagnostic.severity.ERROR)
 end

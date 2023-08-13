@@ -32,22 +32,7 @@ local colors = {
   sapphire = "#85C1DC",
   blue = "#8CAAEE",
   lavender = "#BABBF1",
-
-  text = "#C6D0F5",
-  subtext1 = "#B5BFE2",
-  subtext0 = "#A5ADCE",
-  overlay2 = "#949CBB",
-  overlay1 = "#838BA7",
-  overlay0 = "#737994",
-  surface2 = "#626880",
-  surface1 = "#51576D",
-  surface0 = "#414559",
-
-  base = "#303446",
-  mantle = "#292C3C",
-  crust = "#232634",
-
-  bg = "#292C3C",
+  bg = "#232634",
 }
 
 require("heirline").load_colors(colors)
@@ -424,5 +409,5 @@ local StatusLines = {
 -- }
 
 require("heirline").setup({
-  statusline = StatusLines
+  statusline = StatusLines,
 })
