@@ -32,17 +32,6 @@ local function set_keymap(bufnr)
   vim.keymap.set("n", "<Leader>dp", "<cmd>Lspsaga peek_definition<CR>", opts)
 end
 
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
-  local navic_ok, navic = pcall(require, "nvim-navic")
-  if navic_ok and client.server_capabilities.documentSymbolProvider then
-    navic.attach(client, bufnr)
-  end
-
-  set_keymap(bufnr)
-end
-
 -- config that activates keymaps and enables snippet support
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 local status_ok, cmp_lsp = pcall(require, "cmp_nvim_lsp")
@@ -51,7 +40,6 @@ if status_ok then
 end
 
 M.common_config = {
-  on_attach = on_attach,
   capabilities = capabilities,
   flags = {
     -- This will be the default in neovim 0.7+

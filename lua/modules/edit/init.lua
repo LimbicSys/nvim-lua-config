@@ -20,6 +20,11 @@ return {
       char = {
         enabled = true,
       },
+      modes = {
+        search = {
+          enabled = false,
+        },
+      },
     },
     -- stylua: ignore
     keys = {

@@ -41,7 +41,7 @@ function M.formatting()
     return
   end
 
-  local lsp_format_list = { "cpp", "java", "python" }
+  local lsp_format_list = { "cpp", "java" }
 
   if vim.tbl_contains(lsp_format_list, ft) then
     -- formatting_sync()

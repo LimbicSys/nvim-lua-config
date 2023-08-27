@@ -30,6 +30,16 @@ require("formatter").setup({
         vim.cmd("RescriptFormat")
       end,
     },
+    python = {
+      -- black
+      function()
+        return {
+          exe = "black",
+          args = { "-q", "-" },
+          stdin = true,
+        }
+      end,
+    },
   },
 })
 
