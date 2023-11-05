@@ -7,7 +7,8 @@ require("neoconf").setup()
 
 local lspconfig = require("lspconfig")
 
-local servers = { "bashls", "vimls", "jsonls", "lua_ls", "clangd", "cmake", "pyright", "rust_analyzer", "gopls" }
+local servers =
+  { "bashls", "vimls", "jsonls", "lua_ls", "clangd", "cmake", "pyright", "rust_analyzer", "gopls", "clojure_lsp" }
 
 for _, server in pairs(servers) do
   local has_custom_config, customed_config = pcall(require, "modules.lsp.config.lspconfig.settings." .. server)

@@ -2,7 +2,9 @@ local npairs = require("nvim-autopairs")
 -- local Rule = require("nvim-autopairs.rule")
 -- local cond = require("nvim-autopairs.conds")
 
-npairs.setup()
+npairs.setup({
+  disable_filetype = { "TelescopePrompt", "vim" },
+})
 -- local rule = npairs.get_rule('"')
 -- rule:with_pair(
 --   function()
@@ -49,3 +51,7 @@ end
 --   map_cr = true, --  map <CR> on insert mode
 --   map_complete = true -- it will auto insert `(` after select function or method item
 -- })
+
+local cond = require("nvim-autopairs.conds")
+npairs.get_rules("'")[1].not_filetypes = { "scheme", "lisp", "clojure" }
+npairs.get_rules("'")[1]:with_pair(cond.not_after_text("["))

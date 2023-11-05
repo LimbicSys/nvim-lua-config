@@ -39,7 +39,14 @@ if status_ok then
   capabilities = cmp_lsp.default_capabilities()
 end
 
+--- Use an on_attach function to only map the following keys
+--- after the language server attaches to the current buffer
+local on_attach = function(client, bufnr)
+  set_keymap(bufnr)
+end
+
 M.common_config = {
+  on_attach = on_attach,
   capabilities = capabilities,
   flags = {
     -- This will be the default in neovim 0.7+

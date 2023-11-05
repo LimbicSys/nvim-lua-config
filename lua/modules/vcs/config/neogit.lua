@@ -3,7 +3,7 @@ require("neogit").setup({
     diffview = true,
   },
   mappings = {
-    status = {
+    popup = {
       ["p"] = "PushPopup",
       ["P"] = "PullPopup",
     },
