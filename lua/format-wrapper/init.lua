@@ -51,8 +51,6 @@ function M.formatting()
   end
 end
 
-local do_format_on_save = true
-
 local function convert_bool(var)
   if var then
     return "on"
@@ -61,27 +59,27 @@ local function convert_bool(var)
 end
 
 function M.toggle_format_on_save()
-  do_format_on_save = not do_format_on_save
-  vim.notify(string.format("Format on save: %s", convert_bool(do_format_on_save)))
+  vim.g.disable_autoformat = not vim.g.disable_autoformat
+  vim.notify(string.format("Format on save: %s", convert_bool(vim.g.disable_autoformat)))
 end
 
 function M.format_on_save()
-  if do_format_on_save then
+  if vim.g.disable_autoformat then
     M.formatting()
   end
 end
 
 function M.disable_format_on_save()
-  do_format_on_save = false
+  vim.g.disable_autoformat = false
 end
 
 function M.enable_format_on_save()
-  do_format_on_save = true
-  vim.notify(string.format("Format on save: %s", convert_bool(do_format_on_save)))
+  vim.g.disable_autoformat = true
+  vim.notify(string.format("Format on save: %s", convert_bool(vim.g.disable_autoformat)))
 end
 
 function M.format_on_save_status()
-  vim.notify(string.format("Format on save: %s", convert_bool(do_format_on_save)))
+  vim.notify(string.format("Format on save: %s", convert_bool(vim.g.disable_autoformat)))
 end
 
 return M
