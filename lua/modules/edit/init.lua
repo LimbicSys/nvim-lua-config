@@ -102,4 +102,19 @@ return {
       require("im-switcher")
     end,
   },
+
+  {
+    "gabrielpoca/replacer.nvim",
+    opts = { rename_files = false },
+    keys = {
+      {
+        "<leader>rq",
+        function()
+          vim.cmd("BqfDisable")
+          require("replacer").run()
+        end,
+        desc = "run replacer.nvim",
+      },
+    },
+  },
 }

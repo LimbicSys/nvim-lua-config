@@ -28,4 +28,15 @@ return {
       require("modules.search.config.spectre")
     end,
   },
+
+  {
+    "pechorin/any-jump.vim",
+    event = "VeryLazy",
+    init = function()
+      vim.g.any_jump_disable_default_keybindings = 1
+    end,
+    config = function()
+      require("modules.search.config.any-jump")
+    end,
+  },
 }
