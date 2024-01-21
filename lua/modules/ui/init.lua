@@ -79,8 +79,8 @@ return {
   {
     "famiu/bufdelete.nvim",
     event = "VeryLazy",
-    config = function()
-      vim.keymap.set("n", "<Leader>c", "<CMD>Bdelete<CR>")
-    end,
+    -- config = function()
+    -- vim.keymap.set("n", "<Leader>c", "<CMD>Bdelete<CR>")
+    -- end,
   },
 }

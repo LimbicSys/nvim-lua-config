@@ -20,4 +20,23 @@ return {
       require("modules.tag.config.vista")
     end,
   },
+
+  {
+    "dhananjaylatkar/cscope_maps.nvim",
+    ft = { "c", "cpp" },
+    dependencies = {
+      "folke/which-key.nvim", -- optional [for whichkey hints]
+      "nvim-telescope/telescope.nvim", -- optional [for picker="telescope"]
+      "nvim-tree/nvim-web-devicons", -- optional [for devicons in telescope or fzf]
+    },
+    opts = {
+      prefix = "<leader>c",
+      skip_input_prompt = true,
+      cscope = {
+        db_file = "./.cscope.out",
+        exec = "gtags-cscope",
+        skip_picker_for_single_result = false,
+      },
+    },
+  },
 }
