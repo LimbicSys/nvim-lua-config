@@ -49,6 +49,14 @@ cmp.setup({
     -- {name = "buffer"},
     { name = "path" },
     { name = "nvim_lsp_signature_help" },
+    {
+      name = "buffer",
+      option = {
+        sources = {
+          { name = "conjure" },
+        },
+      },
+    },
   }),
   sorting = {
     comparators = {

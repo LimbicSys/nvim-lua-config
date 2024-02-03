@@ -17,6 +17,7 @@ require("illuminate").configure({
     "NeogitStatus",
     "netrw",
     "packer",
+    "neo-tree",
     "",
   },
 })

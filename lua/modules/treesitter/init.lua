@@ -28,4 +28,13 @@ return {
       require("modules.treesitter.config.treesitter-playground")
     end,
   },
+
+  {
+    "HiPhish/rainbow-delimiters.nvim",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    event = "VeryLazy",
+    config = function()
+      require("modules.treesitter.config.rainbow")
+    end,
+  },
 }
