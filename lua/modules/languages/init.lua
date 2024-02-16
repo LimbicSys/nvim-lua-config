@@ -53,15 +53,52 @@ return {
 
   {
     "Olical/conjure",
-    ft = { "clojure" }, -- etc
-    -- [Optional] cmp-conjure for cmp
+    ft = { "clojure" },
     config = function(_, opts)
       require("conjure.main").main()
       require("conjure.mapping")["on-filetype"]()
     end,
     init = function()
       -- Set configuration options here
-      vim.g["conjure#debug"] = true
+      -- vim.g["conjure#debug"] = true
     end,
+  },
+
+  {
+    "guns/vim-sexp",
+    ft = { "lisp", "clojure" },
+    init = function()
+      vim.g.sexp_enable_insert_mode_mappings = 0
+    end,
+  },
+
+  {
+    "tpope/vim-sexp-mappings-for-regular-people",
+  },
+
+  {
+    "nvim-orgmode/orgmode",
+    dependencies = {
+      { "nvim-treesitter/nvim-treesitter", lazy = true },
+    },
+    event = "VeryLazy",
+    config = function()
+      require("modules.languages.config.org")
+    end,
+  },
+
+  {
+    "akinsho/org-bullets.nvim",
+    ft = "org",
+    config = function()
+      require("org-bullets").setup()
+    end,
+  },
+
+  {
+    "lukas-reineke/headlines.nvim",
+    ft = { "markdown", "org" },
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    config = true, -- or `opts = {}`
   },
 }

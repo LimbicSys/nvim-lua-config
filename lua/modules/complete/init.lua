@@ -59,7 +59,6 @@ return {
       "dmitmel/cmp-cmdline-history",
       "hrsh7th/cmp-nvim-lsp-document-symbol",
       "hrsh7th/cmp-nvim-lsp-signature-help",
-      "PaterJason/cmp-conjure",
     },
     event = { "InsertEnter", "CmdlineEnter" },
     config = function()

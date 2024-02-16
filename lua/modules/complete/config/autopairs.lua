@@ -53,5 +53,5 @@ end
 -- })
 
 local cond = require("nvim-autopairs.conds")
-npairs.get_rules("'")[1].not_filetypes = { "scheme", "lisp", "clojure" }
+npairs.get_rules("'")[1].not_filetypes = { "scheme", "lisp", "clojure", "rust" }
 npairs.get_rules("'")[1]:with_pair(cond.not_after_text("["))
