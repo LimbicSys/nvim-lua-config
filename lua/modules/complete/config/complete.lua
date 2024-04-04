@@ -45,10 +45,14 @@ cmp.setup({
     { name = "clangd_constructor" },
     { name = "nvim_lsp" },
     { name = "vsnip" },
-    -- {name = "luasnip"},
-    -- {name = "buffer"},
+    { name = "buffer" },
     { name = "path" },
     { name = "nvim_lsp_signature_help" },
+    { name = "orgmode" },
+  }, {
+    { name = "vsnip" },
+    { name = "buffer" },
+    { name = "path" },
     { name = "orgmode" },
   }),
 })
