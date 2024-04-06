@@ -29,7 +29,7 @@ cmp.setup({
     end,
   },
   completion = {
-    keyword_length = 1,
+    keyword_length = 2,
   },
   mapping = {
     ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
