@@ -12,10 +12,18 @@ return {
     end,
   },
 
+  -- {
+  --   "junegunn/fzf.vim",
+  --   dependencies = "junegunn/fzf",
+  --   event = "VeryLazy",
+  --   config = function()
+  --     require("modules.search.config.fzf")
+  --   end,
+  -- },
+
   {
-    "junegunn/fzf.vim",
-    dependencies = "junegunn/fzf",
-    event = "VeryLazy",
+    "ibhagwan/fzf-lua",
+    -- optional for icon support
     config = function()
       require("modules.search.config.fzf")
     end,

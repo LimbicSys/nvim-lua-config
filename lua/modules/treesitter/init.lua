@@ -21,15 +21,6 @@ return {
   },
 
   {
-    "nvim-treesitter/playground",
-    dependencies = "nvim-treesitter/nvim-treesitter",
-    cmd = "TSPlaygroundToggle",
-    config = function()
-      require("modules.treesitter.config.treesitter-playground")
-    end,
-  },
-
-  {
     "HiPhish/rainbow-delimiters.nvim",
     dependencies = "nvim-treesitter/nvim-treesitter",
     event = "VeryLazy",

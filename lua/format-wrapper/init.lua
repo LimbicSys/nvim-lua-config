@@ -60,7 +60,7 @@ end
 
 function M.toggle_format_on_save()
   vim.g.disable_autoformat = not vim.g.disable_autoformat
-  vim.notify(string.format("Format on save: %s", convert_bool(vim.g.disable_autoformat)))
+  vim.notify(string.format("Format on save: %s", convert_bool(not vim.g.disable_autoformat)))
 end
 
 function M.format_on_save()
@@ -70,16 +70,16 @@ function M.format_on_save()
 end
 
 function M.disable_format_on_save()
-  vim.g.disable_autoformat = false
+  vim.g.disable_autoformat = true
 end
 
 function M.enable_format_on_save()
-  vim.g.disable_autoformat = true
-  vim.notify(string.format("Format on save: %s", convert_bool(vim.g.disable_autoformat)))
+  vim.g.disable_autoformat = false
+  vim.notify(string.format("Format on save: %s", convert_bool(not vim.g.disable_autoformat)))
 end
 
 function M.format_on_save_status()
-  vim.notify(string.format("Format on save: %s", convert_bool(vim.g.disable_autoformat)))
+  vim.notify(string.format("Format on save: %s", convert_bool(not vim.g.disable_autoformat)))
 end
 
 return M

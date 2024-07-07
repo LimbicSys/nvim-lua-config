@@ -24,6 +24,7 @@ return {
           python = { "isort", "black" },
           cpp = { "clang-format" },
           c = { "clang-format" },
+          haskell = { "fourmolu" },
           ["_"] = { "trim_whitespace" },
         },
         -- Set up format-on-save
