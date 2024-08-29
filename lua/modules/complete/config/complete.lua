@@ -25,7 +25,8 @@ cmp.setup({
   snippet = {
     expand = function(args)
       -- You must install `vim-vsnip` if you use the following as-is.
-      vim.fn["vsnip#anonymous"](args.body)
+      -- vim.fn["vsnip#anonymous"](args.body)
+      vim.snippet.expand(args.body)
     end,
   },
   completion = {
@@ -44,13 +45,13 @@ cmp.setup({
   sources = cmp.config.sources({
     { name = "clangd_constructor" },
     { name = "nvim_lsp" },
-    { name = "vsnip" },
+    { name = "snippets" },
     { name = "buffer" },
     { name = "path" },
     { name = "nvim_lsp_signature_help" },
     { name = "orgmode" },
   }, {
-    { name = "vsnip" },
+    { name = "snippets" },
     { name = "buffer" },
     { name = "path" },
     { name = "orgmode" },

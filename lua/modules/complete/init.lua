@@ -47,12 +47,65 @@ return {
   -- })
 
   {
+    "garymjr/nvim-snippets",
+    dependencies = {
+      "rafamadriz/friendly-snippets",
+    },
+    keys = {
+      {
+        "<c-j>",
+        function()
+          if vim.snippet.active({ direction = 1 }) then
+            vim.schedule(function()
+              vim.snippet.jump(1)
+            end)
+            return
+          end
+          return "<c-j>"
+        end,
+        expr = true,
+        silent = true,
+        mode = "i",
+      },
+      {
+        "<c-j>",
+        function()
+          vim.schedule(function()
+            vim.snippet.jump(1)
+          end)
+        end,
+        expr = true,
+        silent = true,
+        mode = "s",
+      },
+      {
+        "<c-k>",
+        function()
+          if vim.snippet.active({ direction = -1 }) then
+            vim.schedule(function()
+              vim.snippet.jump(-1)
+            end)
+            return
+          end
+          return "<c-k>"
+        end,
+        expr = true,
+        silent = true,
+        mode = { "i", "s" },
+      },
+    },
+    opts = function(_, o)
+      o.search_paths = { vim.fn.stdpath("config") .. "/snippet" }
+    end,
+  },
+
+  {
     "hrsh7th/nvim-cmp",
     dependencies = {
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-path",
-      { "hrsh7th/cmp-vsnip", dependencies = "hrsh7th/vim-vsnip" },
+      "garymjr/nvim-snippets",
       "hrsh7th/cmp-cmdline",
       "windwp/nvim-autopairs",
       "quangnguyen30192/cmp-nvim-tags",
