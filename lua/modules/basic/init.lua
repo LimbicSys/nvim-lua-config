@@ -50,4 +50,8 @@ return {
       require("open-recent")
     end,
   },
+
+  {
+    "pteroctopus/faster.nvim",
+  },
 }

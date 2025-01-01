@@ -50,4 +50,10 @@ return {
       require("modules.lsp.config.lspsaga")
     end,
   },
+
+  {
+    "chrisgrieser/nvim-lsp-endhints",
+    event = "LspAttach",
+    opts = {}, -- required, even if empty
+  },
 }
