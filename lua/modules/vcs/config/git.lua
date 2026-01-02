@@ -1,10 +1,10 @@
 require("gitsigns").setup({
   signs = {
-    add = { hl = "GitSignsAddCus", text = "▎", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
-    change = { hl = "GitSignsChangeCus", text = "▎", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
-    delete = { hl = "GitSignsDeleteCus", text = "▎", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
-    topdelete = { hl = "GitSignsDeleteCus", text = "▔", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
-    changedelete = { hl = "GitSignsChangeCus", text = "~", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
+    add = { text = "▎" },
+    change = { text = "▎" },
+    delete = { text = "▎" },
+    topdelete = { text = "▔" },
+    changedelete = { text = "~" },
   },
   numhl = false,
   linehl = false,

@@ -1,6 +1,6 @@
 -- if lsp source is available, use it
 local function toggle_vista()
-  local clients = vim.tbl_values(vim.lsp.get_active_clients())
+  local clients = vim.tbl_values(vim.lsp.get_clients())
   if clients == nil or #clients == 0 then
     vim.cmd("Vista!!")
   else

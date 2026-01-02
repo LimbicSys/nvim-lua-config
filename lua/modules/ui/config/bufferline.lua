@@ -1,5 +1,4 @@
-local bufferline_hl = require("catppuccin.groups.integrations.bufferline").get({})
-
+local bufferline_hl = require("catppuccin.special.bufferline").get_theme()
 require("bufferline").setup({
   options = {
     show_buffer_close_icons = false,
